@@ -59,10 +59,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, computed } from 'vue'
-import Sidebar from '@/components/Sidebar.vue';
-import TestComp from '@/components/TestComp.vue';
-import { store } from '@/store';
+import { ref, computed } from 'vue'
 import Features from '@/components/Features.vue';
 
 const currentTime = ref(new Date())
