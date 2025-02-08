@@ -57,9 +57,9 @@
 
       <div class="flex m-4">
         <nav class="w-full flex">
-          <button @click="toggleSidebar" class="items-center mr-2" :class="{ 'animate-bounce' : !isHelpViewed }">
-            <p :class="{ hidden : isHelpViewed}" class="text-indigo-500">View tips</p>
-            <span class="material-icons-outlined text-2xl border rounded-4xl text-indigo-400 m-1">help</span>
+          <button @click="toggleSidebar" class="items-center right-0 fixed mr-2 z-10" :class="{ 'animate-bounce' : !isHelpViewed }">
+            <p :class="{ hidden : isHelpViewed}" class="text-indigo-500 text-xl">View tips</p>
+            <span class="material-icons-outlined border rounded-4xl text-indigo-400 m-1">help</span>
           </button>
           <button  class="btn-editor">Toggle Views</button>
           <button  class="btn-editor">Toggle Both</button>
@@ -102,10 +102,82 @@
 
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-96 fixed top-0 right-0 h-full p-4 transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
-          <button @click="toggleSidebar">
-            Close
-          </button>
+        <div class="bg-indigo-200 w-96 fixed right-0 bottom-0 p-4 h-96 rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+          <div>
+            <button @click="toggleSidebar" class="">
+              <span class="material-icons-outlined">close</span>
+            </button>
+          </div>
+          <ul class="overflow-auto h-full">
+            <li>
+              <h2>Helpful Tips</h2>
+              <ul>
+                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+                                <li>
+                  <p>Use the 'Useful Expressions' to help you get started.</p>
+                </li>
+                <li>
+                  <p>Remember to use the 'Task' as a guide for your writing.</p>
+                </li>
+                <li>
+                  <p>Use the 'Resources' to help you with your writing.</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
 
       </div>
