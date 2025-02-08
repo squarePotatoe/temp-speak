@@ -4,25 +4,40 @@
 
     <main class="flex flex-col mb-6">
 
-      <!-- Tasks -->
+      <div class="font-bold bg-indigo-50 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl mb-4">Article</div>
+
       <div class="grid md:grid-cols-4 gap-3">
 
-        <div class="bg-indigo-50 p-4 rounded">
-          <h2>Purpose of writin</h2>
+        <div class="bg-indigo-50 p-4 rounded flex flex-col gap-4">
+          <div class="">
+            <h3>Purpose of writing</h3>
+            <p>
+              To inform and entertain.
+            </p>
+          </div>
+          <div class="">
+            <h3>Style</h3>
+            <p>
+              Informal
+            </p>
+          </div>
+          <div class="">
+            <h3>Target audience</h3>
+            <p>
+              Teenagers.
+            </p>
+          </div>
+
         </div>
 
-        <div class="md:col-span-2">
-              <div class="flex-col stems-center ">
-                <h1 class="font-bold bg-indigo-100 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl">Article</h1>
-                <h2 class="font-medium text-2xl">Task:</h2>
-                <p>
-                  You are the host of ‘Teen Chat’, a YouTube channel that explores a wide range of topics from a teenage perspective. Write an article for Teen Magazine about why you started this channel and what you have learned in the process.
-                </p>
-              </div>
+        <div class="md:col-span-1">
+          <div class="flex-col stems-center ">
+
+          </div>
         </div>
 
         <!-- Tutorial video, mindmap, etc. goes here -->
-        <div class="bg-indigo-50 p-3 rounded-md">
+        <div class=" p-3 rounded-md">
           <h2 class="text-2xl font-medium mb-2">Resources</h2>
           <div class="flex flex-col gap-4">
             <button class="bg-purple-500 hover:bg-purple-400 text-white font-medium p-2 rounded-xl ">Watch the tutorial</button>
@@ -30,6 +45,14 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Tasks -->
+      <div class="mt-4 rounded bg-amber-50 p-4">
+            <h1 class="font-medium text-2xl">Task:</h1>
+            <p class="task-text">
+              You are the host of ‘Teen Chat’, a YouTube channel that explores a wide range of topics from a teenage perspective. Write an article for Teen Magazine about why you started this channel and what you have learned in the process.
+            </p>
       </div>
 
       <div class="flex m-4">
@@ -47,11 +70,24 @@
         <!-- Left side notes -->
         <div class="col-span-1 bg-indigo-50 rounded p-4">
           <div>
-            <ul>
-              <li class="">Notes</li>
-              <li>Notes</li>
-              <li>Notes</li>
-            </ul>
+            <div >
+              <h2 class="mb-2">Useful Expressions</h2>
+              <ul class="bg-white rounded p-2">
+                <li>
+                  <p>Firstly, I would like to say that...</p>
+                </li>
+                <li>
+                  <p>
+                    I started the channel because...
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    I have learned that...
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -112,10 +148,18 @@ const toggleSidebar = () => {
 .striped-bg {
   background: repeating-linear-gradient(
     115deg,
-    #eef2ff,
+    #ffffff,
     #eef2ff 10px,
-    #d7f6fc 10px,
-    #d4e6e9 20px
+    #b9eff9 10px,
+    #eff5f7 20px
   );
+}
+
+li {
+  list-style-type: disc;
+  margin-left: 1rem;
+}
+.task-text {
+  font-size: 1.25rem;
 }
 </style>
