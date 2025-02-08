@@ -11,9 +11,9 @@
                 </RouterLink>
             </div>
             <div class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1">
-                <RouterLink to="/writing" class="text-gray-600 hover:text-indigo-800 flex w-full">
+                <RouterLink to="/classes" class="text-gray-600 hover:text-indigo-800 flex w-full">
                     <span class="material-icons-outlined mr-2">tune</span>
-                    My class
+                    My classes
                     <span class="material-icons-outlined ml-auto">keyboard_arrow_right</span>
                 </RouterLink>
             </div>
