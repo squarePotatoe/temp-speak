@@ -56,13 +56,14 @@
       </div>
 
       <div class="flex m-4">
-        <nav class="w-full">
-          <button  class="btn-editor">Toggle Views</button>
-          <button  class="btn-editor">Toggle Both</button>
-          <button @click="toggleSidebar" class="p-2 items-center flex right-0 fixed" :class="{ 'animate-bounce' : !isHelpViewed }">
+        <nav class="w-full flex">
+          <button @click="toggleSidebar" class="items-center mr-2" :class="{ 'animate-bounce' : !isHelpViewed }">
             <p :class="{ hidden : isHelpViewed}" class="text-indigo-500">View tips</p>
             <span class="material-icons-outlined text-2xl border rounded-4xl text-indigo-400 m-1">help</span>
           </button>
+          <button  class="btn-editor">Toggle Views</button>
+          <button  class="btn-editor">Toggle Both</button>
+
         </nav>
       </div>
 
@@ -141,6 +142,8 @@ const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
   isHelpViewed.value = true
 }
+
+
 
 </script>
 
