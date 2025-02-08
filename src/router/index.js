@@ -25,8 +25,13 @@ const router = createRouter({
       path: '/writing',
       name: 'writing',
       component: () => import('../views/writing/WritingView.vue'),
-    }, 
-   ],
+    },
+    {
+      path: '/classes',
+      name: 'classes',
+      component: () => import('../views/ClassesView.vue'),
+    }
+  ],
 })
 
 export default router

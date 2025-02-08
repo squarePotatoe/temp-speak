@@ -1,76 +1,82 @@
 <template>
-  <div class="container flex flex-col mx-auto p-4">
 
-    <!-- Tasks -->
-    <div class="grid md:grid-cols-4 gap-3">
+  <div class="flex-1 p-4">
 
-      <div class="bg-indigo-50 p-4 rounded">
-        <h2>Purpose of writin</h2>
-      </div>
+    <main class="flex flex-col mb-6">
 
-      <div class="md:col-span-2">
-            <div class="flex-col stems-center ">
-              <h1 class="font-bold bg-indigo-100 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl">Article</h1>
-              <h2 class="font-medium text-2xl">Task:</h2>
-              <p>
-                You are the host of ‘Teen Chat’, a YouTube channel that explores a wide range of topics from a teenage perspective. Write an article for Teen Magazine about why you started this channel and what you have learned in the process.
-              </p>
-            </div>
-      </div>
+      <!-- Tasks -->
+      <div class="grid md:grid-cols-4 gap-3">
 
-      <!-- Tutorial video, mindmap, etc. goes here -->
-      <div class="bg-indigo-50 p-3 rounded-md">
-        <h2 class="text-2xl font-medium mb-2">Resources</h2>
-        <div class="flex flex-col gap-4">
-          <button class="bg-purple-500 hover:bg-purple-400 text-white font-medium p-2 rounded-xl ">Watch the tutorial</button>
-          <button class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium p-2 rounded-xl ">Mindmap</button>
+        <div class="bg-indigo-50 p-4 rounded">
+          <h2>Purpose of writin</h2>
         </div>
-      </div>
 
-    </div>
-
-    <div class="flex m-4">
-      <nav class="w-full">
-        <button  class="btn-editor">Toggle Views</button>
-        <button  class="btn-editor">Toggle Both</button>
-        <button @click="toggleSidebar" class="p-2 items-center flex right-0 fixed" :class="{ 'animate-bounce' : !isHelpViewed }">
-          <p :class="{ hidden : isHelpViewed}" class="text-indigo-500">View tips</p>
-          <span class="material-icons-outlined text-2xl border rounded-4xl text-indigo-400 m-1">help</span>
-        </button>
-      </nav>
-    </div>
-
-    <div class="grid grid-cols-4">
-      <!-- Left side notes -->
-      <div class="col-span-1 bg-indigo-50 rounded p-4">
-        <div>
-          <ul>
-            <li class="">Notes</li>
-            <li>Notes</li>
-            <li>Notes</li>
-          </ul>
+        <div class="md:col-span-2">
+              <div class="flex-col stems-center ">
+                <h1 class="font-bold bg-indigo-100 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl">Article</h1>
+                <h2 class="font-medium text-2xl">Task:</h2>
+                <p>
+                  You are the host of ‘Teen Chat’, a YouTube channel that explores a wide range of topics from a teenage perspective. Write an article for Teen Magazine about why you started this channel and what you have learned in the process.
+                </p>
+              </div>
         </div>
+
+        <!-- Tutorial video, mindmap, etc. goes here -->
+        <div class="bg-indigo-50 p-3 rounded-md">
+          <h2 class="text-2xl font-medium mb-2">Resources</h2>
+          <div class="flex flex-col gap-4">
+            <button class="bg-purple-500 hover:bg-purple-400 text-white font-medium p-2 rounded-xl ">Watch the tutorial</button>
+            <button class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium p-2 rounded-xl ">Mindmap</button>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Main content -->
-      <div class="col-span-3">
-      <form @submit.prevent="submitForm" class="bg-indigo-50 p-1">
-        <TextEditor v-model="form.content" />
-      </form>
+      <div class="flex m-4">
+        <nav class="w-full">
+          <button  class="btn-editor">Toggle Views</button>
+          <button  class="btn-editor">Toggle Both</button>
+          <button @click="toggleSidebar" class="p-2 items-center flex right-0 fixed" :class="{ 'animate-bounce' : !isHelpViewed }">
+            <p :class="{ hidden : isHelpViewed}" class="text-indigo-500">View tips</p>
+            <span class="material-icons-outlined text-2xl border rounded-4xl text-indigo-400 m-1">help</span>
+          </button>
+        </nav>
       </div>
 
+      <div class="grid grid-cols-4">
+        <!-- Left side notes -->
+        <div class="col-span-1 bg-indigo-50 rounded p-4">
+          <div>
+            <ul>
+              <li class="">Notes</li>
+              <li>Notes</li>
+              <li>Notes</li>
+            </ul>
+          </div>
+        </div>
 
-      <!-- Right side notes -->
+        <!-- Main content -->
+        <div class="col-span-3">
+        <form @submit.prevent="submitForm" class="bg-indigo-50 p-1">
+          <TextEditor v-model="form.content" />
+        </form>
+        </div>
 
-      <div class="bg-indigo-200 w-96 fixed top-0 right-0 h-full p-4 transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
-        <button @click="toggleSidebar">
-          Close
-        </button>
+
+        <!-- Right side notes -->
+
+        <div class="bg-indigo-200 w-96 fixed top-0 right-0 h-full p-4 transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+          <button @click="toggleSidebar">
+            Close
+          </button>
+        </div>
+
       </div>
 
-    </div>
+    </main>
 
   </div>
+
 </template>
 
 <script setup>

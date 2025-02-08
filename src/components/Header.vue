@@ -5,7 +5,9 @@
         <span class="material-icons-outlined text-2xl">menu</span>
       </button>
       <div class="text-xl font-bold text-blue-900 ">
-        John's <span class="text-indigo-800">Dashboard</span>
+        <RouterLink to="/" class="hover:text-indigo-800">
+          John's <span class="text-indigo-800">Dashboard</span>
+        </RouterLink> 
       </div>
       <div class="flex items-center space-x-2">
         <span class="material-icons-outlined p-2 text-2xl cursor-pointer hover:text-indigo-800 transition-transform duration-300 hover:scale-110 hidden md:block">search</span>

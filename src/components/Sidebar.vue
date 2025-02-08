@@ -32,9 +32,15 @@
                 Profile
                 <span class="material-icons-outlined ml-auto">keyboard_arrow_right</span>
             </div>
+            
             <div class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1">
                 <span class="material-icons-outlined mr-2">settings</span>
                 Settings
+                <span class="material-icons-outlined ml-auto">keyboard_arrow_right</span>
+            </div>
+            <div class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1">
+                <span class="material-icons-outlined mr-2">newspaper</span>
+                News
                 <span class="material-icons-outlined ml-auto">keyboard_arrow_right</span>
             </div>
             <div class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1">
@@ -42,6 +48,7 @@
                 Log out
                 <span class="material-icons-outlined ml-auto">keyboard_arrow_right</span>
             </div>
+
         </div>
 
 

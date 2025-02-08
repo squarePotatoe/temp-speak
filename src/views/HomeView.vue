@@ -2,7 +2,7 @@
     <div>
 
     <main class="flex-1 p-4">
-        <div class="flex flex-col lg:flex-row gap-4 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="flex-1 bg-indigo-100 border border-indigo-200 rounded-xl p-6 animate-fade-in">
                 <h2 class="text-4xl md:text-5xl text-blue-900">
                     Welcome <br><strong>John</strong>
@@ -23,15 +23,15 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up" style="animation-delay: 0.1s">
-                <h3 class="text-xl font-bold text-indigo-800">Homework</h3>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up" style="animation-delay: 0.2s">
+            <RouterLink to="/classes" class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up">
+                <h3 class="text-xl font-bold text-indigo-800">My Classes</h3>
+            </RouterLink>
+            <RouterLink class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up" style="animation-delay: 0.2s">
                 <h3 class="text-xl font-bold text-indigo-800">Next lesson</h3>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up" style="animation-delay: 0.3s">
+            </RouterLink>
+            <RouterLink class="bg-white rounded-xl shadow-lg p-6 h-64 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl animate-slide-up" style="animation-delay: 0.3s">
                 <h3 class="text-xl font-bold text-indigo-800">Lesson Feedback</h3>
-            </div>
+            </RouterLink>
         </div>
         <div class="flex flex-col mt-6 lg:flex-row gap-4 mb-6">
             <div class="flex-1 bg-indigo-100 border border-indigo-200 rounded-xl p-6 animate-fade-in">
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import Features from '@/components/Features.vue';
 
 const currentTime = ref(new Date())
@@ -75,5 +75,12 @@ const formattedTime = computed(() => {
 const updateTime = () => {
   currentTime.value = new Date()
 }
+
+onMounted(() => {
+  const interval = setInterval(updateTime, 1000)
+  onUnmounted(() => {
+    clearInterval(interval)
+  })
+})
 
 </script>
