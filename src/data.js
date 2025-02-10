@@ -16,13 +16,41 @@ export const links = [
   },
 ];
 
-export const articleExampe = {
-  id: 1,
-  title: "Example Article",
-  date: "2021-09-01",
-  category: "writing",
-  content: `loreum ipsum`,
-};
+export const usefulTips = [
+  { id: 1, content: "Write a strong headline to grab attention.", },
+  { id: 2, content: "Know your audience and tailor your content to them.", },
+  { id: 3, content: "Keep paragraphs short and concise for better readability.", },
+]
+
+export const helpfulSentences = [
+  { id: 1, content: "The article provides valuable insights into the topic.", },
+  { id: 2, content: "The author presents a compelling argument for their position.", },
+  { id: 3, content: "The article is well-researched and provides accurate information.", },
+]
+
+export const engagingQuestions = [
+  { id: 1, content: "What are the benefits of using this product?", },
+  { id: 2, content: "How does this service compare to its competitors?", },
+  { id: 3, content: "What are the key takeaways from this article?", },
+]
+
+export const usefulExpressions = [
+  { id: 1, content: "In conclusion, it is clear that...", },
+  { id: 2, content: "Moreover, the author highlights...", },
+  { id: 3, content: "The article raises important questions about...", },
+]
+
+export const introductionSentences = [
+  { id: 1, content: "In recent years, there has been a growing interest in...", },
+  { id: 2, content: "With the rise of technology, new opportunities have emerged...", },
+  { id: 3, content: "The topic of... has gained significant attention in recent months...", },
+]
+
+export const connectives = [
+  { id: 1, content: "Furthermore", },
+  { id: 2, content: "In addition", },
+  { id: 3, content: "On the other hand", },
+]
 
 export const sidebarTips = [
   { id: 1, content: "Write a strong headline to grab attention.", },
@@ -56,3 +84,10 @@ export const sidebarTips = [
   { id: 29, content: "Use humor where appropriate to make your article more enjoyable.", },
   { id: 30, content: "Reflect on feedback to continuously improve your writing.", },
 ];
+
+
+export const demoTask = {
+  id: 1,
+  title: "Demo Task",
+  content: "You are are in a school's writing club and have been tasked with writing an article about skysurfing. Use the example text provided to create a compelling article that engages readers and provides valuable information about the topic. Remember to follow the tips provided in the sidebar to enhance your writing.",
+}

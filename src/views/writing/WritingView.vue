@@ -35,7 +35,7 @@
             <p>
               To inform and entertain.
             </p>
-            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute -translate-y-1/3 translate-x-full opacity-0 p-2 m-6 mx-auto">
+            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute opacity-0 p-2 m-6 mx-auto">
               This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel. The article should be engaging and informative.
             </p>
           </div>
@@ -67,7 +67,7 @@
       <div class="mt-4 rounded bg-amber-50 p-4">
             <h1 class="font-medium text-2xl">Task:</h1>
             <p class="task-text">
-              You are the host of ‘Teen Chat’, a YouTube channel that explores a wide range of topics from a teenage perspective. Write an article for Teen Magazine about why you started this channel and what you have learned in the process.
+              {{ demoTask.content }}
             </p>
       </div>
 
@@ -85,32 +85,58 @@
 
       <div class="grid grid-cols-4">
         <!-- Left side notes -->
-        <div class="col-span-1 bg-indigo-50 rounded p-4">
+        <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem]">
           <div>
-            <div >
+            <div class="flex flex-col gap-4">
               <h2 class="mb-2">Useful Expressions</h2>
-              <ul class="bg-white rounded p-2">
-                <li>
-                  <p>Firstly, I would like to say that...</p>
-                </li>
-                <li>
-                  <p>
-                    I started the channel because...
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    I have learned that...
-                  </p>
-                </li>
-              </ul>
+              <p class="text-sm">
+                Use these expressions to start your article.
+              </p>
+              <div>
+                <ul v-for="expression in introductionSentences" class="bg-white rounded p-1">
+                  <li class="text-sm">
+                    <p>{{ expression.content }}</p>
+                  </li>
+                </ul>
+              </div>
+              <p class="text-sm">
+                Don't forget the connectors!
+              </p>
+               <div>
+                <ul v-for="expression in connectives" class="bg-white rounded p-1">
+                  <li class="text-sm">
+                    <p>{{ expression.content }}</p>
+                  </li>
+                </ul>
+               </div>
+               <div>
+                <ul v-for="expression in connectives" class="bg-white rounded p-1">
+                  <li class="text-sm">
+                    <p>{{ expression.content }}</p>
+                  </li>
+                </ul>
+               </div>
+               <div>
+                <ul v-for="expression in connectives" class="bg-white rounded p-1">
+                  <li class="text-sm">
+                    <p>{{ expression.content }}</p>
+                  </li>
+                </ul>
+               </div>
+               <div>
+                <ul v-for="expression in connectives" class="bg-white rounded p-1">
+                  <li class="text-sm">
+                    <p>{{ expression.content }}</p>
+                  </li>
+                </ul>
+               </div>
             </div>
           </div>
         </div>
 
         <!-- Main content -->
-        <div class="col-span-3">
-          <div class="flex flex-col gap-4 bg-purple-100 p-2">
+        <div class="col-span-3 ml-4">
+          <div class="flex flex-col gap-4 bg-purple-100 p-2 rounded-md">
             <form @submit.prevent="submitForm" >
               <TextEditor v-model="form.content" />
             </form>
@@ -153,7 +179,7 @@
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
-import { sidebarTips } from '@/data';
+import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connectives } from '@/data';
 const editor = ref(null)
 
 const form = ref({
