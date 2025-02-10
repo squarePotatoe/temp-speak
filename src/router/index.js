@@ -1,3 +1,5 @@
+import ClassLayout from '@/layouts/ClassLayout.vue'
+import MainLayout from '@/layouts/MainLayout.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -6,29 +8,34 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: { layout : MainLayout },
       component: () => import('../views/HomeView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      
+      meta: { layout : MainLayout },
       component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
+      
+      meta: { layout : MainLayout },
       component: () => import('../views/ContactView.vue'),
     },
     {
       path: '/writing',
       name: 'writing',
+      meta: { layout : ClassLayout },
       component: () => import('../views/writing/WritingView.vue'),
     },
     {
       path: '/classes',
       name: 'classes',
+      
+      meta: { layout : MainLayout },
       component: () => import('../views/ClassesView.vue'),
     }
   ],

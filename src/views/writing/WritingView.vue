@@ -6,13 +6,36 @@
 
       <div class="font-bold bg-indigo-50 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl mb-4">Article</div>
 
-      <div class="grid md:grid-cols-4 gap-3">
 
-        <div class="bg-indigo-50 p-4 rounded flex flex-col gap-4">
-          <div class="">
-            <h3>Purpose of writing</h3>
+        <div class="grid grid-cols-3">
+
+          <!-- Tutorial video, mindmap, etc. goes here -->
+
+          <div class=" p-3 rounded-md">
+            <h2 class="text-2xl font-medium mb-2">Resources</h2>
+            <div class="flex flex-col gap-4">
+              <button class="bg-purple-500 hover:bg-purple-400 text-white font-medium p-2 rounded-xl ">Watch the tutorial</button>
+              <button class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium p-2 rounded-xl ">Mindmap</button>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="bg-indigo-50 p-4 col-span-2 rounded flex text-center justify-evenly gap-4">
+          <div class="group flex flex-col relative items-center">
+            <div class="flex">
+              <span class="material-icons-outlined">info</span>
+              <h3 class="bg-indigo-200 rounded-2xl p-2">
+                Purpose of writing
+              </h3>
+            </div>
+
             <p>
               To inform and entertain.
+            </p>
+            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-x-auto translate-y-1/2 opacity-0 p-2 m-6 mx-auto">
+              This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel.
             </p>
           </div>
           <div class="">
@@ -36,16 +59,8 @@
           </div>
         </div>
 
-        <!-- Tutorial video, mindmap, etc. goes here -->
-        <div class=" p-3 rounded-md">
-          <h2 class="text-2xl font-medium mb-2">Resources</h2>
-          <div class="flex flex-col gap-4">
-            <button class="bg-purple-500 hover:bg-purple-400 text-white font-medium p-2 rounded-xl ">Watch the tutorial</button>
-            <button class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium p-2 rounded-xl ">Mindmap</button>
-          </div>
-        </div>
 
-      </div>
+
 
       <!-- Tasks -->
       <div class="mt-4 rounded bg-amber-50 p-4">

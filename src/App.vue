@@ -6,6 +6,8 @@ import MainLayout from './layouts/MainLayout.vue';
 
 <template>
   
-  <MainLayout />
+  <main>
+    <component :is="$route.meta.layout || 'div'" />
+  </main>
     
 </template>
