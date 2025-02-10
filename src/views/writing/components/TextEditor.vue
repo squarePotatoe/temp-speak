@@ -30,7 +30,7 @@
           <i class="fas fa-heading"></i><span class="heading-level">2</span>
         </button>
       </div>
-      <EditorContent :editor="editor" class="bg-white rounded" />
+      <EditorContent :editor="editor" />
     </div>
   </div>
 </template>
@@ -64,7 +64,7 @@ onMounted(() => {
     ],
     editorProps: {
       attributes: {
-        class: 'border-gray-400 p-4 min-h-[30rem] rounded-b-xl max-h-[30rem] border-r border-l border-b overflow-y-auto outline-none prose',
+        class: 'border-gray-400 p-4 min-h-[20rem] rounded-b-xl max-h-[20rem] overflow-y-auto p-4 outline-none prose',
       },
     },
   })
@@ -110,11 +110,6 @@ const toggleHeading = (level) => {
 </script>
 
 <style scoped>
-@import '@fortawesome/fontawesome-free/css/all.css';
-
-h1 {
-  font-size: 2.5em;
-}
 
 .toolbar {
   margin-bottom: 10px;

@@ -25,17 +25,18 @@
         <div class="bg-indigo-50 p-4 col-span-2 rounded flex text-center justify-evenly gap-4">
           <div class="group flex flex-col relative items-center">
             <div class="flex">
-              <span class="material-icons-outlined">info</span>
               <h3 class="bg-indigo-200 rounded-2xl p-2">
                 Purpose of writing
               </h3>
+              <span class="material-icons-outlined">info</span>
+
             </div>
 
             <p>
               To inform and entertain.
             </p>
-            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-x-auto translate-y-1/2 opacity-0 p-2 m-6 mx-auto">
-              This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel.
+            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute -translate-y-1/3 translate-x-full opacity-0 p-2 m-6 mx-auto">
+              This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel. The article should be engaging and informative.
             </p>
           </div>
           <div class="">
@@ -109,90 +110,35 @@
 
         <!-- Main content -->
         <div class="col-span-3">
-        <form @submit.prevent="submitForm" class="bg-indigo-50 p-1">
-          <TextEditor v-model="form.content" />
-        </form>
+          <div class="flex flex-col gap-4 bg-purple-100 p-2">
+            <form @submit.prevent="submitForm" >
+              <TextEditor v-model="form.content" />
+            </form>
+            <div>
+              <Article :content="form.content"/>
+            </div>
+          </div>
+
         </div>
 
 
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-96 fixed right-0 bottom-0 p-4 h-96 rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
-          <div>
+        <div class="bg-indigo-200 w-1/2 fixed right-0 bottom-0 p-4 h-full rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+          <div class="flex items-center">
             <button @click="toggleSidebar" class="">
               <span class="material-icons-outlined">close</span>
             </button>
+            <h2>Helpful Tips</h2>
           </div>
-          <ul class="overflow-auto h-full">
-            <li>
-              <h2>Helpful Tips</h2>
-              <ul>
+          <div class="overflow-y-auto h-full mt-4 p-1">
+            <ul v-for="tip in sidebarTips" :key="tip.id" class="">
                 <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
-                </li>
-                                <li>
-                  <p>Use the 'Useful Expressions' to help you get started.</p>
-                </li>
-                <li>
-                  <p>Remember to use the 'Task' as a guide for your writing.</p>
-                </li>
-                <li>
-                  <p>Use the 'Resources' to help you with your writing.</p>
+                  <p>{{ tip.content }}</p>
                 </li>
               </ul>
-            </li>
-          </ul>
+          </div>
+
         </div>
 
       </div>
@@ -207,8 +153,7 @@
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
-import Task from './components/Task.vue';
-import Notes from './components/Notes.vue';
+import { sidebarTips } from '@/data';
 const editor = ref(null)
 
 const form = ref({

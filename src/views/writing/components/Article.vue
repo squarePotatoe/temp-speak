@@ -1,9 +1,9 @@
 <template>
-    <div class="container flex mx-auto max-w-4xl p-4 bg-white rounded">
-        <article>
-            <h4 class="mb-4">
+    <div class=" mx-auto p-2">
+        <article class="max-h-36 overflow-y-auto">
+            <h3 class="mb-4">
                 Defying Gravity: The Art and Adventure of Skysurfing
-            </h4>
+            </h3>
             <p class="article-paragraph">
                 [1] Skysurfing, an electrifying blend of skydiving and surfing, catapults daredevils into the boundless blue, where gravity is both adversary and ally. As the winds rush past and the earth below shrinks to a patchwork of colours, skysurfers dance with the clouds, defying conventional notions of human limitations.
             </p>
