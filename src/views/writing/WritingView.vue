@@ -86,52 +86,7 @@
       <div class="grid grid-cols-4">
         <!-- Left side notes -->
         <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem]">
-          <div>
-            <div class="flex flex-col gap-4">
-              <h2 class="mb-2">Useful Expressions</h2>
-              <p class="text-sm">
-                Use these expressions to start your article.
-              </p>
-              <div>
-                <ul v-for="expression in introductionSentences" class="bg-white rounded p-1">
-                  <li class="text-sm">
-                    <p>{{ expression.content }}</p>
-                  </li>
-                </ul>
-              </div>
-              <p class="text-sm">
-                Don't forget the connectors!
-              </p>
-               <div>
-                <ul v-for="expression in connectives" class="bg-white rounded p-1">
-                  <li class="text-sm">
-                    <p>{{ expression.content }}</p>
-                  </li>
-                </ul>
-               </div>
-               <div>
-                <ul v-for="expression in connectives" class="bg-white rounded p-1">
-                  <li class="text-sm">
-                    <p>{{ expression.content }}</p>
-                  </li>
-                </ul>
-               </div>
-               <div>
-                <ul v-for="expression in connectives" class="bg-white rounded p-1">
-                  <li class="text-sm">
-                    <p>{{ expression.content }}</p>
-                  </li>
-                </ul>
-               </div>
-               <div>
-                <ul v-for="expression in connectives" class="bg-white rounded p-1">
-                  <li class="text-sm">
-                    <p>{{ expression.content }}</p>
-                  </li>
-                </ul>
-               </div>
-            </div>
-          </div>
+          <SidebarLeft />
         </div>
 
         <!-- Main content -->
@@ -180,6 +135,7 @@ import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
 import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connectives } from '@/data';
+import SidebarLeft from './components/SidebarLeft.vue';
 const editor = ref(null)
 
 const form = ref({

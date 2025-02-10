@@ -28,12 +28,6 @@ export const helpfulSentences = [
   { id: 3, content: "The article is well-researched and provides accurate information.", },
 ]
 
-export const engagingQuestions = [
-  { id: 1, content: "What are the benefits of using this product?", },
-  { id: 2, content: "How does this service compare to its competitors?", },
-  { id: 3, content: "What are the key takeaways from this article?", },
-]
-
 export const usefulExpressions = [
   { id: 1, content: "In conclusion, it is clear that...", },
   { id: 2, content: "Moreover, the author highlights...", },
