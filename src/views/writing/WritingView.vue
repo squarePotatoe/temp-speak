@@ -189,7 +189,10 @@ const toggleViews = () => {
 
 const form = ref({
   title: '',
-  content: ""
+  content: /*html*/`
+    <h2>Write your article here</h2>
+    <p>Start typing...</p>
+  `
 })
 
 const submitForm = () => {

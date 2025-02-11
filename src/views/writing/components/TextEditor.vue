@@ -53,11 +53,16 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['update:modelValue'])
+
 const editor = ref(null)
 
 onMounted(() => {
   editor.value = new Editor({
-    content: "",
+    content: props.modelValue,
+    onUpdate: ({ editor }) => {
+      emit('update:modelValue', editor.getHTML())
+    },
     extensions: [
       StarterKit,
       Underline,
@@ -138,5 +143,9 @@ const toggleHeading = (level) => {
 .heading-level {
   margin-left: 5px;
   font-size: 0.8em;
+}
+
+p {
+  color: #ddd;
 }
 </style>
