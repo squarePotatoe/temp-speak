@@ -6,7 +6,6 @@
 
       <div class="font-bold bg-indigo-50 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl mb-4">Article</div>
 
-
         <div class="grid grid-cols-3">
 
           <!-- Tutorial video, mindmap, etc. goes here -->
@@ -19,11 +18,21 @@
             </div>
           </div>
 
+          <div class=" p-3 rounded-md">
+
+          </div>
+
+          <div class=" p-3 rounded-md">
+            <h2 class="text-2xl font-medium mb-2">Online class</h2>
+            <div class="flex flex-col gap-4">
+              <button class="bg-indigo-500 hover:bg-indigo-400 text-white font-medium p-2 rounded-xl disabled">Zoom Link</button>
+            </div>
+          </div>
+
         </div>
 
-
         <div class="bg-indigo-50 p-4 rounded flex text-center justify-evenly gap-4">
-
+          
           <div class="group flex flex-col relative items-center">
             <div class="flex">
               <h3 class="">
@@ -63,46 +72,52 @@
         </div>
 
       <!-- Tasks -->
-      <div class="mt-4 rounded bg-amber-50 p-4">
-            <h1 class="font-medium text-2xl">Task:</h1>
-            <p class="task-text">
-              {{ demoTask.content }}
-            </p>
+      <div class="mt-4 rounded-lg bg-amber-50 p-6 shadow-md">
+        <h1 class="font-medium text-gray-900 mb-4">Task:</h1>
+        <p class="text-base text-gray-700">
+          {{ demoTask.content }}
+        </p>
       </div>
 
+
+      <!-- View toggle navbar -->
       <div class="flex m-4">
-        <nav class="w-full flex">
+        <nav class="w-full flex gap-2">
           <button @click="toggleSidebar" class="items-center right-0 fixed mr-2 z-10" :class="{ 'animate-bounce' : !isHelpViewed }">
             <p :class="{ hidden : isHelpViewed}" class="text-indigo-500 text-xl">View tips</p>
             <span class="material-icons-outlined border rounded-4xl text-indigo-400 m-1">help</span>
           </button>
-          <button  class="btn-editor">Toggle Views</button>
-          <button  class="btn-editor">Toggle Both</button>
-
+          <button @click="toggleViews" class="bg-indigo-500 rounded text-white font-medium p-2">View {{ enabledView }}</button>
+          <button @click="toggleSideBySide" class="bg-indigo-500 rounded text-white font-medium p-2">{{ sideBySide }}</button>
         </nav>
       </div>
 
+      <!-- Main content -->
       <div class="grid grid-cols-4">
         <!-- Left side notes -->
-        <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem]">
+        <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem] shadow-md">
           <SidebarLeft />
         </div>
 
-        <!-- Main content -->
-        <div class="col-span-3 ml-4">
-          <div class="flex flex-col gap-4 bg-purple-100 p-2 rounded-md">
-            <div class="transition-transform transform duration-300">
-              <Article :content="form.content"/>
-            </div>
-            <form @submit.prevent="submitForm" >
-              <TextEditor v-model="form.content" />
-            </form>
-
-          </div>
-
+        <!-- Togglable content -->
+        <div class="col-span-3 ml-4" v-if="isViewArticle">
+          <Article :articleHeight="articleHeight" />
         </div>
 
+        <div class="col-span-3 ml-4" v-else-if="isViewEditor">
+          <form @submit.prevent="submitForm">
+            <TextEditor v-model="form.content" />
+          </form>
+        </div>
 
+        <div class="col-span-3 ml-4" v-else-if="isSideBySide">
+          <div class="flex flex-col gap-4">
+            <Article :articleHeight="'10rem'" />
+            <form @submit.prevent="submitForm">
+              <TextEditor v-model="form.content" />
+            </form>
+          </div>
+        </div>
         <!-- Right side notes -->
 
         <div class="bg-indigo-200 w-1/3 fixed right-0 bottom-0 p-4 h-full rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
@@ -136,6 +151,40 @@ import Article from '@/views/writing/components/Article.vue';
 import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connectives } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
 const editor = ref(null)
+const enabledView = ref('Editor')
+const sideBySide = ref('Article / Editor')
+
+const isViewArticle = ref(true)
+const isViewEditor = ref(false)
+
+const isSideBySide = ref(false)
+
+const articleHeight = ref('40rem')
+
+const toggleSideBySide = () => {
+  isSideBySide.value = !isSideBySide.value
+  if (isSideBySide.value) {
+    isViewArticle.value = false
+    isViewEditor.value = false
+    sideBySide.value = 'Article'
+  } else {
+    isViewArticle.value = true
+    isViewEditor.value = false
+    sideBySide.value = 'Article / Editor'
+  }
+}
+
+const toggleViews = () => {
+  if (isSideBySide.value) {
+    isSideBySide.value = false
+    isViewArticle.value = false
+    isViewEditor.value = true
+  }
+  isViewArticle.value = !isViewArticle.value 
+  isViewEditor.value = !isViewEditor.value
+  enabledView.value = isViewArticle.value ? 'Editor' : 'Article'
+}
+
 
 const form = ref({
   title: '',

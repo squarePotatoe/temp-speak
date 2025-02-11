@@ -1,6 +1,6 @@
 <template>
-    <div class=" mx-auto p-2">
-        <article class="max-h-36 overflow-y-auto">
+    <div>
+        <article :style="{ height: articleHeight }" class="overflow-y-auto mx-auto p-2">
             <h3 class="mb-4">
                 Defying Gravity: The Art and Adventure of Skysurfing
             </h3>
@@ -30,4 +30,11 @@
 </template>
 
 <script setup>
+
+const props = defineProps({
+    articleHeight: {
+        type: String,
+        default: '40rem'
+    }
+})
 </script>

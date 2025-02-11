@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="editor" class="editor-container bg-white rounded">
-      <div class="toolbar grid grid-cols-5 md:grid-cols-6 gap-1 bg-indigo-50 p-2 rounded">
+    <div v-if="editor" class="editor-container bg-white rounded border border-amber-50 shadow-md">
+      <div class="toolbar grid grid-cols-5 md:grid-cols-6 gap-1 bg-purple-500 p-2 rounded-t">
         <button class="btn-editor" type="button" @click="toggleBold" :class="{ 'btn-editor-active': editor.isActive('bold') }">
           <i class="fas fa-bold"></i>
         </button>
@@ -64,7 +64,7 @@ onMounted(() => {
     ],
     editorProps: {
       attributes: {
-        class: 'border-gray-400 p-4 min-h-[20rem] rounded-b-xl max-h-[20rem] overflow-y-auto p-4 outline-none prose',
+        class: 'border-gray-400 p-4 min-h-[25rem] rounded-b-xl max-h-[30rem] overflow-y-auto p-4 outline-none prose',
       },
     },
   })
