@@ -6,7 +6,7 @@ import MainLayout from './layouts/MainLayout.vue';
 
 <template>
   
-  <main>
+  <main class="bg-gray-50">
     <component :is="$route.meta.layout || 'div'" />
   </main>
     
