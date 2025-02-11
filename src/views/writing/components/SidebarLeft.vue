@@ -23,27 +23,6 @@
           </li>
         </ul>
         </div>
-        <div>
-        <ul v-for="expression in connectives" class="bg-white rounded p-1">
-          <li class="text-sm">
-            <p>{{ expression.content }}</p>
-          </li>
-        </ul>
-        </div>
-        <div>
-        <ul v-for="expression in connectives" class="bg-white rounded p-1">
-          <li class="text-sm">
-            <p>{{ expression.content }}</p>
-          </li>
-        </ul>
-        </div>
-        <div>
-        <ul v-for="expression in connectives" class="bg-white rounded p-1">
-          <li class="text-sm">
-            <p>{{ expression.content }}</p>
-          </li>
-        </ul>
-        </div>
     </div>
   </div>
 </template>

@@ -57,7 +57,7 @@ const editor = ref(null)
 
 onMounted(() => {
   editor.value = new Editor({
-    content: "<h1>How about an exciting title?</h1><p>Let's start with an a 'Hook' to catch the readers attention</p>",
+    content: "",
     extensions: [
       StarterKit,
       Underline,

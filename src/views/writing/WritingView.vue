@@ -60,9 +60,6 @@
           </div>
         </div>
 
-
-
-
       <!-- Tasks -->
       <div class="mt-4 rounded bg-amber-50 p-4">
             <h1 class="font-medium text-2xl">Task:</h1>
