@@ -69,7 +69,7 @@ onMounted(() => {
     ],
     editorProps: {
       attributes: {
-        class: 'border-gray-400 p-4 min-h-[25rem] rounded-b-xl max-h-[30rem] overflow-y-auto p-4 outline-none prose',
+        class: 'border-gray-400 p-4 min-h-[25rem] rounded-b-xl max-h-[25rem] overflow-y-auto p-4 outline-none prose',
       },
     },
   })

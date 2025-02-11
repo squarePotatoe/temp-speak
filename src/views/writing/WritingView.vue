@@ -1,6 +1,6 @@
 <template>
 
-  <div class="flex-1 p-4">
+  <div >
 
     <main class="flex flex-col mb-6">
 
@@ -61,7 +61,7 @@
         </div>
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-1/3 fixed right-0 bottom-0 p-4 top-20 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+        <div class="bg-indigo-200 w-1/3 fixed right-0 bottom-0 p-4 top-0 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
             <button @click="toggleSidebar" class="">
               <span class="material-icons-outlined">close</span>
