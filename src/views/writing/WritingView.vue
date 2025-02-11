@@ -23,6 +23,7 @@
 
 
         <div class="bg-indigo-50 p-4 rounded flex text-center justify-evenly gap-4">
+
           <div class="group flex flex-col relative items-center">
             <div class="flex">
               <h3 class="">
@@ -33,7 +34,9 @@
             <p>
               To inform and entertain.
             </p>
-            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-y-10 opacity-0 p-2 mt-2 w-64 max-w-full text-center">
+            <p 
+            class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-y-10 opacity-0 p-2 mt-2 w-64 max-w-full text-center"
+            >
               This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel. The article should be engaging and informative.
             </p>
           </div>
@@ -88,12 +91,13 @@
         <!-- Main content -->
         <div class="col-span-3 ml-4">
           <div class="flex flex-col gap-4 bg-purple-100 p-2 rounded-md">
+            <div class="transition-transform transform duration-300">
+              <Article :content="form.content"/>
+            </div>
             <form @submit.prevent="submitForm" >
               <TextEditor v-model="form.content" />
             </form>
-            <div>
-              <Article :content="form.content"/>
-            </div>
+
           </div>
 
         </div>
@@ -101,7 +105,7 @@
 
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-1/2 fixed right-0 bottom-0 p-4 h-full rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+        <div class="bg-indigo-200 w-1/3 fixed right-0 bottom-0 p-4 h-full rounded-tl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
             <button @click="toggleSidebar" class="">
               <span class="material-icons-outlined">close</span>
@@ -115,7 +119,6 @@
                 </li>
               </ul>
           </div>
-
         </div>
 
       </div>
