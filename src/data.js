@@ -87,60 +87,26 @@ export const demoTask = {
 }
 
 export const additiveConnectives = [
-  { id: 1, content: "and", },
-  { id: 2, content: "also", },
-  { id: 3, content: "in addition", },
-  { id: 4, content: "moreover", },
-  { id: 5, content: "furthermore", },
-  { id: 6, content: "as well as", },
+  { id: 1, content: "and" },
+  { id: 2, content: "also" },
+  { id: 3, content: "in addition" },
+  { id: 4, content: "moreover" },
+  { id: 5, content: "furthermore" },
 ];
 
 export const contrastiveConnectives = [
-  { id: 7, content: "but", },
-  { id: 8, content: "however", },
-  { id: 9, content: "on the other hand", },
-  { id: 10, content: "nevertheless", },
-  { id: 11, content: "yet", },
-  { id: 12, content: "although", },
+  { id: 1, content: "but" },
+  { id: 2, content: "however" },
+  { id: 3, content: "on the other hand" },
+  { id: 4, content: "nevertheless" },
+  { id: 5, content: "although" },
 ];
+
 
 export const causalConnectives = [
-  { id: 13, content: "because", },
-  { id: 14, content: "since", },
-  { id: 15, content: "therefore", },
-  { id: 16, content: "thus", },
-  { id: 17, content: "consequently", },
-  { id: 18, content: "hence", },
-];
-
-export const temporalConnectives = [
-  { id: 19, content: "before", },
-  { id: 20, content: "after", },
-  { id: 21, content: "then", },
-  { id: 22, content: "next", },
-  { id: 23, content: "subsequently", },
-  { id: 24, content: "finally", },
-];
-
-export const conclusiveConnectives = [
-  { id: 25, content: "in conclusion", },
-  { id: 26, content: "to sum up", },
-  { id: 27, content: "ultimately", },
-  { id: 28, content: "in summary", },
-];
-
-export const exemplifyingConnectives = [
-  { id: 29, content: "for example", },
-  { id: 30, content: "for instance", },
-  { id: 31, content: "such as", },
-  { id: 32, content: "namely", },
-  { id: 33, content: "including", },
-];
-
-export const comparativeConnectives = [
-  { id: 34, content: "similarly", },
-  { id: 35, content: "likewise", },
-  { id: 36, content: "in the same way", },
-  { id: 37, content: "equally", },
-  { id: 38, content: "just as", },
+  { id: 1, content: "because" },
+  { id: 2, content: "since" },
+  { id: 3, content: "therefore" },
+  { id: 4, content: "thus" },
+  { id: 5, content: "hence" },
 ];
