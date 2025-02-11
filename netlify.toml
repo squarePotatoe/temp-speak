@@ -1,0 +1,15 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[context.production.environment]
+  GO_VERSION = "1.17" # Specify the Go version you need
+
+[context.deploy-preview.environment]
+  GO_VERSION = "1.17" # Specify the Go version you need
+
+[context.branch-deploy.environment]
+  GO_VERSION = "1.17" # Specify the Go version you need
+
+[context.next.environment]
+  GO_VERSION = "1.17" # Specify the Go version you need
