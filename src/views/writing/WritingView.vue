@@ -22,23 +22,22 @@
         </div>
 
 
-        <div class="bg-indigo-50 p-4 col-span-2 rounded flex text-center justify-evenly gap-4">
+        <div class="bg-indigo-50 p-4 rounded flex text-center justify-evenly gap-4">
           <div class="group flex flex-col relative items-center">
             <div class="flex">
-              <h3 class="bg-indigo-200 rounded-2xl p-2">
+              <h3 class="">
                 Purpose of writing
               </h3>
               <span class="material-icons-outlined">info</span>
-
             </div>
-
             <p>
               To inform and entertain.
             </p>
-            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute opacity-0 p-2 m-6 mx-auto">
+            <p class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-y-10 opacity-0 p-2 mt-2 w-64 max-w-full text-center">
               This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel. The article should be engaging and informative.
             </p>
           </div>
+          
           <div class="">
             <h3>Style</h3>
             <p>
@@ -175,5 +174,9 @@ li {
 }
 .task-text {
   font-size: 1.25rem;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
 }
 </style>
