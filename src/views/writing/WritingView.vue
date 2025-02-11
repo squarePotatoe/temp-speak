@@ -83,13 +83,16 @@
       <!-- View toggle navbar -->
       <div class="flex m-4">
         <nav class="w-full flex gap-2">
-          <button @click="toggleSidebar" class="items-center right-0 fixed mr-2 z-10" :class="{ 'animate-bounce' : !isHelpViewed }">
+          <!-- <button @click="toggleSidebar" class="items-center right-0 fixed mr-2 z-10" :class="{ 'animate-bounce' : !isHelpViewed }">
             <p :class="{ hidden : isHelpViewed}" class="text-indigo-500 text-xl">View tips</p>
             <span class="material-icons-outlined border rounded-4xl text-indigo-400 m-1">help</span>
-          </button>
+          </button> -->
           <button @click="toggleViews" class="bg-indigo-500 rounded text-white font-medium p-2">View {{ enabledView }}</button>
           <button @click="toggleSideBySide" class="bg-indigo-500 rounded text-white font-medium p-2">{{ sideBySide }}</button>
         </nav>
+        <div>
+          <button @click="toggleSidebar" class="bg-indigo-500 rounded text-white font-medium p-2">Guide</button>
+        </div>
       </div>
 
       <!-- Main content -->
@@ -128,11 +131,12 @@
             <h2>Helpful Tips</h2>
           </div>
           <div class="overflow-y-auto h-full mt-4 p-1">
-            <ul v-for="tip in sidebarTips" :key="tip.id" class="">
+            <!-- <ul v-for="tip in sidebarTips" :key="tip.id" class="">
                 <li>
                   <p>{{ tip.content }}</p>
                 </li>
-              </ul>
+              </ul> -->
+              <Tips />
           </div>
         </div>
 
@@ -150,6 +154,7 @@ import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
 import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connectives } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
+import Tips from './components/Tips.vue';
 const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')

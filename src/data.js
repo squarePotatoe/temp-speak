@@ -1,5 +1,5 @@
 export const links = [
-    {
+  {
     id: 1,
     url: "/",
     text: "Home",
@@ -109,4 +109,14 @@ export const causalConnectives = [
   { id: 3, content: "therefore" },
   { id: 4, content: "thus" },
   { id: 5, content: "hence" },
+];
+
+export const articleStructure = [
+  { id: 1, content: "A catchy title that grabs attention and reflects the main topic." },
+  { id: 2, content: "An engaging opening paragraph that introduces the topic and hooks the reader." },
+  { id: 3, content: "Provide background information on the topic. Explain why it is relevant or important." },
+  { id: 4, content: "Discuss the first major point. Include anecdotes, quotes, or statistics to support it." },
+  { id: 5, content: "Explore different angles or viewpoints related to the topic. Provide examples or interviews with relevant individuals." },
+  { id: 6, content: "Discuss the broader implications of the topic. Explain how it affects the community or society at large." },
+  { id: 7, content: "Summarize the main points. Reflect on the future or suggest possible solutions or actions. End with a strong closing statement that leaves an impression." }
 ];
