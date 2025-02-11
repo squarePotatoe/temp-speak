@@ -29,7 +29,7 @@
 
         <!-- Additive connectives -->
         <div class="group flex flex-col relative hover:cursor-pointer">
-          <div class="flex">
+          <div class="flex justify-between">
               <p class="text-sm">
                 Aditive connectives
               </p>
@@ -46,7 +46,7 @@
         <hr>
         <!-- Additive connectives -->
         <div class="group flex flex-col relative hover:cursor-pointer">
-          <div class="flex">
+          <div class="flex justify-between">
               <p class="text-sm">
                 Contrast connectives
               </p>
@@ -65,7 +65,7 @@
         <hr>
         <!-- Additive connectives -->
         <div class="group flex flex-col relative hover:cursor-pointer">
-          <div class="flex">
+          <div class="flex justify-between">
               <p class="text-sm">
                 Casual connectives
               </p>

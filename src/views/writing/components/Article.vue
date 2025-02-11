@@ -1,6 +1,6 @@
 <template>
     <div>
-        <article :style="{ height: articleHeight }" class="overflow-y-auto mx-auto p-2">
+        <article :style="{ height: articleHeight }" class="overflow-y-auto mx-auto p-4 shadow rounded-t bg-white text-gray-700">
             <h3 class="mb-4">
                 Defying Gravity: The Art and Adventure of Skysurfing
             </h3>

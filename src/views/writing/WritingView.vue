@@ -44,7 +44,7 @@
               To inform and entertain.
             </p>
             <p 
-            class="group-hover:opacity-100 transition-opacity bg-gray-500 px-1 text-sm text-gray-100 rounded-md absolute translate-y-10 opacity-0 p-2 mt-2 w-64 max-w-full text-center"
+            class="group-hover:opacity-100 transition-opacity bg-gray-800 px-1 text-sm text-white rounded-md absolute translate-y-10 opacity-0 p-2 mt-2 w-64 max-w-full z-10 pointer-events-none"
             >
               This article is meant to inform and entertain teenagers about the host's journey in creating a YouTube channel. The article should be engaging and informative.
             </p>
@@ -111,7 +111,7 @@
         </div>
 
         <div class="col-span-3 ml-4" v-else-if="isSideBySide">
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col">
             <Article :articleHeight="'10rem'" />
             <form @submit.prevent="submitForm">
               <TextEditor v-model="form.content" />
@@ -183,6 +183,7 @@ const toggleViews = () => {
   isViewArticle.value = !isViewArticle.value 
   isViewEditor.value = !isViewEditor.value
   enabledView.value = isViewArticle.value ? 'Editor' : 'Article'
+  sideBySide.value = 'Article / Editor'
 }
 
 
