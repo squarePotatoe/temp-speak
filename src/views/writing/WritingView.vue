@@ -154,8 +154,8 @@ const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')
 
-const isViewArticle = ref(true)
-const isViewEditor = ref(false)
+const isViewArticle = ref(false)
+const isViewEditor = ref(true)
 
 const isSideBySide = ref(false)
 
@@ -190,8 +190,15 @@ const toggleViews = () => {
 const form = ref({
   title: '',
   content: /*html*/`
-    <h2>Write your article here</h2>
-    <p>Start typing...</p>
+    <h2>Headline</h2>
+    <h6>A catchy little something to grab attention and reflect the main topic...</h6>
+    <br>
+    <h3>Lead</h3>
+    <h6>An engaging opening paragraph that introduces the topic and hooks the reader</h6>
+    <br>
+    <h3>Introduction</h3>
+    <h6>Provide background information on the topic</h6>
+    <h6>Explain why it's important or relevant</h6>
   `
 })
 
@@ -235,4 +242,9 @@ li {
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
 }
+
+h6 {
+  color: #656565
+}
+
 </style>
