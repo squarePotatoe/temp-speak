@@ -36,7 +36,7 @@ const router = createRouter({
       name: 'classes',
       
       meta: { layout : MainLayout },
-      component: () => import('../views/ClassesView.vue'),
+      component: () => import('../views/classes/ClassesView.vue'),
     }
   ],
 })
