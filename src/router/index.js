@@ -8,36 +8,36 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      meta: { layout : MainLayout },
+      meta: { layout: MainLayout },
       component: () => import('../views/HomeView.vue'),
     },
     {
       path: '/about',
       name: 'about',
-      
-      meta: { layout : MainLayout },
+
+      meta: { layout: MainLayout },
       component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/contact',
       name: 'contact',
-      
-      meta: { layout : MainLayout },
+
+      meta: { layout: MainLayout },
       component: () => import('../views/ContactView.vue'),
     },
     {
       path: '/writing',
       name: 'writing',
-      meta: { layout : ClassLayout },
+      meta: { layout: ClassLayout },
       component: () => import('../views/writing/WritingView.vue'),
     },
     {
       path: '/classes',
       name: 'classes',
-      
-      meta: { layout : MainLayout },
+
+      meta: { layout: MainLayout },
       component: () => import('../views/classes/ClassesView.vue'),
-    }
+    },
   ],
 })
 

@@ -38,19 +38,25 @@
         <!-- Left side notes -->
         <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem] shadow-md">
           <SidebarLeft />
+          <div>
+            
+          </div>
         </div>
 
         <!-- Togglable content -->
+        <!-- Article only -->
         <div class="col-span-3 ml-4" v-if="isViewArticle">
           <Article :articleHeight="articleHeight" />
         </div>
 
+        <!-- Editor only -->
         <div class="col-span-3 ml-4" v-else-if="isViewEditor">
           <form @submit.prevent="submitForm">
             <TextEditor v-model="form.content" />
           </form>
         </div>
 
+        <!-- Side by side -->
         <div class="col-span-3 ml-4" v-else-if="isSideBySide">
           <div class="flex flex-col">
             <Article :articleHeight="'10rem'" />
@@ -61,16 +67,14 @@
         </div>
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-1/3 fixed right-0 bottom-0 p-4 top-0 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+        <div class="bg-indigo-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
             <button @click="toggleSidebar" class="">
               <span class="material-icons-outlined">close</span>
             </button>
-            <h2>Helpful Tips</h2>
+            <h2>Guide</h2>
           </div>
-          <div class="overflow-y-auto h-full mt-4 p-1">
-              <Tips />
-          </div>
+          <Tips />
         </div>
 
       </div>
@@ -170,6 +174,9 @@ li {
   list-style-type: disc;
   margin-left: 1rem;
 }
+
+
+
 .task-text {
   font-size: 1.25rem;
 }
