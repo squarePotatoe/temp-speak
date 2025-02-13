@@ -204,3 +204,34 @@ export const articleStructure = [
       'Summarize the main points. Reflect on the future or suggest possible solutions or actions. End with a strong closing statement that leaves an impression.',
   },
 ]
+
+
+export const articlePlaceholders = [
+  {
+    id: 1,
+    title: 'The Evolution of Skysurfing',
+    img: '/src/assets/skysurfing.png',
+    teacher: 'Jane Smith',
+    date: '15 October 2025, Wednesday',
+    time: 'Start 18:00 End 19:00',
+    description: 'In this lesson, we will explore the evolution of skysurfing from its inception to the present day.',
+  },
+  {
+    id: 2,
+    title: 'Pioneers of Space Travel',
+    img: '/src/assets/space.png',
+    teacher: 'John Doe',
+    date: '22 October 2025, Thursday',
+    time: 'Start 19:00 End 20:00',
+    description: 'This lesson focuses on the pioneers of space travel and their contributions to the field.',
+  },
+  {
+    id: 3,
+    title: 'Traditional British Food',
+    img: '/src/assets/foods.png',
+    teacher: 'Emily Johnson',
+    date: '29 October 2025, Friday',
+    time: 'Start 17:00 End 18:00',
+    description: 'In this lesson, we will delve into various traditional British foods and their cultural significance.',
+  },
+]

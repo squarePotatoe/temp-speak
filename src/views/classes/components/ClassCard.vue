@@ -7,7 +7,8 @@
         <div class="md:shrink-0">
           <img
             class="h-48 w-full object-cover md:h-full md:w-48"
-            src="/src/assets/skysurfing.png"
+            :src="img"
+            alt="Class Image"
           />
         </div>
         <div class="p-8">
@@ -20,24 +21,20 @@
             to="/writing"
             class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
           >
-            History of skysurfing
+            {{ title }}
           </RouterLink>
           <p class="mt-2 text-slate-500">
-            In this lesson we'll be writing an article about the history of
-            skysurfing.
+            {{ description }}
           </p>
           <p class="mt-4">
-            Teacher: <span class="text-indigo-500">John Doe</span>
+            Teacher: <span class="text-indigo-500">{{ teacher }}</span>
           </p>
           <p>
-            Date: <span class="text-indigo-500">10 September 2025, Friday</span>
+            Date: <span class="text-indigo-500">{{ date }}</span>
           </p>
           <p>
-            Time: <span class="text-indigo-500">Start 20:00 End 21:00</span>
+            Time: <span class="text-indigo-500">{{ time }}</span>
           </p>
-          <!-- <button class="bg-indigo-200 p-2 rounded text-white mt-4">
-                        <p class="text-sm text-gray-800">Zoom link</p>
-                    </button> -->
         </div>
         <div class="flex items-end p-4">
           <RouterLink
@@ -53,5 +50,14 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  title: String,
+  description: String,
+  teacher: String,
+  date: String,
+  time: String,
+  img: String,
+})
 </script>
