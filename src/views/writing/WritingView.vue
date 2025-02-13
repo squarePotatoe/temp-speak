@@ -99,8 +99,8 @@ const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')
 
-const isViewArticle = ref(false)
-const isViewEditor = ref(true)
+const isViewArticle = ref(true)
+const isViewEditor = ref(false)
 
 const isSideBySide = ref(false)
 
