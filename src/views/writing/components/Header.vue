@@ -70,6 +70,12 @@
     </div>
 
     <!-- Tasks -->
+    <div class="mt-4 rounded-lg bg-amber-50 p-6 shadow-md">
+        <h1 class="font-medium text-gray-900 mb-4">Task:</h1>
+        <p class="text-base text-gray-700">
+          {{ demoTask.content }}
+        </p>
+      </div>
   </div>
 </template>
 
