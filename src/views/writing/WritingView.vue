@@ -6,12 +6,6 @@
 
     <Header class="w-full p-4 h-full rounded-tl-xl transition-transform transform duration-100 " :class="{ 'translate-y-0': !isHeaderOpen, '-translate-y-full fixed -z-10': isHeaderOpen }" />
 
-      <div class="mt-4 rounded-lg bg-amber-50 p-6 shadow-md">
-        <h1 class="font-medium text-gray-900 mb-4">Task:</h1>
-        <p class="text-base text-gray-700">
-          {{ demoTask.content }}
-        </p>
-      </div>
       <!-- View toggle navbar -->
       <div class="flex m-4">
         <nav class="w-full flex gap-2">
@@ -22,6 +16,14 @@
           <button @click="toggleViews" class="bg-indigo-500 rounded hover:bg-indigo-400 text-white font-medium p-2">View {{ enabledView }}</button>
           <button @click="toggleSideBySide" class="bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">{{ sideBySide }}</button>
           <button @click="toggleHeader" class="bg-amber-400 rounded p-2 hover:bg-amber-300 font-medium">{{ headerButton }}</button>
+          <div :class="{ hidden : !isHeaderOpen }"  class="group flex flex-col relative items-center">
+            <button class=" bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">Task</button>
+            <p
+              class="group-hover:opacity-100 transition-opacity bg-gray-700 p-2 text-white border-2 border-gray-600 rounded-md absolute translate-y-10 opacity-0 mt-2 w-[34rem] z-10 pointer-events-none"
+            >
+              {{ demoTask.content }}
+            </p>
+          </div>
         </nav>
 
         <div class="flex">
@@ -169,17 +171,21 @@ const toggleHeader = () => {
     #eff5f7 20px
   );
 }
-
-li {
+ 
+ul li {
   list-style-type: disc;
   margin-left: 1rem;
 }
 
-
+ol li {
+  list-style-type: decimal;
+  margin-left: 1rem;
+}
 
 .task-text {
   font-size: 1.25rem;
 }
+
 
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
@@ -187,6 +193,6 @@ li {
 
 h6 {
   color: #656565
-}
+} 
 
 </style>
