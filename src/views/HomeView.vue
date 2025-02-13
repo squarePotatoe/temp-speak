@@ -6,7 +6,7 @@
           class="flex-1 bg-indigo-100 border border-indigo-200 rounded-xl p-6 animate-fade-in"
         >
           <h2 class="text-4xl md:text-5xl text-blue-900">
-            Welcome <br /><strong>John</strong>
+            Welcome <br /><strong> back </strong>
           </h2>
           <span
             class="inline-block mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-indigo-800"

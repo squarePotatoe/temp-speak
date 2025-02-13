@@ -13,7 +13,7 @@
       </button>
       <div class="text-xl font-bold text-blue-900">
         <RouterLink to="/" class="hover:text-indigo-800">
-          John's <span class="text-indigo-800">Dashboard</span>
+          My <span class="text-indigo-800">Dashboard</span>
         </RouterLink>
       </div>
       <div class="flex items-center space-x-2">

@@ -2,7 +2,7 @@
   <div>
     <article
       :style="{ height: articleHeight }"
-      class="overflow-y-auto mx-auto p-4 shadow rounded-t bg-white text-gray-700"
+      class="overflow-y-auto mx-auto p-4 shadow rounded-t bg-white text-gray-700 flex flex-col gap-2"
     >
       <h3 class="mb-4">Defying Gravity: The Art and Adventure of Skysurfing</h3>
       <p class="article-paragraph">
