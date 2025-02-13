@@ -1,3 +1,7 @@
+import food from './assets/foods.png'
+import space from './assets/space.png'
+import skysurfing from './assets/skysurfing.png'
+
 export const links = [
   {
     id: 1,
@@ -210,7 +214,7 @@ export const articlePlaceholders = [
   {
     id: 1,
     title: 'The Evolution of Skysurfing',
-    img: '/src/assets/skysurfing.png',
+    img: skysurfing,
     teacher: 'Jane Smith',
     date: '15 October 2025, Wednesday',
     time: 'Start 18:00 End 19:00',
@@ -219,7 +223,7 @@ export const articlePlaceholders = [
   {
     id: 2,
     title: 'Pioneers of Space Travel',
-    img: '/src/assets/space.png',
+    img: space,
     teacher: 'John Doe',
     date: '22 October 2025, Thursday',
     time: 'Start 19:00 End 20:00',
@@ -228,7 +232,7 @@ export const articlePlaceholders = [
   {
     id: 3,
     title: 'Traditional British Food',
-    img: '/src/assets/foods.png',
+    img: food,
     teacher: 'Emily Johnson',
     date: '29 October 2025, Friday',
     time: 'Start 17:00 End 18:00',
