@@ -215,6 +215,7 @@ export const articlePlaceholders = [
     id: 1,
     title: 'The Evolution of Skysurfing',
     img: skysurfing,
+    type: 'writing',
     teacher: 'Jane Smith',
     date: '15 October 2025, Wednesday',
     time: 'Start 18:00 End 19:00',
@@ -224,6 +225,7 @@ export const articlePlaceholders = [
     id: 2,
     title: 'Pioneers of Space Travel',
     img: space,
+    type: 'reading',
     teacher: 'John Doe',
     date: '22 October 2025, Thursday',
     time: 'Start 19:00 End 20:00',
@@ -233,9 +235,105 @@ export const articlePlaceholders = [
     id: 3,
     title: 'Traditional British Food',
     img: food,
+    type: 'listening',
     teacher: 'Emily Johnson',
     date: '29 October 2025, Friday',
     time: 'Start 17:00 End 18:00',
     description: 'In this lesson, we will delve into various traditional British foods and their cultural significance.',
   },
 ]
+
+export const courses = [
+  {
+    id: 1,
+    title: 'Writing Club',
+    courseType: 'Writing',
+    img: skysurfing,
+    description: 'Join our writing club to improve your writing skills and engage with fellow writers.',
+  },
+  {
+    id: 2,
+    title: 'Reading Group',
+    courseType: 'Reading',
+    img: food,
+    description: 'Explore new books and discuss them with like-minded readers in our reading group.',
+  },
+  {
+    id: 3,
+    title: 'Listening Sessions',
+    courseType: 'DSE paper 3',
+    img: space,
+    description: 'Improve your listening skills and learn about different topics in our listening sessions.',
+  },
+  {
+    id: 4,
+    title: 'DSE speaking course',
+    courseType: 'DSE paper 4',
+    img: food,
+    description: 'Prepare for the speaking component of the DSE exam with our specialized course.',
+  }
+]
+
+export const checklistItems = [
+  {
+    id: 1,
+    header: 'Headline',
+    content: `The headline grabs attention and gives a hint about the article's content`,
+    example: '"The Art of Skysurfing: A Thrilling Adventure"',
+  },
+  {
+    id: 2,
+    header: 'Introduction',
+    content: `The introduction sets the tone, introduces the topic, and engages the reader`,
+    example: '"Have you ever wondered what it feels like to surf the sky? Skysurfing is an exhilarating sport that combines skydiving and surfing."',
+  },
+  {
+    id: 3,
+    header: 'Research',
+    content: `Research ensures that the information provided is accurate and reliable`,
+    example: '"According to the International Skysurfing Association, the sport originated in the 1980s and has since gained popularity among extreme sports enthusiasts."',
+  },
+  {
+    id: 4,
+    header: 'Planning',
+    content: `Planning helps to organize thoughts and structure the article logically`,
+    example: '"Outline: 1. Introduction to Skysurfing, 2. Equipment Needed, 3. Safety Measures, 4. How to Get Started"',
+  },
+  {
+    id: 5,
+    header: 'Writing the Body',
+    content: `The body presents the main content of the article`,
+    example: '"Skysurfing requires a specially designed board attached to the feet of a skydiver, allowing them to perform surfing maneuvers while freefalling."',
+  },
+  {
+    id: 6,
+    header: 'Using Connectives',
+    content: `Connectives enhance the flow and coherence of the article`,
+    example: `Additive connectives: "In addition, skysurfing offers a unique adrenaline rush." Contrastive connectives: "However, skysurfing can be dangerous without proper training." Causal connectives: "Because skysurfing involves high speeds, safety measures are crucial."`,
+  },
+  {
+    id: 7,
+    header: 'Conclusion',
+    content: `The conclusion summarizes the article and reinforces the main points`,
+    example: '"In conclusion, skysurfing is a thrilling and unique sport that combines the best of skydiving and surfing. With the right equipment and training, anyone can experience the thrill of surfing the sky."',
+  },
+  {
+    id: 8,
+    header: 'Editing',
+    content: `Editing ensures the article is free from errors and improves clarity`,
+    example: '"Check for grammar mistakes: \'Skysurfing are exciting\' should be \'Skysurfing is exciting.\'"',
+  },
+  {
+    id: 9,
+    header: 'Revising',
+    content: `Revising enhances the overall quality and coherence of the article`,
+    example: '"Improve sentence structure: \'It is an extreme sport\' can be revised to \'Skysurfing is an extreme sport.\'"',
+  },
+  {
+    id: 10,
+    header: 'Finalizing',
+    content: `Finalizing ensures the article is polished and ready for publication`,
+    example: '"Ensure the article flows well and is easy to read. Add a final thought: \'Get ready to surf the skies and feel the adrenaline rush like never before.\'"',
+  },
+];
+
