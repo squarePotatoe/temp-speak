@@ -7,7 +7,7 @@
       <div class="p-2">
         <ClassCard
           title="The Evolution of Skysurfing"
-          img="src/assets/skysurfing.png"
+          :img="skysurfing"
           description="In this lesson, we will explore the evolution of skysurfing from its inception to the present day."
           teacher="John Doe"
           date="15 October 2025, Wednesday"
@@ -64,6 +64,7 @@
 import ClassCard from './components/ClassCard.vue'
 import CoursesCard from './components/CoursesCard.vue'
 import { articlePlaceholders, courses } from '@/data'
+import skysurfing from '@/assets/skysurfing.png'
 </script>
 
 <style>
