@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-4xl"
     >
       <div class="md:flex">
         <div class="md:shrink-0">
@@ -36,7 +36,12 @@
             Time: <span class="text-indigo-500">{{ time }}</span>
           </p>
         </div>
-        <div class="flex items-end p-4">
+        
+        <div class="flex md:flex-col items-center justify-between p-2">
+          <p class="tag">
+            {{ type }}
+          </p>
+          <div class="flex items-end p-4">
           <RouterLink
             to="/writing"
             class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
@@ -44,14 +49,16 @@
             View
           </RouterLink>
         </div>
+
+        </div>
+
+
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 const props = defineProps({
   title: String,
   description: String,
@@ -59,5 +66,6 @@ const props = defineProps({
   date: String,
   time: String,
   img: String,
+  type: String,
 })
 </script>
