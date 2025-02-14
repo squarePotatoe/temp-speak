@@ -2,7 +2,7 @@
 
   <div >
 
-    <main class="flex flex-col mb-6">
+    <main class="flex flex-col mb-6 ">
 
     <Header class="w-full p-4 h-full rounded-tl-xl transition-transform transform duration-100 " :class="{ 'translate-y-0': !isHeaderOpen, '-translate-y-full fixed -z-10': isHeaderOpen }" />
 
@@ -26,12 +26,13 @@
           </div>
         </nav>
 
-        <div class="flex">
+        <div class="flex gap-2">
           <span class="relative flex size-3 mr-1"> 
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-800 opacity-75"></span>
             <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
           </span>
           <button @click="toggleSidebar" class="bg-green-500 rounded text-white font-medium p-2">Guide</button>
+          <button @click="toggleHints" class="bg-orange-500 rounded text-white font-medium p-2">Checklist</button>
         </div>
       </div>
 
@@ -71,13 +72,24 @@
 
         <div class="bg-indigo-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
-            <button @click="toggleSidebar" class="">
+            <button @click="toggleSidebar" class="flex items-center justify-center my-2">
               <span class="material-icons-outlined">close</span>
+              <h2>Guide</h2>
             </button>
-            <h2>Guide</h2>
           </div>
           <Tips />
         </div>
+
+        <div class="bg-purple-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isHintsOpen, 'translate-x-0': isHintsOpen }">
+          <div class="flex items-center">
+            <button @click="toggleHints" class="flex items-center justify-center my-2">
+              <span class="material-icons-outlined">close</span>
+              <h2>Writing checklist </h2>
+            </button>
+          </div>
+          <Guide />
+        </div>
+
 
       </div>
 
@@ -95,6 +107,7 @@ import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connec
 import SidebarLeft from './components/SidebarLeft.vue';
 import Tips from './components/Tips.vue';
 import Header from './components/Header.vue';
+import Guide from './components/Guide.vue';
 const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')
@@ -157,6 +170,12 @@ const toggleSidebar = () => {
 const toggleHeader = () => {
   isHeaderOpen.value = !isHeaderOpen.value
   headerButton.value = isHeaderOpen.value ? 'Exit focus mode' : 'Focus mode'
+}
+
+const isHintsOpen = ref(false)
+
+const toggleHints = () => {
+  isHintsOpen.value = !isHintsOpen.value
 }
 
 </script>
