@@ -1,6 +1,6 @@
 <template>
   <div>
-    <main class="container relative justify-between h-full max-w-6xl px-10 mx-auto xl:px-0 mt-5">
+    <main class="container relative justify-between h-[calc(100vh-74px)] max-w-6xl px-10 mx-auto xl:px-0 mt-5">
       <div class="flex flex-col mt-6 lg:flex-row gap-4 mb-6">
         <div
           class="flex-1 bg-indigo-100 border border-indigo-200 rounded-xl p-6 animate-fade-in"
@@ -61,15 +61,17 @@
               class="w-12 h-12 rounded-full"
             />
             <div>
-              <h2 class="text-lg font-semibold text-purple-700">
+               <h2 class="text-lg font-semibold text-purple-700">
                 Article writing
               </h2>
+
+
               <p class="text-lg font-semibold text-gray-600">
                 The Evolution of Skysurfing
               </p>
               <p class="text-sm text-gray-600">John Doe</p>
             </div>
-
+            <p class="tag max-w-fit">writing</p>
           </div>
         </RouterLink>
         <RouterLink
