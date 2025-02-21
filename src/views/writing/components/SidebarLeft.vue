@@ -2,14 +2,15 @@
   <div>
     <div class="flex flex-col gap-4">
       <h2 class="mb-2">Useful Expressions</h2>
-      <p class="text-sm">Use these expressions to start your article.</p>
+      <p class="text-sm">Use these expressions to start your {{ textType }}.</p>
       <div>
         <ul
-          v-for="expression in introductionSentences"
+          v-for="(expression, index) in usefulExpressions"
+          :key="index"
           class="bg-white rounded p-1"
         >
           <li class="text-sm">
-            <p>{{ expression.content }}</p>
+            <p>{{ expression }}</p>
           </li>
         </ul>
       </div>
@@ -85,5 +86,10 @@ import {
   additiveConnectives,
   contrastiveConnectives,
   causalConnectives,
+  textFormatDemo,
+  // usefulExpressions
 } from '@/data'
+
+const currentTask = textFormatDemo.find(item => item.id === 1)
+const { textType, usefulExpressions } = currentTask
 </script>

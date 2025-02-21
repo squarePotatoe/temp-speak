@@ -19,9 +19,9 @@
           <div :class="{ hidden : !isHeaderOpen }"  class="group flex flex-col relative items-center">
             <button class=" bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">Task</button>
             <p
-              class="group-hover:opacity-100 transition-opacity bg-gray-700 p-2 text-white border-2 border-gray-600 rounded-md absolute translate-y-10 opacity-0 mt-2 w-[34rem] z-10 pointer-events-none"
+              class=" group-hover:opacity-100 transition-opacity bg-gray-700 p-2 text-white border-2 border-gray-600 rounded-md absolute translate-y-10 opacity-0 mt-2 w-[34rem] z-10 pointer-events-none"
             >
-              {{ demoTask.content }}
+              {{ task }}
             </p>
           </div>
         </nav>
@@ -32,7 +32,7 @@
             <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
           </span>
           <button @click="toggleSidebar" class="bg-green-500 rounded text-white font-medium p-2">Guide</button>
-          <button @click="toggleHints" class="bg-orange-500 rounded text-white font-medium p-2">Checklist</button>
+          <!-- <button @click="toggleHints" class="bg-orange-500 rounded text-white font-medium p-2">Checklist</button> -->
         </div>
       </div>
 
@@ -70,7 +70,7 @@
         </div>
         <!-- Right side notes -->
 
-        <div class="bg-indigo-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+        <div class="bg-cyan-100 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
             <button @click="toggleSidebar" class="flex items-center justify-center my-2">
               <span class="material-icons-outlined">close</span>
@@ -80,7 +80,7 @@
           <Tips />
         </div>
 
-        <div class="bg-purple-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isHintsOpen, 'translate-x-0': isHintsOpen }">
+        <!-- <div class="bg-purple-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isHintsOpen, 'translate-x-0': isHintsOpen }">
           <div class="flex items-center">
             <button @click="toggleHints" class="flex items-center justify-center my-2">
               <span class="material-icons-outlined">close</span>
@@ -88,7 +88,7 @@
             </button>
           </div>
           <Guide />
-        </div>
+        </div> -->
 
 
       </div>
@@ -103,7 +103,7 @@
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
-import { sidebarTips, demoTask, usefulExpressions, introductionSentences, connectives } from '@/data';
+import { demoTask, textFormatDemo } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
 import Tips from './components/Tips.vue';
 import Header from './components/Header.vue';
@@ -111,6 +111,9 @@ import Guide from './components/Guide.vue';
 const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')
+
+const currentTask = textFormatDemo.find(item => item.id === 1)
+const { task, } = currentTask
 
 const isViewArticle = ref(true)
 const isViewEditor = ref(false)
