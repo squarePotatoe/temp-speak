@@ -337,3 +337,106 @@ export const checklistItems = [
   },
 ];
 
+export const textFormatDemo = [
+  {
+    id: 1,
+    textType: 'Email',
+    purpose: 'Write an email to the sales manager',
+    targetAudience: 'Sales manager',
+    tone: 'Professional',
+    task: 'You work in the sales deparment at Fast Fashion, an online company that sells clothes. Recently, you have received a number of complaiunts from customers about the company\'s delivery no-exchange/no-refund policy',
+    instructions: [
+      'Explain why you think this policy should be changed',
+      'Suggest what changes could be made',
+      'Discuss ways to prevent customers from taking advantage of the new policy',
+    ],
+    usefulExpressions: [
+      'I am writing to express my concerns about...',
+      'I believe that a change in policy is necessary because...',
+      'One possible solution could be to...',
+      'In order to prevent abuse of the new policy, we could...',
+      'I look forward to hearing your thoughts on this matter.',
+    ],
+  }
+]
+
+export const guidesForTextTypes = [
+  {
+    id: 1,
+    textType: 'Email',
+    introduction: 'Emails are a common form of communication in the professional world. They are used to convey information, make requests, and discuss business matters. Writing a clear and effective email is essential for maintaining professional relationships and ensuring that your message is understood. Here are some tips for writing a successful email:',
+    structure: [{
+      id: 1,
+      header: 'Subject line',
+      content: 'Clear and concise subject line that summarizes the email content',
+      example: 'Subject: Request for Meeting',
+    },
+    {
+      id: 2,
+      header: 'Salutation',
+      content: 'Formal or informal greeting depending on the recipient',
+      example: 'Dear Mr. Smith, / Hi Jane,',
+    },
+    {
+      id: 3,
+      header: 'Introduction',
+      content: 'State the purpose of the email and provide context',
+      example: 'I am writing to follow up on our previous conversation regarding...',
+    },
+    {
+      id: 4,
+      header: 'Body',
+      content: 'Provide details, explanations, and supporting information',
+      example: 'As discussed, we are planning to launch a new product line next month...',
+    },
+    {
+      id: 5,
+      header: 'Conclusion',
+      content: 'Summarize the main points and suggest next steps',
+      example: 'I believe this new product line will be a great addition to our current offerings...',
+    },
+    {
+      id: 6,
+      header: 'Closing',
+      content: 'Formal or informal closing depending on the recipient',
+      example: 'Best regards, / Sincerely,',
+    },
+    ],
+  },
+  {
+    id: 2,
+    textType: 'Article',
+    introduction: 'Articles are written pieces that provide information, analysis, or commentary on a specific topic. They are commonly found in newspapers, magazines, and online publications. Writing a compelling article requires careful planning, research, and organization. Here are some tips for writing a successful article:',
+    stucture: [{
+      id: 1,
+      header: 'Headline',
+      content: 'Engaging headline that grabs the reader\'s attention',
+      example: 'The Future of Skysurfing: A Thrilling Adventure',
+    },
+    {
+      id: 2,
+      header: 'Introduction',
+      content: 'Introduction that sets the tone and introduces the topic',
+      example: 'Skysurfing is a unique sport that combines the thrill of skydiving with the excitement of surfing...',
+    },
+    {
+      id: 3,
+      header: 'Body',
+      content: 'Main content of the article with supporting details and examples',
+      example: 'Skysurfing requires specialized equipment and training to ensure safety and enjoyment...',
+    },
+    {
+      id: 4,
+      header: 'Conclusion',
+      content: 'Summary of the main points and closing thoughts',
+      example: 'In conclusion, skysurfing offers a one-of-a-kind experience that is sure to thrill adventure seekers...',
+    },
+    {
+      id: 5,
+      header: 'Call to Action',
+      content: 'Encouragement for readers to take action or engage with the content',
+      example: 'Ready to experience the thrill of skysurfing? Sign up for a lesson today!',
+    },
+    ],
+  },
+]
