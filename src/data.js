@@ -341,6 +341,9 @@ export const textFormatDemo = [
   {
     id: 1,
     textType: 'Email',
+    title: 'Formal Email Writing',
+    description: 'Learn how to write a formal email with the correct format and tone.',
+    course: 'DSE paper 2',
     purpose: 'Write an email to the sales manager',
     targetAudience: 'Sales manager',
     tone: 'Professional',
@@ -440,3 +443,21 @@ export const guidesForTextTypes = [
     ],
   },
 ]
+
+export const textTypesExamples = [
+  {
+    id: 1,
+    textType: 'Email',
+    tone: 'Formal',
+    structure: [
+      'Subject: Inquiry Regarding Store Return Policy',
+      'Dear Phillip,',
+      'I hope this email finds you well. My name is Nick, and I am a regular customer at your store located at [Store Address]. I am writing to you to seek clarification regarding your store\'s return policy.',
+      'Recently, I purchased an item from your store, and unfortunately, it turned out to be defective. While I understand that such situations are rare, I would like to know the steps and conditions under which I can return or exchange the item. Specifically, I am interested in understanding the timeframe for returns, the condition of the item required for a return, and any documentation that may be necessary.',
+      'I appreciate your assistance in this matter and look forward to your response. Your prompt attention to this inquiry will be greatly appreciated as it will help me resolve this issue at the earliest convenience.',
+      'Thank you for your time and understanding.',
+      'Sincerely,',
+      'Nick'
+    ],
+  },
+];

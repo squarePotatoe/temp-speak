@@ -74,6 +74,9 @@
         <h1 class="font-medium text-gray-900 mb-4">Task:</h1>
         <p class="text-base text-gray-700">
           {{ task }}
+          <ul v-for="(item, index) in instructions" :key="index" class="pt-2">
+            <li>{{ item }}</li>
+          </ul>
         </p>
       </div>
   </div>
@@ -86,7 +89,7 @@ import { demoTask , textFormatDemo } from '@/data'
 const isContentVisible = ref(true)
 
 const currentTask = textFormatDemo.find(item => item.id === 1)
-const { task, purpose, tone, targetAudience } = currentTask
+const { task, purpose, instructions, tone, targetAudience } = currentTask
 
 const toggleContent = () => {
   isContentVisible.value = !isContentVisible.value

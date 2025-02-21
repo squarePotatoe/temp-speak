@@ -39,7 +39,7 @@
         
         <div class="flex md:flex-col items-center justify-between p-2">
           <p class="tag">
-            {{ type }}
+            {{ course }}
           </p>
           <div class="flex items-end p-4">
           <RouterLink
@@ -66,6 +66,6 @@ const props = defineProps({
   date: String,
   time: String,
   img: String,
-  type: String,
+  course: String,
 })
 </script>

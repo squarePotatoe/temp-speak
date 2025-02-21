@@ -22,7 +22,11 @@
               class=" group-hover:opacity-100 transition-opacity bg-gray-700 p-2 text-white border-2 border-gray-600 rounded-md absolute translate-y-10 opacity-0 mt-2 w-[34rem] z-10 pointer-events-none"
             >
               {{ task }}
+            <ul v-for="(item, index) in instructions" :key="index" class="pt-2">
+              <li>{{ item }}</li>
+            </ul>
             </p>
+
           </div>
         </nav>
 
@@ -49,7 +53,7 @@
         <!-- Togglable content -->
         <!-- Article only -->
         <div class="col-span-3 ml-4" v-if="isViewArticle">
-          <Article :articleHeight="articleHeight" />
+          <Email :articleHeight="articleHeight" />
         </div>
 
         <!-- Editor only -->
@@ -62,7 +66,7 @@
         <!-- Side by side -->
         <div class="col-span-3 ml-4" v-else-if="isSideBySide">
           <div class="flex flex-col">
-            <Article :articleHeight="'10rem'" />
+            <Email :articleHeight="'10rem'" />
             <form @submit.prevent="submitForm">
               <TextEditor v-model="form.content" />
             </form>
@@ -70,7 +74,7 @@
         </div>
         <!-- Right side notes -->
 
-        <div class="bg-cyan-100 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+        <div class="bg-orange-100 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-4 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
           <div class="flex items-center">
             <button @click="toggleSidebar" class="flex items-center justify-center my-2">
               <span class="material-icons-outlined">close</span>
@@ -103,6 +107,7 @@
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Article from '@/views/writing/components/Article.vue';
+import Email from './components/Email.vue';
 import { demoTask, textFormatDemo } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
 import Tips from './components/Tips.vue';
@@ -113,7 +118,7 @@ const enabledView = ref('Editor')
 const sideBySide = ref('Article / Editor')
 
 const currentTask = textFormatDemo.find(item => item.id === 1)
-const { task, } = currentTask
+const { task, instructions} = currentTask
 
 const isViewArticle = ref(true)
 const isViewEditor = ref(false)

@@ -6,13 +6,13 @@
 
       <div class="p-2">
         <ClassCard
-          title="The Evolution of Skysurfing"
+          :title="nextLesson.title"
           :img="skysurfing"
-          description="In this lesson, we will explore the evolution of skysurfing from its inception to the present day."
+          :description="nextLesson.description"
           teacher="John Doe"
           date="15 October 2025, Wednesday"
           time="Start 18:00 End 19:00"
-          type="writing"
+          :course="nextLesson.course"
         />
       </div>
     </div>
@@ -63,8 +63,10 @@
 <script setup>
 import ClassCard from './components/ClassCard.vue'
 import CoursesCard from './components/CoursesCard.vue'
-import { articlePlaceholders, courses } from '@/data'
+import { articlePlaceholders, courses, textFormatDemo } from '@/data'
 import skysurfing from '@/assets/skysurfing.png'
+
+const nextLesson = textFormatDemo.find(item => item.id === 1)
 </script>
 
 <style>
