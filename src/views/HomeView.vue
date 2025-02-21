@@ -49,29 +49,30 @@
         </RouterLink>
         <RouterLink
           to="/writing"
-          class="home-card animate-slide-up"
+          class="home-card animate-slide-up relative"
           style="animation-delay: 0.2s"
         >
+          <span class="h-2 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"></span>
           <h3 class="text-xl font-bold text-indigo-800">Next lesson</h3>
           <hr class="text-gray-300 my-2" />
           <div class="flex flex-col justify-center gap-2 mt-2">
-            <img
+            <!-- <img
               src="@/assets/skysurfing.png"
               alt="Skysurfing"
               class="w-12 h-12 rounded-full"
-            />
+            /> -->
             <div>
                <h2 class="text-lg font-semibold text-purple-700">
-                Article writing
+                {{ nextLesson.title }}
               </h2>
 
 
-              <p class="text-lg font-semibold text-gray-600">
-                The Evolution of Skysurfing
+              <p class="text-sm font-semibold text-gray-600">
+                {{ nextLesson.description }}
               </p>
               <p class="text-sm text-gray-600">John Doe</p>
             </div>
-            <p class="tag max-w-fit">writing</p>
+            <p class="tag max-w-fit">{{ nextLesson.course }}</p>
           </div>
         </RouterLink>
         <RouterLink
@@ -115,6 +116,9 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import Features from '@/components/Features.vue'
 import ClassCard from './classes/components/ClassCard.vue'
+import { textFormatDemo } from '@/data'
+
+const nextLesson = textFormatDemo.find(item => item.id === 1)
 
 const currentTime = ref(new Date())
 
