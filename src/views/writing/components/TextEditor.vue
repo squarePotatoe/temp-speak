@@ -89,19 +89,21 @@
       >
         <RedoIcon title="Redo" />
       </button>
+
+
     </section>
       <EditorContent :editor="editor"/>
+
     </div>
+    
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { useEditor, EditorContent } from '@tiptap/vue-3'
+import { useEditor, EditorContent, Editor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
-import Bulletlist from '@tiptap/extension-bullet-list'
-
 import BoldIcon from 'vue-material-design-icons/FormatBold.vue'
 import ItalicIcon from 'vue-material-design-icons/FormatItalic.vue'
 import UnderlineIcon from 'vue-material-design-icons/FormatUnderline.vue'
@@ -109,8 +111,6 @@ import H1Icon from 'vue-material-design-icons/FormatHeader1.vue'
 import H2Icon from 'vue-material-design-icons/FormatHeader2.vue'
 import ListIcon from 'vue-material-design-icons/FormatListBulleted.vue'
 import OrderedListIcon from 'vue-material-design-icons/FormatListNumbered.vue'
-import BlockquoteIcon from 'vue-material-design-icons/FormatQuoteClose.vue'
-import CodeIcon from 'vue-material-design-icons/CodeTags.vue'
 import HorizontalRuleIcon from 'vue-material-design-icons/Minus.vue'
 import UndoIcon from 'vue-material-design-icons/Undo.vue'
 import RedoIcon from 'vue-material-design-icons/Redo.vue'
@@ -129,21 +129,50 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
+const editor = ref(null)
 
-const editor = useEditor({
-  content: props.modelValue,
-  onUpdate: ({ editor }) => {
-    // console.log(editor.getHTML())
-    emit('update:modelValue', editor.getHTML())
-  },
-  extensions: [StarterKit, Underline],
-  editorProps: {
-    attributes: {
-      class:
-        'border border-gray-400 p-4 min-h-[25rem] max-h-[25rem] overflow-y-auto outline-none max-w-none',
+const saveContent = () => {
+  if (editor.value) {
+    localStorage.setItem('editorContent', editor.value.getHTML())
+  }
+}
+
+const loadContent = () => {
+  const savedContent = localStorage.getItem('editorContent')
+  if (savedContent) {
+    form.value.content = savedContent
+  }
+}
+
+onMounted(() => {
+  loadContent()
+  editor.value = new Editor({
+    content: form.value.content,
+    extensions: [
+      StarterKit,
+      Underline,
+    ],
+    editorProps: {
+      attributes: {
+        class: 'border-gray-400 p-4 min-h-[30rem] rounded-b-xl max-h-[30rem] border-r border-l border-b overflow-y-auto outline-none prose',
+      },
     },
-  },
+    onUpdate: ({ editor }) => {
+      saveContent()
+    }
+  })
 })
+
+onBeforeUnmount(() => {
+  if (editor.value) {
+    editor.value.destroy()
+  }
+})
+
+const clrearContent = () => {
+  form.value.content = ''
+  editor.value.commands.clearContent()
+}
 
 </script>
 

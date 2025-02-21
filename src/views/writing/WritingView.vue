@@ -115,7 +115,7 @@ import Header from './components/Header.vue';
 import Guide from './components/Guide.vue';
 const editor = ref(null)
 const enabledView = ref('Editor')
-const sideBySide = ref('Article / Editor')
+const sideBySide = ref('Example / Editor')
 
 const currentTask = textFormatDemo.find(item => item.id === 1)
 const { task, instructions} = currentTask
@@ -132,11 +132,11 @@ const toggleSideBySide = () => {
   if (isSideBySide.value) {
     isViewArticle.value = false
     isViewEditor.value = false
-    sideBySide.value = 'Article'
+    sideBySide.value = 'Example'
   } else {
     isViewArticle.value = true
     isViewEditor.value = false
-    sideBySide.value = 'Article / Editor'
+    sideBySide.value = 'Example / Editor'
   }
 }
 
@@ -148,8 +148,8 @@ const toggleViews = () => {
   }
   isViewArticle.value = !isViewArticle.value 
   isViewEditor.value = !isViewEditor.value
-  enabledView.value = isViewArticle.value ? 'Editor' : 'Article'
-  sideBySide.value = 'Article / Editor'
+  enabledView.value = isViewArticle.value ? 'Editor' : 'Example'
+  sideBySide.value = 'Example / Editor'
 }
 
 
