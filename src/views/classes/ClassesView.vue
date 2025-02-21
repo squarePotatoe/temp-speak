@@ -7,6 +7,7 @@
       <div class="p-2">
         <ClassCard
           :title="nextLesson.title"
+          :activity="nextLesson.activity"
           :img="skysurfing"
           :description="nextLesson.description"
           teacher="John Doe"

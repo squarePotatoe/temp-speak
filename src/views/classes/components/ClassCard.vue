@@ -15,7 +15,7 @@
           <div
             class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
           >
-            Article Writing
+            {{ activity }}
           </div>
           <RouterLink
             to="/writing"
@@ -62,6 +62,7 @@
 const props = defineProps({
   title: String,
   description: String,
+  activity: String,
   teacher: String,
   date: String,
   time: String,

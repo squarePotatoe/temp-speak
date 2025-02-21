@@ -341,6 +341,7 @@ export const textFormatDemo = [
   {
     id: 1,
     textType: 'Email',
+    activity: 'Writing',
     title: 'Formal Email Writing',
     description: 'Learn how to write a formal email with the correct format and tone.',
     course: 'DSE paper 2',
