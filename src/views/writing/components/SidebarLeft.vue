@@ -1,18 +1,23 @@
 <template>
   <div>
     <div class="flex flex-col gap-4">
+      <div>
       <h2 class="mb-2">Useful Expressions</h2>
       <p class="text-sm">Use these expressions to start your {{ textType }}.</p>
-      <div>
-        <ul
-          v-for="(expression, index) in usefulExpressions"
-          :key="index"
-          class="bg-white rounded p-1"
-        >
-          <li class="text-sm">
-            <p>{{ expression }}</p>
-          </li>
-        </ul>
+      <div v-for="(expression, index) in usefulExpressions" :key="index" class="group flex flex-col relative rounded bg-white p-2 mb-2">
+        <div class="font-semibold text-sm underline">{{ expression.tag }}</div>
+        <div class="flex flex-col">
+          <div>
+          <div class="text-sm">{{ expression.content }}</div>
+        </div>
+        <div
+          class=" group-hover:opacity-100 text-sm transition-opacity bg-gray-700 p-2 text-white border-2 border-gray-600 rounded-md absolute translate-y-10 opacity-0 z-10 pointer-events-none"
+          >
+          <span>{{ expression.explaination }}</span>
+        </div>
+        </div>
+      </div>
+
       </div>
       <p class="text-sm">Don't forget the connectors!</p>
       <div>

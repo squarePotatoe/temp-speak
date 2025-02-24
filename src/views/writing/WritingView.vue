@@ -9,10 +9,6 @@
       <!-- View toggle navbar -->
       <div class="flex m-4">
         <nav class="w-full flex gap-2">
-          <!-- <button @click="toggleSidebar" class="items-center right-0 fixed mr-2 z-10" :class="{ 'animate-bounce' : !isHelpViewed }">
-            <p :class="{ hidden : isHelpViewed}" class="text-indigo-500 text-xl">View tips</p>
-            <span class="material-icons-outlined border rounded-4xl text-indigo-400 m-1">help</span>
-          </button> -->
           <button @click="toggleViews" class="bg-indigo-500 rounded hover:bg-indigo-400 text-white font-medium p-2">View {{ enabledView }}</button>
           <button @click="toggleSideBySide" class="bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">{{ sideBySide }}</button>
           <button @click="toggleHeader" class="bg-amber-400 rounded p-2 hover:bg-amber-300 font-medium">{{ headerButton }}</button>
@@ -35,8 +31,7 @@
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-800 opacity-75"></span>
             <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
           </span>
-          <button @click="toggleSidebar" class="bg-green-500 rounded text-white font-medium p-2">Guide</button>
-          <!-- <button @click="toggleHints" class="bg-orange-500 rounded text-white font-medium p-2">Checklist</button> -->
+          <button @click="toggleSidebar" class="bg-green-500 rounded text-white font-medium p-2">Checklist</button>
         </div>
       </div>
 
@@ -84,17 +79,6 @@
           <Tips />
         </div>
 
-        <!-- <div class="bg-purple-200 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-2 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isHintsOpen, 'translate-x-0': isHintsOpen }">
-          <div class="flex items-center">
-            <button @click="toggleHints" class="flex items-center justify-center my-2">
-              <span class="material-icons-outlined">close</span>
-              <h2>Writing checklist </h2>
-            </button>
-          </div>
-          <Guide />
-        </div> -->
-
-
       </div>
 
     </main>
@@ -106,13 +90,12 @@
 <script setup>
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
-import Article from '@/views/writing/components/Article.vue';
 import Email from './components/Email.vue';
 import { demoTask, textFormatDemo } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
 import Tips from './components/Tips.vue';
 import Header from './components/Header.vue';
-import Guide from './components/Guide.vue';
+
 const editor = ref(null)
 const enabledView = ref('Editor')
 const sideBySide = ref('Example / Editor')
