@@ -355,11 +355,36 @@ export const textFormatDemo = [
       'Discuss ways to prevent customers from taking advantage of the new policy',
     ],
     usefulExpressions: [
-      'I am writing to express my concerns about...',
-      'I believe that a change in policy is necessary because...',
-      'One possible solution could be to...',
-      'In order to prevent abuse of the new policy, we could...',
-      'I look forward to hearing your thoughts on this matter.',
+      {
+        id: 1,
+        tag: 'Introduction',
+        content: 'I am writing to express my concerns about...',
+        explaination: 'Use this phrase to introduce the main purpose of the email and express your concerns or opinions.',
+      },
+      {
+        id: 2,
+        tag: 'Body',
+        content: 'I believe that a change in policy is necessary because...',
+        explaination: 'Use this phrase to explain why you think a change in policy is needed and provide reasons or examples to support your argument.',
+      },
+      {
+        id: 3,
+        tag: 'Body',
+        content: 'One possible solution could be to...',
+        explaination: 'Use this phrase to suggest a solution or course of action that could address the issue or problem.',
+      },
+      {
+        id: 4,
+        tag: 'Body',
+        content: 'In order to prevent abuse of the new policy, we could...',
+        explaination: 'Use this phrase to propose measures or strategies that could prevent customers from taking advantage of the new policy.',
+      },
+      {
+        id: 5,
+        tag: 'Conclusion',
+        content: 'I look forward to hearing your thoughts on this matter.',
+        explaination: 'Use this phrase to express your interest in the recipient\'s response or feedback on the issue discussed in the email.',
+      }
     ],
   }
 ]
