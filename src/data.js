@@ -508,7 +508,7 @@ export const readingDemo = [
     image: skysurfing,
     content: [
       {
-        header: 'Interesting header',
+        header: 'What is Skysurfing?',
         content: 'Skysurfing is a high-adrenaline sport that combines the excitement of skydiving with the thrill of surfing. In this article, we will explore the history of skysurfing, the equipment needed, and the safety measures required to enjoy this extreme sport.',
         img: skysurfing,
       },
