@@ -43,7 +43,7 @@
           </p>
           <div class="flex items-end p-4">
           <RouterLink
-            to="/writing"
+            :to="classLink"
             class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
           >
             View
@@ -68,5 +68,6 @@ const props = defineProps({
   time: String,
   img: String,
   course: String,
+  classLink: String
 })
 </script>

@@ -14,10 +14,24 @@
           date="15 October 2025, Wednesday"
           time="Start 18:00 End 19:00"
           :course="nextLesson.course"
+          class-link="/writing"
         />
       </div>
     </div>
 
+    <div class="p-2">
+      <ClassCard
+        :title="nextLesson.title"
+        :activity="nextLesson.activity"
+        :img="skysurfing"
+        :description="nextLesson.description"
+        teacher="John Doe"
+        date="15 October 2025, Wednesday"
+        time="Start 18:00 End 19:00"
+        :course="nextLesson.course"
+        class-link="/reading"
+      />
+    </div>
 
     <h1 class="font-semibold text-gray-800 my-4">My courses</h1>
     <div class="grid md:grid-cols-3 gap-4 p-4">
