@@ -38,6 +38,12 @@ const router = createRouter({
       meta: { layout: MainLayout },
       component: () => import('../views/classes/ClassesView.vue'),
     },
+    {
+      path: '/reading',
+      name: 'reading',
+      meta: { layout: ClassLayout },
+      component: () => import('../views/reading/ReadingView.vue'),
+    },
   ],
 })
 

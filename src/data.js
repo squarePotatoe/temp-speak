@@ -487,3 +487,105 @@ export const textTypesExamples = [
     ],
   },
 ];
+
+
+export const readingDemo = [
+  {
+    id: 1,
+    textType: 'Article',
+    activity: 'Reading',
+    title: 'The Art of Skysurfing',
+    description: 'An exciting sport that combines skydiving and surfing',
+    course: 'iSpeakPerfect - 360',
+    purpose: 'Learn about the sport of skysurfing and practice reading comprehension skills',
+    targetAudience: 'Writing club members',
+    tone: 'Informative',
+    idiom: {
+      expression: 'A staple of extreme sports',
+      meaning: 'Calling something a "staple" means it is an essential or widely recognized item within a certain context. In this context, "a staple of extreme sports competitions" means that skysurfing is a well-established and key activity in extreme sports events.',
+    },
+    factoid: 'A fascinating fact about skysurfing',
+    image: skysurfing,
+    content: [
+      {
+        header: 'Interesting header',
+        content: 'Skysurfing is a high-adrenaline sport that combines the excitement of skydiving with the thrill of surfing. In this article, we will explore the history of skysurfing, the equipment needed, and the safety measures required to enjoy this extreme sport.',
+        img: skysurfing,
+      },
+      {
+        header: 'History of Skysurfing',
+        content: 'Skysurfing originated in the 1980s when skydivers began experimenting with attaching surfboards to their feet during freefall. The sport gained popularity in the 1990s and has since become a staple of extreme sports competitions.',
+        img: skysurfing,
+      },
+      {
+        header: 'Equipment Needed',
+        content: 'To skysurf, you will need a specially designed board that is attached to your feet. This board allows you to perform surfing maneuvers while freefalling through the air. Additionally, you will need a jumpsuit, helmet, and goggles for safety.',
+        img: skysurfing,
+      },
+      {
+        header: 'Safety Measures',
+        content: 'Skysurfing can be dangerous, so it is essential to follow safety measures to prevent accidents. Proper training, equipment maintenance, and adherence to safety guidelines are crucial for a safe and enjoyable skysurfing experience.',
+        img: skysurfing,
+      },
+      {
+        header: 'Conclusion',
+        content: 'In conclusion, skysurfing is a thrilling and unique sport that offers an adrenaline rush like no other. With the right equipment, training, and safety measures, anyone can experience the joy of surfing the sky.',
+        img: skysurfing,
+      }
+      
+    ]
+
+    }
+]
+
+export const readingVocab = [
+  {
+    id: 1,
+    parentTitle: 'The Art of Skysurfing',
+    parentId: 1,
+    vocab: [
+      {
+        id: 1,
+        word: 'Skysurfing',
+        definition: 'A high-adrenaline sport that combines skydiving and surfing',
+        example: 'Skysurfing requires skill and courage to perform stunts in the air.',
+        img: skysurfing,
+      },
+      {
+        id: 2,
+        word: 'Adrenaline',
+        definition: 'A hormone that prepares the body for intense physical activity',
+        example: 'The thrill of skysurfing releases adrenaline, giving the surfer a rush of energy.',
+        img: skysurfing,
+      },
+      {
+        id: 3,
+        word: 'Freefall',
+        definition: 'The downward motion of an object under the force of gravity',
+        example: 'During freefall, skysurfers experience a sense of weightlessness as they fall through the air.',
+        img: skysurfing,
+      },
+      {
+        id: 4,
+        word: 'Maneuver',
+        definition: 'A planned movement or series of actions',
+        example: 'Skysurfers perform intricate maneuvers in the air, showcasing their skill and agility.',
+        img: skysurfing,
+      },
+      {
+        id: 5,
+        word: 'Staple',
+        definition: 'A basic or essential item',
+        example: 'Skysurfing has become a staple of extreme sports competitions, attracting thrill-seekers from around the world.',
+        img: skysurfing,
+      },
+      {
+        id: 6,
+        word: 'Adherence',
+        definition: 'The act of following or obeying a rule or guideline',
+        example: 'Adherence to safety measures is crucial for a safe and enjoyable skysurfing experience.',
+        img: skysurfing,
+      }
+    ]
+  }
+]
