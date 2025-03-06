@@ -17,25 +17,25 @@
                 <h2>Chat</h2>
                 </button>
             </div>
-                <ChatBox />
+            <ChatBox />
         </div>
             
         </div>
 
-      </main>
-    </div>
-  </template>
+    </main>
+  </div>
+</template>
   
-  <script setup>
-  import { ref } from 'vue'
-  import Message from './components/Message.vue'
+<script setup>
+import { ref } from 'vue'
+import Message from './components/Message.vue'
 import MainText from './components/ArticleTemplate.vue'
 import ArticleTemplate from './components/ArticleTemplate.vue'
 import ChatBox from './components/ChatBox.vue'
 
-  const isSidebarOpen = ref(true)
+const isSidebarOpen = ref(false)
 
-  function toggleSidebar() {
-    isSidebarOpen.value = !isSidebarOpen.value
-  }
-  </script>
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
+</script>
