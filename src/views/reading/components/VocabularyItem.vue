@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="group flex flex-col relative rounded bg-white p-2 mr-2 ">
+        <div class="group flex flex-col text-lg relative rounded bg-white p-2 mr-2 ">
         <div class="flex flex-col">
           <div class="text-sm">{{ props.word }}</div>
         <div

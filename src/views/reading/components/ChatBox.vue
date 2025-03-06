@@ -8,6 +8,7 @@
                 :message="message.message"
                 :sender="message.sender"
                 :img="message.img"
+                :audio="message.audio"
               />
             </div>
   
@@ -35,12 +36,48 @@ import Message from './Message.vue'
 import skysurfing from '@/assets/skysurfing.png'
   
 const messages = ref([
-    {
-        id: 1,
-        message: 'Hello! \nI hope you are as excited as I am to start this lesson!',
-        sender: 'teacher',
-        img: skysurfing
-    }
+  {
+      id: 1,
+      message: 'Hello! \nI hope you are as excited as I am to start this lesson!',
+      sender: 'teacher',
+      img: skysurfing
+  },
+  {
+      id: 2,
+      message: 'Hi! \nI am excited to start this lesson!',
+      sender: 'student',
+      audio: 'https://edu.speak3.com/storage/homework_media/2025_03/fqWWHKVEv2Yqz0IkRX6YvnOd2Nmt9aSg3hu80Xsm.mp3',
+  },
+  {
+      id: 3,
+      message: `
+Hi, Angel,
+
+Thank you for your reading.
+You do make me laugh. when you say little extra things - like "Oh, no!" Keep doing that, it's lovely.
+You have read this with confidence.
+
+I can hear you pausing at tricky words. Try to practice this so you can read fluently.
+
+Please practice -
+31st (thirty) (first)
+ever
+beloved (pronounced) (be) (love) (ed)
+aging (age)(ing)
+expected (ex) (peck)(ted)
+few (f) (you)
+curled (kerr) (Id)
+This is a good reading and will sound beautiful once you have these words.
+As always, well done, Angel,
+Trish
+      
+      `,
+      sender: 'teacher',
+      audio: 'https://edu.speak3.com/storage/homework_feedback/sxxCukvF8cCjrGcVmVYIX4nKqrZEigJmSLbUAU7S.mp3',
+
+  },
+  
+
 ])
 
 const newMessage = ref('')
