@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex flex-col col-span-3 bg-slate-50 rounded-lg">
-            <div class="relative rounded-t-lg border-1 border-slate-100 flex flex-col h-120 overflow-auto  p-4">
+            <div class="relative rounded-t-lg border-1 border-slate-100 flex flex-col h-200 overflow-auto  p-4">
               <Message
                 v-for="message in messages"
                 :key="message.id"
