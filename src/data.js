@@ -532,10 +532,10 @@ export const readingDemo = [
         content: 'In conclusion, skysurfing is a thrilling and unique sport that offers an adrenaline rush like no other. With the right equipment, training, and safety measures, anyone can experience the joy of surfing the sky.',
         img: skysurfing,
       }
-      
+
     ]
 
-    }
+  }
 ]
 
 export const readingVocab = [
