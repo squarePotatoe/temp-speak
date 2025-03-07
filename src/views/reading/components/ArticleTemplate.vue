@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="bg-cyan-700 z-10  fixed right-0 bottom-0 p-2 top-4 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
+            <div class="bg-cyan-700 z-10  fixed right-0 bottom-0 p-2 top-4 h-4/5 rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
                 <div class="flex items-center text-white">
                     <button @click="toggleSidebar" class="flex items-center justify-center my-2">
                     <span class="material-icons-outlined">close</span>
