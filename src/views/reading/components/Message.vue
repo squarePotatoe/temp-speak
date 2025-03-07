@@ -1,6 +1,6 @@
 <template>
     <div >
-        <div class="flex w-full relative">
+        <div class="flex w-full relative text-sm md:text-md">
             <div class="flex bg-amber-100 border-1 border-rose-100 p-2 rounded mb-2 max-w-2/3" :class="sender === 'student' ? 'ml-auto bg-indigo-200' : 'mr-auto'">
             <p class="text-slate-700 whitespace-pre-wrap">
                 {{ props.message }}

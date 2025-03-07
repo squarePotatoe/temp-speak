@@ -82,6 +82,16 @@
                                 {{ selectedText }}
                             </div>
                         </div>
+                        <div v-if="isAudioRecorded" class="fixed inset-0 flex items-center justify-center bg-green-50 bg-opacity-50 z-50">
+                        <div class="bg-white p-4 rounded-lg shadow-lg">
+                            <h2 class="text-xl font-semibold mb-4">Well done!</h2>
+                            <div class="flex gap-2">
+                            <button @click="replayAudio" class="bg-blue-600 text-white font-semibold p-2 rounded-lg">Replay</button>
+                            <button @click="reRecordAudio" class="bg-yellow-600 text-white font-semibold p-2 rounded-lg">Re-record</button>
+                            <button @click="submitAudio" class="bg-green-600 text-white font-semibold p-2 rounded-lg">Submit</button>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,6 +195,7 @@ function toggleReading() {
 }
 
 const isRecorderVisible = ref(false)
+const isAudioRecorded = ref(false)
 
 const selectedText = ref('')
 
@@ -193,6 +204,31 @@ function toggleRecorder(id) {
     selectedText.value = currentTask.content[id].content
 }
 
+function recordAudio() {
+    // Simulate audio recording
+    setTimeout(() => {
+        isAudioRecorded.value = true
+    }, 1000)
+}
+
+function replayAudio() {
+    alert('Replaying audio')
+}
+
+function reRecordAudio() {
+    isAudioRecorded.value = false
+    recordAudio()
+}
+
+function submitAudio() {
+    alert('Audio submitted')
+    isAudioRecorded.value = false
+    isRecorderVisible.value = false
+}
+
+function recordVideo() {
+    alert('Recording video')
+}
 
 const isSidebarOpen = ref(false)
 
