@@ -40,7 +40,7 @@
             </div>
 
             <!-- Tutorial modal -->
-            <div class="bg-cyan-200  lg:w-1/3 fixed z-90 flex flex-col justify-end items-end left-0 bottom-0 top-20 h-fit rounded-tr-xl rounded-br-xl transition-transform transform duration-300 gap-2" :class="{ '-translate-x-full': !isTutorialVisible, '-translate-x-0': isTutorialVisible }">
+            <div class="bg-cyan-200  md:w-2/3 lg:w-1/2 fixed z-90 flex flex-col justify-end items-end left-0 bottom-0 top-20 h-fit rounded-tr-xl rounded-br-xl transition-transform transform duration-300 gap-2" :class="{ '-translate-x-full': !isTutorialVisible, '-translate-x-0': isTutorialVisible }">
                 <div class="flex text-white">
                     <button class="flex justify-end items-center gap-2 p-2 bg-sky-600 text-white font-semibold rounded-tr-lg rounded-bl-lg" @click="toggleTutorial">
                         <h2>Teacher's Tutorial</h2>
@@ -65,9 +65,8 @@
                     </button>
                 </div>
                 <div class="flex flex-col p-4 bg-white w-full border-2 border-cyan-300 rounded-xl ">
-                    <div class="flex gap-2">
-
-                        <div class="flex flex-col gap-2">
+                    <div class="flex flex-col md:flex-row gap-2">
+                        <div class="flex flex-col gap-2 order-2 md:order-1">
                             <button @click="recordAudio" class="flex items-center gap-2 p-2 bg-blue-600 text-white font-semibold rounded-lg">
                                 <span class="material-icons-outlined">mic</span>
                                 <span class="text-sm">Record Audio</span>
@@ -77,7 +76,7 @@
                                 <span class="text-sm">Record Video</span>
                             </button>
                         </div>
-                        <div class="flex flex-col lg:flex-row gap-2">
+                        <div class="flex flex-col lg:flex-row gap-2 order-1 md:order-2">
                             <img src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Recording avatar" class="w-36 h-36 " >
                             <div class="border-2 rounded-xl border-cyan-100 p-2">
                                 {{ selectedText }}
@@ -113,7 +112,7 @@
                 
                 </div>
 
-                <div class="grid grid-cols-2">
+                <div class="grid md:grid-cols-2">
                 <div class="flex flex-col">
                 <h2 class="text-2xl font-semibold text-white p-2 bg-sky-600 w-fit rounded-t-lg mx-2">
                     {{ currentTask.content[1].header }}
@@ -142,7 +141,7 @@
                 </div>
                 <div class="flex flex-col mx-2">
                 </div>
-                    <div class="flex">
+                    <div class="flex flex-col gap-2 md:flex-row">
                         <div class="relative flex flex-col p-4 bg-white border-2 border-cyan-400 rounded-xl mx-2">
                                 {{ currentTask.content[3].content }}
                                 <button @click="toggleRecorder(3)" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
