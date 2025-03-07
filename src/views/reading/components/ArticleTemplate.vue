@@ -57,7 +57,7 @@
             </div>
 
             <!-- Recorder modal -->
-            <div class="bg-cyan-200 w-full lg:w-1/3 fixed flex flex-col justify-end items-end left-0 bottom-0 h-fit rounded-t-xl transition-transform transform duration-300 gap-2 z-10" :class="{ 'translate-y-full ': !isRecorderVisible, 'translate-x-0': isRecorderVisible }">
+            <div class="bg-cyan-200 w-full md:w-1/2 fixed flex flex-col justify-end items-end left-0 bottom-0 h-fit rounded-t-xl transition-transform transform duration-300 gap-2 z-10" :class="{ 'translate-y-full ': !isRecorderVisible, 'translate-x-0': isRecorderVisible }">
                 <div class="flex text-white">
                     <button class="flex justify-end items-center gap-2 p-2 bg-sky-600 text-white font-semibold rounded-tr-lg rounded-bl-lg" @click="toggleRecorder">
                         <h2>Recorder</h2>
@@ -77,7 +77,12 @@
                                 <span class="text-sm">Record Video</span>
                             </button>
                         </div>
-                        <img src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Recording avatar" class="w-36 h-36 " >
+                        <div class="flex flex-col lg:flex-row gap-2">
+                            <img src="https://static.vecteezy.com/system/resources/previews/036/594/092/non_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg" alt="Recording avatar" class="w-36 h-36 " >
+                            <div class="border-2 rounded-xl border-cyan-100 p-2">
+                                {{ selectedText }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +106,7 @@
                 </h2>
                 <div class="relative flex flex-col p-4 bg-white border-2 border-sky-400 rounded-b-xl rounded-tr-xl mx-2">
                     {{ currentTask.content[0].content }}
-                    <button @click="toggleRecorder" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
+                    <button @click="toggleRecorder(0)" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
                         Record <span class="material-icons-outlined">mic</span>
                     </button>
                 </div> 
@@ -114,10 +119,11 @@
                     {{ currentTask.content[1].header }}
                 </h2>
                 <div class="relative flex flex-col p-4 bg-white border-2 border-sky-400 rounded-b-xl rounded-tr-xl mx-2">
-                    {{ currentTask.content[2].content }}
-                    <button @click="toggleRecorder" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
+                    {{ currentTask.content[1].content }}
+                    <button @click="toggleRecorder(1)" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
                         Record <span class="material-icons-outlined">mic</span>
                     </button>
+                
                 </div>  
                 </div>
                     <div class="flex px-2">
@@ -139,13 +145,13 @@
                     <div class="flex">
                         <div class="relative flex flex-col p-4 bg-white border-2 border-cyan-400 rounded-xl mx-2">
                                 {{ currentTask.content[3].content }}
-                                <button @click="toggleRecorder" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
+                                <button @click="toggleRecorder(3)" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
                         Record <span class="material-icons-outlined">mic</span>
                     </button>
                         </div>
                         <div class="relative flex flex-col p-4 bg-white border-2 border-cyan-400 rounded-xl mx-2">
                                 {{ currentTask.content[4].content }}
-                                <button @click="toggleRecorder" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
+                                <button @click="toggleRecorder(4)" class="absolute flex bottom-0 right-0 p-1 pl-2 items-center bg-green-600 rounded-tl-xl rounded-br-xl text-white">
                         Record <span class="material-icons-outlined">mic</span>
                     </button>
                         </div>
@@ -181,8 +187,11 @@ function toggleReading() {
 
 const isRecorderVisible = ref(false)
 
-function toggleRecorder() {
+const selectedText = ref('')
+
+function toggleRecorder(id) {
     isRecorderVisible.value = !isRecorderVisible.value
+    selectedText.value = currentTask.content[id].content
 }
 
 
