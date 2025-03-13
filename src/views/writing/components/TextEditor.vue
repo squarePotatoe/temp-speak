@@ -93,14 +93,16 @@
 
     </section>
       <EditorContent :editor="editor"/>
-
+      <div >
+        <span class="p-2 text-gray-500 text-sm">Word count: {{ wordCount }} / 250</span>
+      </div>
     </div>
     
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 import { useEditor, EditorContent, Editor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
@@ -114,6 +116,7 @@ import OrderedListIcon from 'vue-material-design-icons/FormatListNumbered.vue'
 import HorizontalRuleIcon from 'vue-material-design-icons/Minus.vue'
 import UndoIcon from 'vue-material-design-icons/Undo.vue'
 import RedoIcon from 'vue-material-design-icons/Redo.vue'
+import CharacterCount from '@tiptap/extension-character-count'
 
 const form = ref({
   title: '',
@@ -151,6 +154,7 @@ onMounted(() => {
     extensions: [
       StarterKit,
       Underline,
+      CharacterCount
     ],
     editorProps: {
       attributes: {
@@ -173,6 +177,10 @@ const clrearContent = () => {
   form.value.content = ''
   editor.value.commands.clearContent()
 }
+
+const wordCount = computed(() => {
+  return editor.value?.storage.characterCount.words()
+})
 
 </script>
 
