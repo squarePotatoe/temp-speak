@@ -21,10 +21,10 @@
 
     <div class="p-2">
       <ClassCard
-        :title="nextLesson.title"
-        :activity="nextLesson.activity"
+        :title="redingLesson.title"
+        :activity="redingLesson.activity"
         :img="skysurfing"
-        :description="nextLesson.description"
+        :description="redingLesson.description"
         teacher="John Doe"
         date="15 October 2025, Wednesday"
         time="Start 18:00 End 19:00"
@@ -78,10 +78,11 @@
 <script setup>
 import ClassCard from './components/ClassCard.vue'
 import CoursesCard from './components/CoursesCard.vue'
-import { articlePlaceholders, courses, textFormatDemo } from '@/data'
+import { articlePlaceholders, courses, textFormatDemo, readingDemo } from '@/data'
 import skysurfing from '@/assets/skysurfing.png'
 
 const nextLesson = textFormatDemo.find(item => item.id === 1)
+const redingLesson = readingDemo.find(item => item.id === 1)
 </script>
 
 <style>

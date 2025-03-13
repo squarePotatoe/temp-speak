@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="group flex flex-col relative rounded bg-white p-2 mr-2 ">
+        <div class="group flex flex-col text-lg relative rounded bg-white p-2 mr-2 ">
         <div class="flex flex-col">
           <div class="text-sm">{{ props.word }}</div>
         <div
-          class="w-96 group-hover:opacity-100 text-sm transition-opacity bg-white text-black border-2 border-gray-600 rounded-xl absolute translate-y-10 -translate-x-50 opacity-0 z-10 pointer-events-none"
+          class="w-96 group-hover:opacity-100 text-sm transition-opacity bg-white text-black border-2 border-gray-600 rounded-xl absolute translate-y-10 -translate-x-10 opacity-0 z-10 pointer-events-none"
           >
           <div class="flex gap-2">
             <div v-if="props.image != null" class="flex w-1/2">
