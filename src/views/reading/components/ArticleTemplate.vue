@@ -173,7 +173,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import ChatBox from './ChatBox.vue'
+import ChatBox from '../../../components/ChatBox.vue'
 import { readingDemo, readingVocab } from '@/data'
 import VocabularyItem from './VocabularyItem.vue'
 

@@ -7,6 +7,7 @@
                 :key="message.id"
                 :message="message.message"
                 :sender="message.sender"
+                :name="message.name"
                 :img="message.img"
                 :audio="message.audio"
               />
@@ -38,15 +39,22 @@ import skysurfing from '@/assets/skysurfing.png'
 // For demo purposes only 
 const messages = ref([
   {
+      id: 0,
+      sender: 'admin',
+      date: '2025-02-01',
+  },
+  {
       id: 1,
       message: 'Hello! \nI hope you are as excited as I am to start this lesson!',
       sender: 'teacher',
+      name: 'Trish',
       img: skysurfing
   },
   {
       id: 2,
       message: 'Hi! \nI am excited to start this lesson!',
       sender: 'student',
+      name: 'Angel',
       audio: 'https://edu.speak3.com/storage/homework_media/2025_03/fqWWHKVEv2Yqz0IkRX6YvnOd2Nmt9aSg3hu80Xsm.mp3',
   },
   {
@@ -74,10 +82,21 @@ Trish
       
       `,
       sender: 'teacher',
+      name: 'Trish',
       audio: 'https://edu.speak3.com/storage/homework_feedback/sxxCukvF8cCjrGcVmVYIX4nKqrZEigJmSLbUAU7S.mp3',
 
   },
-  
+  {
+      id: 4,
+      message: 'Thank you! \nI will practice those words.',
+      sender: 'student',
+      name: 'Angel',
+  },
+  {
+      id: 5,
+      sender: 'admin',
+      date: '2025-02-02',
+  }
 
 ])
 
