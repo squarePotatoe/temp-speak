@@ -12,20 +12,6 @@ const router = createRouter({
       component: () => import('../views/home/HomeView.vue'),
     },
     {
-      path: '/about',
-      name: 'about',
-
-      meta: { layout: MainLayout },
-      component: () => import('../views/AboutView.vue'),
-    },
-    {
-      path: '/contact',
-      name: 'contact',
-
-      meta: { layout: MainLayout },
-      component: () => import('../views/ContactView.vue'),
-    },
-    {
       path: '/writing',
       name: 'writing',
       meta: { layout: ClassLayout },
