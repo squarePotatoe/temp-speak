@@ -56,11 +56,6 @@
           <h3 class="text-xl font-bold text-indigo-800">Next lesson</h3>
           <hr class="text-gray-300 my-2" />
           <div class="flex flex-col justify-center gap-2 mt-2">
-            <!-- <img
-              src="@/assets/skysurfing.png"
-              alt="Skysurfing"
-              class="w-12 h-12 rounded-full"
-            /> -->
             <div>
                <h2 class="text-lg font-semibold text-purple-700">
                 {{ nextLesson.title }}
@@ -114,8 +109,6 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import Features from '@/components/Features.vue'
-import ClassCard from './classes/components/ClassCard.vue'
 import { textFormatDemo } from '@/data'
 
 const nextLesson = textFormatDemo.find(item => item.id === 1)
