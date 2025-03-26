@@ -35,6 +35,7 @@ import { ref } from 'vue'
 import Message from './Message.vue'
 import skysurfing from '@/assets/skysurfing.png'
   
+// For demo purposes only 
 const messages = ref([
   {
       id: 1,
@@ -90,17 +91,18 @@ const predefinedReplies = [
   ]
 
   function addMessage() {
-if (newMessage.value.trim() !== '') {
-  messages.value.push({
-    id: messages.value.length + 1,
-    message: newMessage.value,
-    sender: 'student',
-  })
-  newMessage.value = ''
-  generateReplies()
-}
+  if (newMessage.value.trim() !== '') {
+    messages.value.push({
+      id: messages.value.length + 1,
+      message: newMessage.value,
+      sender: 'student',
+    })
+    newMessage.value = ''
+    generateReplies()
+  }
 }
 
+// for demo purposes only
 function generateReplies() {
 const reply = predefinedReplies[Math.floor(Math.random() * predefinedReplies.length)]
 messages.value.push({

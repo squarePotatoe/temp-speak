@@ -134,6 +134,10 @@ const emit = defineEmits(['update:modelValue'])
 
 const editor = ref(null)
 
+
+// Content saved only for demo purposes
+// Avoid this type of saving for production
+// Or clear content on new session/writing task
 const saveContent = () => {
   if (editor.value) {
     localStorage.setItem('editorContent', editor.value.getHTML())

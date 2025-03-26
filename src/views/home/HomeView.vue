@@ -1,12 +1,12 @@
 <template>
   <div>
-    <main class="container relative justify-between h-[calc(100vh-74px)] max-w-6xl px-10 mx-auto xl:px-0 mt-5">
+    <main class="container relative justify-between h-[calc(100vh-74px)] max-w-6xl mx-auto mt-5">
       <div class="flex flex-col mt-6 lg:flex-row gap-4 mb-6">
         <div
           class="flex-1 bg-indigo-100 border border-indigo-200 rounded-xl p-6 animate-fade-in"
         >
           <h2 class="text-4xl md:text-5xl text-blue-900">
-            Welcome <br /><strong> back </strong>
+            Welcome <br /><strong> John Doe </strong>
           </h2>
           <span
             class="inline-block mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-indigo-800"

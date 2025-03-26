@@ -30,6 +30,23 @@ const router = createRouter({
       meta: { layout: ClassLayout },
       component: () => import('../views/reading/ReadingView.vue'),
     },
+    {
+      path: '/history',
+      name: 'history',
+      meta: { layout: MainLayout },
+      component: () => import('../views/classes/HistoryView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: { layout: MainLayout },
+      component: () => import('../views/profile/ProfileView.vue'),
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/',
+    }
+
   ],
 })
 

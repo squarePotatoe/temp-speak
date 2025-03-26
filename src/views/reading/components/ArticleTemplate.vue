@@ -6,9 +6,9 @@
             <div class="text-6xl font-sans text-slate-700 w-full text-center my-4 p-2 rounded-xl">
                 {{ currentTask.title }}
             </div>
-            <!-- <div class="text-xl text-slate-600 p-4 ">
+            <div class="text-xl text-slate-600 p-4 ">
                 {{ currentTask.description }}
-            </div> -->
+            </div>
         </div>
             
         <!-- Main text section -->

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class="w-full bg-slate-100 shadow-md rounded-lg max-w-4xl px-2 mt-4 min-h-[calc(100vh-74px)]">
+  <div class="w-full bg-slate-100 shadow-md rounded-lg max-w-6xl px-2 mt-4 min-h-[calc(100vh-74px)]">
     <div class="flex flex-col">
       <h1 class="font-semibold text-gray-800 my-4">Next class</h1>
 
@@ -8,7 +8,7 @@
         <ClassCard
           :title="nextLesson.title"
           :activity="nextLesson.activity"
-          :img="skysurfing"
+          :img="space"
           :description="nextLesson.description"
           teacher="John Doe"
           date="15 October 2025, Wednesday"
@@ -67,10 +67,6 @@
       </div>
     </div>
 
-    <div class="flex justify-center items-center">
-      <button>discover more <span>>>></span></button>
-    </div>
-
 </div>
 </div>
 </template>
@@ -80,6 +76,7 @@ import ClassCard from './components/ClassCard.vue'
 import CoursesCard from './components/CoursesCard.vue'
 import { articlePlaceholders, courses, textFormatDemo, readingDemo } from '@/data'
 import skysurfing from '@/assets/skysurfing.png'
+import space from '@/assets/space.png'
 
 const nextLesson = textFormatDemo.find(item => item.id === 1)
 const redingLesson = readingDemo.find(item => item.id === 1)
