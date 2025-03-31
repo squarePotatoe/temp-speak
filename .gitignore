@@ -48,8 +48,6 @@ Thumbs.db
 *.mov
 *.wmv
 
-<<<<<<< HEAD
-=======
 # Logs
 logs
 *.log
@@ -80,4 +78,3 @@ coverage
 *.sw?
 
 *.tsbuildinfo
->>>>>>> cce513e (Initial add of speak3 app)
