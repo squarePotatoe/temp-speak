@@ -189,9 +189,7 @@ onMounted(() => {
           v-if="isRecorderVisible"
           class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
         >
-          <div
-            class="bg-cyan-200 w-full max-w-lg md:w-1/2 rounded-xl shadow-2xl p-0 m-4"
-          >
+          <div class="bg-cyan-200">
             <RecorderModal
               v-if="!isLoading"
               :isRecorderVisible="isRecorderVisible"

@@ -441,242 +441,353 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-[calc(100vh-2rem)] overflow-auto">
-    <div class="flex w-full justify-end text-white">
+  <div class="flex flex-col h-[calc(100vh-2rem)] overflow-auto bg-gray-50">
+    <!-- Header -->
+    <div
+      class="flex w-full justify-between items-center p-3 bg-amber-600 rounded-t-xl shadow text-white"
+    >
+      <div class="flex items-center gap-2">
+        <span class="material-icons-outlined text-xl md:text-2xl">mic</span>
+        <h2 class="text-lg md:text-2xl font-bold">Reading Recorder</h2>
+      </div>
       <button
-        class="flex justify-end items-center gap-2 p-2 bg-amber-600 text-white font-semibold rounded-tr-lg rounded-bl-lg"
+        class="flex items-center gap-2 px-3 py-2 bg-red-500 hover:bg-red-600 rounded-lg font-semibold"
         @click="closeModal"
       >
-        <h2>Close Recorder</h2>
         <span class="material-icons-outlined">close</span>
+        <span class="hidden md:inline">Close</span>
       </button>
     </div>
-    <div class="h-2/5 flex flex-col items-center justify-center">
-      <div v-if="isFinished" class="mt-4 p-4 bg-gray-100 rounded-lg w-full">
-        <div class="grid grid-cols-2 w-full gap-2">
-          <div>
-            <h3 class="text-lg font-semibold mb-2">Review Your Recording:</h3>
-            <!-- Video Playback -->
+
+    <!-- Main Content -->
+    <div class="flex flex-col md:flex-row gap-3 md:gap-6 p-2 md:p-4 flex-1">
+      <!-- Paragraph Card -->
+      <div
+        class="flex flex-col items-center justify-between bg-white rounded-xl shadow-lg p-3 md:p-6 w-full md:w-2/5 min-h-[220px] md:order-2"
+      >
+        <div class="flex flex-col w-full items-center">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="material-icons-outlined text-cyan-600">menu_book</span>
+            <span class="text-cyan-700 font-semibold text-base md:text-lg"
+              >Paragraph {{ currentId + 1 }} of
+              {{ selectedText.content.length }}</span
+            >
+          </div>
+          <div
+            class="w-full bg-cyan-50 border border-cyan-200 rounded-lg p-3 md:p-4 text-base md:text-lg text-gray-800 min-h-[80px] max-h-40 md:max-h-full overflow-auto"
+          >
+            <span v-html="selectedText.content[currentId].content"></span>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <div class="flex gap-2 md:gap-4 mt-4">
+          <button
+            v-if="currentId != 0"
+            @click="viewPreviousText"
+            class="flex items-center gap-2 px-3 py-2 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-lg text-sm md:text-base"
+          >
+            <span class="material-icons-outlined">arrow_left</span>
+            Previous
+          </button>
+          <div class="flex-1"></div>
+          <button
+            v-if="currentId != props.currentTask.content.length - 1"
+            @click="viewNextText"
+            class="flex items-center gap-2 px-3 py-2 bg-green-400 hover:bg-green-500 text-white font-semibold rounded-lg text-sm md:text-base"
+          >
+            Next
+            <span class="material-icons-outlined">arrow_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Recorder Area -->
+      <div
+        class="flex flex-col flex-1 items-center justify-center bg-white rounded-xl shadow-lg p-3 md:p-6 min-h-[220px]"
+      >
+        <!-- Review Area -->
+        <div
+          v-if="isFinished"
+          class="flex flex-col items-center gap-3 md:gap-4"
+        >
+          <h3 class="text-base md:text-lg font-semibold mb-1 text-gray-700">
+            Review Your Recording
+          </h3>
+          <div class="w-full flex flex-col items-center gap-2">
             <video
               v-if="mediaType === 'video'"
               ref="videoPlayer"
-              class="w-full max-w-md rounded-lg"
+              class="w-full max-w-xs md:max-w-md rounded-lg border"
               controls
               :src="playbackVideoURL"
             ></video>
-
-            <!-- Audio Playback -->
             <audio
               v-else-if="mediaType === 'audio'"
               ref="audioPlayer"
-              class="w-full max-w-md"
+              class="w-full max-w-xs md:max-w-md"
               controls
               :src="playbackAudioURL"
             ></audio>
           </div>
-
           <div
-            class="flex flex-col md:flex-row gap-2 mt-2 h-full items-center justify-center"
+            class="flex flex-col md:flex-row gap-2 md:gap-4 mt-2 w-full justify-center"
           >
             <button
               @click="listenBeforeSend()"
-              class="p-2 bg-blue-600 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg"
             >
               <span class="material-icons-outlined">play_circle</span>
               Listen
             </button>
             <button
               @click="submitHomework()"
-              class="p-2 bg-green-600 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg"
             >
               <span class="material-icons-outlined">send</span>
               Submit
             </button>
             <button
               @click="cancelRecording()"
-              class="p-2 bg-red-600 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg"
             >
               <span class="material-icons-outlined">cancel</span>
               Cancel
             </button>
           </div>
         </div>
-      </div>
-      <div v-else class="flex items-center justify-evenly">
-        <div v-if="isRecordingNow && mediaType === 'video'">
-          <video
-            v-if="mediaType === 'video'"
-            id="preview"
-            class="max-h-48 rounded"
-            autoplay
-            muted
-          ></video>
-        </div>
 
-        <div v-else class="justify-center w-full flex">
-          <video class="w-full md:h-fit" ref="videoRef" controls>
-            <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
-            <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
-          </video>
-        </div>
-        <div class="flex w-1/3 flex-col gap-2 items-center justify-center p-2">
-          <video
+        <!-- Recording Area -->
+        <div v-else>
+          <!-- Video Recording Split View -->
+          <div
             v-if="isRecordingNow && mediaType === 'video'"
-            class="w-full md:h-fit"
-            ref="videoRef"
-            controls
+            class="flex flex-col md:flex-row gap-2 md:gap-4 items-center"
           >
-            <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
-            <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
-          </video>
-          <button
-            @click="rewindTutorial"
-            class="flex justify-evenly w-full p-2 bg-blue-600 text-white font-semibold rounded-lg"
+            <!-- Student Camera Preview -->
+            <div class="flex-1 flex flex-col items-center mb-2 md:mb-0">
+              <span
+                class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
+                >Your Camera</span
+              >
+              <video
+                id="preview"
+                class="w-full max-w-xs md:max-w-xs rounded-lg border-2 border-cyan-400 shadow"
+                autoplay
+                muted
+              ></video>
+            </div>
+            <!-- Teacher Tutorial Video -->
+            <div class="flex-1 flex flex-col items-center">
+              <span
+                class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
+                >Teacher's Tutorial</span
+              >
+              <video
+                class="w-full max-w-xs md:max-w-xs rounded-lg border shadow"
+                ref="videoRef"
+                controls
+              >
+                <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
+              </video>
+              <div class="flex gap-1 md:gap-2 mt-2">
+                <button
+                  @click="rewindTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-blue-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">replay_5</span>
+                  -5s
+                </button>
+                <button
+                  @click="puaseTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-yellow-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">pause</span>
+                  Pause
+                </button>
+                <button
+                  @click="playTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-green-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">play_arrow</span>
+                  Play
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audio Recording Area -->
+          <div
+            v-else-if="isRecordingNow && mediaType === 'audio'"
+            class="flex flex-col md:flex-row gap-3 items-center"
           >
-            <span class="material-icons-outlined">replay_5</span>
-            -5s
-          </button>
-          <button
-            @click="puaseTutorial"
-            class="flex justify-center w-full p-2 bg-yellow-600 text-white font-semibold rounded-lg"
+            <div class="flex-1 flex flex-col items-center">
+              <span
+                class="material-icons-outlined text-5xl md:text-6xl text-red-500 animate-pulse"
+                >mic</span
+              >
+              <span class="text-red-700 font-medium text-base md:text-lg mt-2">
+                Recording Time: {{ Math.floor(time / 60) }}:{{
+                  String(time % 60).padStart(2, "0")
+                }}
+              </span>
+            </div>
+            <div class="flex-1 flex flex-col items-center mt-4 md:mt-0">
+              <span
+                class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
+                >Teacher's Tutorial</span
+              >
+              <video
+                class="w-full max-w-xs md:max-w-xs rounded-lg border shadow"
+                ref="videoRef"
+                controls
+              >
+                <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
+              </video>
+              <div class="flex gap-1 md:gap-2 mt-2">
+                <button
+                  @click="rewindTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-blue-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">replay_5</span>
+                  -5s
+                </button>
+                <button
+                  @click="puaseTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-yellow-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">pause</span>
+                  Pause
+                </button>
+                <button
+                  @click="playTutorial"
+                  class="flex items-center gap-1 px-2 py-1 bg-green-600 text-white rounded text-xs md:text-sm"
+                >
+                  <span class="material-icons-outlined">play_arrow</span>
+                  Play
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tutorial Video Only (when not recording) -->
+          <div v-else class="flex flex-col items-center">
+            <span class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
+              >Teacher's Tutorial</span
+            >
+            <video
+              class="w-full max-w-xs md:max-w-md rounded-lg border shadow"
+              ref="videoRef"
+              controls
+            >
+              <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
+            </video>
+            <div class="flex gap-1 md:gap-2 mt-2">
+              <button
+                @click="rewindTutorial"
+                class="flex items-center gap-1 px-2 py-1 bg-blue-600 text-white rounded text-xs md:text-sm"
+              >
+                <span class="material-icons-outlined">replay_5</span>
+                -5s
+              </button>
+              <button
+                @click="puaseTutorial"
+                class="flex items-center gap-1 px-2 py-1 bg-yellow-600 text-white rounded text-xs md:text-sm"
+              >
+                <span class="material-icons-outlined">pause</span>
+                Pause
+              </button>
+              <button
+                @click="playTutorial"
+                class="flex items-center gap-1 px-2 py-1 bg-green-600 text-white rounded text-xs md:text-sm"
+              >
+                <span class="material-icons-outlined">play_arrow</span>
+                Play
+              </button>
+            </div>
+          </div>
+
+          <!-- Recording Controls -->
+          <div
+            v-if="isRecordingNow"
+            class="flex gap-2 md:gap-4 mt-4 justify-center"
           >
-            <span class="material-icons-outlined">pause</span>
-            Pause
-          </button>
-          <button
-            @click="playTutorial"
-            class="flex justify-center w-full p-2 bg-green-600 text-white font-semibold rounded-lg"
+            <button
+              @click="cancelRecording"
+              class="flex items-center gap-2 px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg text-sm md:text-base"
+            >
+              <span class="material-icons-outlined">stop</span>
+              Cancel
+            </button>
+            <button
+              @click="pauseRecording"
+              class="flex items-center gap-2 px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg text-sm md:text-base"
+            >
+              <span v-if="!paused" class="material-icons-outlined">pause</span>
+              <span v-else class="material-icons-outlined">play_arrow</span>
+              {{ !paused ? "Pause" : "Resume" }}
+            </button>
+            <button
+              @click="stopRecording"
+              class="flex items-center gap-2 px-3 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg text-sm md:text-base"
+            >
+              <span class="material-icons-outlined">stop</span>
+              Finish
+            </button>
+          </div>
+
+          <!-- Start Recording Controls -->
+          <div
+            v-if="!isRecordingNow && !isFinished"
+            class="flex flex-col md:flex-row gap-2 md:gap-4 mt-6 justify-center"
           >
-            <span class="material-icons-outlined">play_arrow</span>
-            Play
-          </button>
+            <button
+              @click="startRecording('audio')"
+              class="flex items-center gap-2 px-5 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg text-base md:text-lg"
+            >
+              <span class="material-icons-outlined text-xl md:text-2xl"
+                >mic</span
+              >
+              Record Audio
+            </button>
+            <button
+              @click="startRecording('video')"
+              class="flex items-center gap-2 px-5 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg text-base md:text-lg"
+            >
+              <span class="material-icons-outlined text-xl md:text-2xl"
+                >videocam</span
+              >
+              Record Video
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <!-- Audio Recorded Modal (unchanged) -->
     <div
-      class="flex flex-col h-3/5 p-1 bg-white w-full border-2 border-cyan-300 rounded-xl"
+      v-if="isAudioRecorded"
+      class="fixed inset-0 flex items-center justify-center bg-green-50 bg-opacity-50 z-50"
     >
-      <div class="flex flex-col gap-2 h-full justify-between">
-        <div class="flex flex-col items-center gap-2">
-          <div class="flex flex-col items-center" v-if="isRecordingNow">
-            <div class="col-span-1 flex gap-2">
-              <span class="text-red-700 font-medium text-sm"
-                >Recording Time: {{ Math.floor(time / 60) }}:{{
-                  String(time % 60).padStart(2, "0")
-                }}</span
-              >
-            </div>
-            <div class="flex gap-2">
-              <button
-                @click="cancelRecording"
-                class="flex items-center gap-2 p-2 h-fit bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg"
-              >
-                <span class="material-icons-outlined">stop</span>
-                <span class="text-sm">Cancel</span>
-              </button>
-              <button
-                @click="pauseRecording"
-                class="flex items-center gap-2 p-2 h-fit text-white font-semibold rounded-lg bg-yellow-500 hover:bg-yellow-600"
-              >
-                <span v-if="!paused" class="material-icons-outlined"
-                  >pause</span
-                >
-                <span v-else class="material-icons-outlined">play_arrow</span>
-                <span class="text-sm">{{ !paused ? "Pause" : "Resume" }}</span>
-              </button>
-              <button
-                @click="stopRecording"
-                class="flex items-center gap-2 p-2 h-fit bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg"
-              >
-                <span class="material-icons-outlined">stop</span>
-                <span class="text-sm">Finish</span>
-              </button>
-            </div>
-          </div>
-          <div
-            class="flex flex-col h-full relative border-2 rounded-xl border-cyan-100 md:p-2"
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4">Well done!</h2>
+        <div class="flex gap-2">
+          <button
+            @click="replayAudio"
+            class="bg-blue-600 text-white font-semibold p-2 rounded-lg"
           >
-            <div
-              class="absolute top-0 left-0 px-2 border rounded-br-2xl rounded-tl-xl bg-sky-500 text-white"
-            >
-              <p class="text-sm md:text-md" v-html="currentId + 1"></p>
-            </div>
-            <p
-              class="p-4 text-sm md:text-md overflow-auto"
-              v-html="selectedText.content[currentId].content"
-            ></p>
-          </div>
-        </div>
-        <div class="flex relative">
-          <div class="flex bottom-0 gap-2 w-full order-2 md:order-1">
-            <div
-              v-if="!isRecordingNow && !isFinished"
-              class="flex flex-col gap-2 items-center justify-center w-full"
-            >
-              <button
-                @click="startRecording('audio')"
-                class="flex items-center gap-2 p-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg"
-              >
-                <span class="material-icons-outlined">mic</span>
-                <span class="text-sm">Record Audio</span>
-              </button>
-              <button
-                @click="startRecording('video')"
-                class="flex items-center gap-2 p-2 bg-purple-600 hover:bg-purlpe-700 text-white font-semibold rounded-lg"
-              >
-                <span class="material-icons-outlined">videocam</span>
-                <span class="text-sm">Record Video</span>
-              </button>
-            </div>
-
-            <div
-              class="flex flex-col md:flex-row w-full items-center justify-center gap-2"
-            >
-              <button
-                v-if="currentId != 0"
-                @click="viewPreviousText"
-                class="flex items-center justify-center w-full gap-2 p-2 bg-yellow-400 text-white font-semibold rounded-lg order-2 md:order-1"
-              >
-                <span class="material-icons-outlined">arrow_left</span>
-                <span class="text-sm">Previous</span></button
-              ><button
-                v-if="currentId != props.currentTask.content.length - 1"
-                @click="viewNextText"
-                class="flex items-center justify-center w-full gap-2 p-2 bg-green-400 text-white font-semibold rounded-lg order-1 md:order-2"
-              >
-                <span class="text-sm">Next</span>
-                <span class="material-icons-outlined">arrow_right</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div
-          v-if="isAudioRecorded"
-          class="fixed inset-0 flex items-center justify-center bg-green-50 bg-opacity-50 z-50"
-        >
-          <div class="bg-white p-4 rounded-lg shadow-lg">
-            <h2 class="text-xl font-semibold mb-4">Well done!</h2>
-            <div class="flex gap-2">
-              <button
-                @click="replayAudio"
-                class="bg-blue-600 text-white font-semibold p-2 rounded-lg"
-              >
-                Replay
-              </button>
-              <button
-                @click="reRecordAudio"
-                class="bg-yellow-600 text-white font-semibold p-2 rounded-lg"
-              >
-                Re-record
-              </button>
-              <button
-                @click="submitAudio"
-                class="bg-green-600 text-white font-semibold p-2 rounded-lg"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
+            Replay
+          </button>
+          <button
+            @click="reRecordAudio"
+            class="bg-yellow-600 text-white font-semibold p-2 rounded-lg"
+          >
+            Re-record
+          </button>
+          <button
+            @click="submitAudio"
+            class="bg-green-600 text-white font-semibold p-2 rounded-lg"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>
