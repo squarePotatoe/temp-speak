@@ -61,7 +61,7 @@
               </div>
               <div class="flex items-center justify-between relative">
                 <p class="text-gray-500 border border-gray-300 rounded p-2">
-                  Mike
+                  Abby
                 </p>
                 <p class="tag max-w-fit">Reading</p>
               </div>

@@ -157,6 +157,7 @@ onMounted(() => {
         >
           <TutorialModal
             :isTutorialVisible="isTutorialVisible"
+            :courseId="1"
             @toggleTutorialModal="toggleTutorial"
           />
         </div>
@@ -164,7 +165,7 @@ onMounted(() => {
         <!-- Recorder modal -->
         <div
           v-if="isRecorderVisible"
-          class="fixed inset-0 z-50 flex items-center justify-center"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
         >
           <div
             class="bg-cyan-200 w-full max-w-lg md:w-1/2 rounded-xl shadow-2xl p-0 m-4"
@@ -174,6 +175,7 @@ onMounted(() => {
               :isRecorderVisible="isRecorderVisible"
               :currentTask="currentTask"
               :selectedText="selectedText"
+              :courseId="1"
               @toggleRecorder="toggleRecorder"
               @submitRecording="handleSubmitRecording"
             />

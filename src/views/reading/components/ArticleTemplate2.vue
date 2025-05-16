@@ -178,6 +178,7 @@ onMounted(() => {
         >
           <TutorialModal
             :isTutorialVisible="isTutorialVisible"
+            :courseId="2"
             @toggleTutorialModal="toggleTutorial"
           />
         </div>
@@ -186,7 +187,7 @@ onMounted(() => {
         <!-- Recorder modal -->
         <div
           v-if="isRecorderVisible"
-          class="fixed inset-0 z-50 flex items-center justify-center"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
         >
           <div
             class="bg-cyan-200 w-full max-w-lg md:w-1/2 rounded-xl shadow-2xl p-0 m-4"
@@ -196,6 +197,7 @@ onMounted(() => {
               :isRecorderVisible="isRecorderVisible"
               :currentTask="currentTask"
               :selectedText="selectedText"
+              :courseId="2"
               @toggleRecorder="toggleRecorder"
               @submitRecording="handleSubmitRecording"
             />
@@ -307,6 +309,23 @@ onMounted(() => {
           </div>
 
           <!-- Section 3: More Reading Cards -->
+          <div class="flex flex-col md:flex-row gap-8">
+            <div
+              class="relative flex flex-col bg-white/90 border-4 border-cyan-300 rounded-3xl shadow-xl p-8 min-h-[140px] flex-1"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-icons text-cyan-400 text-2xl"
+                  >record_voice_over</span
+                >
+                <span class="text-xl font-bold text-cyan-700"
+                  >Try reading this!</span
+                >
+              </div>
+              <div class="text-xl text-slate-700 font-medium mb-4">
+                {{ currentTask.content[2].content }}
+              </div>
+            </div>
+          </div>
           <div class="flex flex-col md:flex-row gap-8">
             <div
               class="relative flex flex-col bg-white/90 border-4 border-cyan-300 rounded-3xl shadow-xl p-8 min-h-[140px] flex-1"

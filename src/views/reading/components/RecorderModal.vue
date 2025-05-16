@@ -17,7 +17,16 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  courseId: {
+    type: Number,
+    default: 0,
+  },
 });
+
+const src1 =
+  "https://edu.speak3.com/storage/material_tutorial_video/DQp3rnrqgqZ0LgKAAvtDIzZ0OXUNzbgjZRpf1m3Q.mp4";
+const src2 =
+  "https://edu.speak3.com/storage/material_tutorial_video/LJCyClIb7Yv61uTqHdDMdoEnHnIDCWG5mIZqgySE.mp4";
 
 const isRecorderVisible = ref(props.isRecorderVisible);
 
@@ -123,15 +132,18 @@ function playTutorial() {
 function submitHomework() {
   Swal.fire({
     title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
+    icon: "question",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, submit it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("Submitted!", "Your homework has been submitted.", "success");
+      Swal.fire(
+        "Check Teacher Chat!",
+        "Your homework has been submitted",
+        "success"
+      );
       // Emit the audio/video blob and type to parent for chatbox
       emit("submitRecording", {
         blob: newMedia,
@@ -491,10 +503,7 @@ onMounted(() => {
     </div>
     <div v-else class="flex flex-col py-2">
       <video class="h-32 md:h-fit" ref="videoRef" controls>
-        <source
-          src="https://edu.speak3.com/storage/material_tutorial_video/DQp3rnrqgqZ0LgKAAvtDIzZ0OXUNzbgjZRpf1m3Q.mp4"
-          type="video/mp4"
-        />
+        <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
         <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
       </video>
       <div class="flex gap-2 items-center justify-center pt-2">
@@ -580,10 +589,10 @@ onMounted(() => {
             <p class="p-4" v-html="selectedText.content[currentId].content"></p>
           </div>
         </div>
-        <div class="flex flex-col gap-2 order-2 md:order-1">
+        <div class="flex gap-2 order-2 md:order-1">
           <div
             v-if="!isRecordingNow && !isFinished"
-            class="flex gap-2 pt-2 items-center justify-center w-full"
+            class="flex flex-col gap-2 pt-2 items-center justify-center w-full"
           >
             <button
               @click="startRecording('audio')"
@@ -594,25 +603,25 @@ onMounted(() => {
             </button>
             <button
               @click="startRecording('video')"
-              class="flex items-center gap-2 p-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 p-2 bg-purple-600 hover:bg-purlpe-700 text-white font-semibold rounded-lg"
             >
               <span class="material-icons-outlined">videocam</span>
               <span class="text-sm">Record Video</span>
             </button>
           </div>
 
-          <div class="flex items-center justify-center gap-2">
+          <div class="flex w-full items-center justify-center gap-2">
             <button
               v-if="currentId != 0"
               @click="viewPreviousText"
-              class="flex items-center gap-2 p-2 bg-orange-400 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 p-2 bg-yellow-400 text-white font-semibold rounded-lg"
             >
               <span class="material-icons-outlined">arrow_left</span>
               <span class="text-sm">Previous Paragraph</span></button
             ><button
               v-if="currentId != props.currentTask.content.length - 1"
               @click="viewNextText"
-              class="flex items-center gap-2 p-2 bg-orange-400 text-white font-semibold rounded-lg"
+              class="flex items-center gap-2 p-2 bg-green-400 text-white font-semibold rounded-lg"
             >
               <span class="text-sm">Next Paragraph</span>
               <span class="material-icons-outlined">arrow_right</span>

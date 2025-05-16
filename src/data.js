@@ -558,22 +558,22 @@ export const readingDemo = [
     content: [
       {
         header: 'What does it do?',
-        content: 'Our tongue helps us taste food and swallow it. Our tongue is a muscle that can move in different directions. We use our tongue to make different sounds when we talk.',
+        content: '(1) Our tongue helps us taste food and swallow it. (2) Our tongue is a muscle that can move in different directions. (3) We use our tongue to make different sounds when we talk.',
         img: tongue1,
       },
       {
         header: 'Something interesting',
-        content: 'Our tongue has tiny bumps called taste buds that help us taste different flavours - like sweet, sour, salty, and bitter. Did you know that some animals, like snakes, use their tongue to smell things?',
+        content: '(4) Our tongue has tiny bumps called taste buds that help us taste different flavours - like sweet, sour, salty, and bitter. (5) Did you know that some animals, like snakes, use their tongue to smell things?',
         img: tongue2,
       },
       {
         header: '',
-        content: 'Our tongue can get burned by hot food or drinks. We can keep our tongue healthy by drinking plenty of water and brushing our teeth regularly. Our tongue can even tell us some things about our health! For example, a white coating on our tongue might mean we have a cold or a virus.',
+        content: '(6) Our tongue can get burned by hot food or drinks. (7) We can keep our tongue healthy by drinking plenty of water and brushing our teeth regularly. (8) Our tongue can even tell us some things about our health! For example, a white coating on our tongue might mean we have a cold or a virus.',
         img: skysurfing,
       },
       {
         header: '',
-        content: 'Some people have a condition called "tongue-tie" where a small piece of skin under their tongue is too short and makes it hard to move their tongue.',
+        content: '(9) Some people have a condition called "tongue-tie" where a small piece of skin under their tongue is too short and makes it hard to move their tongue.',
         img: skysurfing,
       },
       {

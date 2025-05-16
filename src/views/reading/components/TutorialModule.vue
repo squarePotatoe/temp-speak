@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const props = defineProps({
   isTutorialVisible: {
@@ -10,7 +10,18 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  courseId: {
+    type: Number,
+    default: 0,
+  },
 });
+
+const src1 =
+  "https://edu.speak3.com/storage/material_tutorial_video/DQp3rnrqgqZ0LgKAAvtDIzZ0OXUNzbgjZRpf1m3Q.mp4";
+const src2 =
+  "https://edu.speak3.com/storage/material_tutorial_video/LJCyClIb7Yv61uTqHdDMdoEnHnIDCWG5mIZqgySE.mp4";
+
+const srcById = "";
 
 const videoRef = ref(null);
 const emit = defineEmits(["toggleTutorialModal"]);
@@ -39,6 +50,8 @@ function playVideo() {
     videoRef.value.play();
   }
 }
+
+onMounted(() => {});
 </script>
 
 <template>
@@ -63,10 +76,7 @@ function playVideo() {
     <div class="flex flex-col p-4 bg-white w-full rounded-b-xl">
       <div class="flex flex-col gap-2">
         <video ref="videoRef" controls>
-          <source
-            src="https://edu.speak3.com/storage/material_tutorial_video/DQp3rnrqgqZ0LgKAAvtDIzZ0OXUNzbgjZRpf1m3Q.mp4"
-            type="video/mp4"
-          />
+          <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
           <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
         </video>
         <div class="flex gap-2 mt-2 items-center justify-center">

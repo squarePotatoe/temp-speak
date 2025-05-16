@@ -36,7 +36,7 @@
           >
         </RouterLink>
       </div>
-      <div
+      <!-- <div
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >
         <RouterLink
@@ -50,7 +50,7 @@
             >keyboard_arrow_right</span
           >
         </RouterLink>
-      </div>
+      </div> -->
     </div>
 
     <div
