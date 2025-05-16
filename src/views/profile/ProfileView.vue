@@ -18,10 +18,12 @@ const activeTab = ref("information");
 
 <template>
   <div>
-    <div class="w-full mx-auto rounded-xl h-screen self-center">
+    <div
+      class="rounded-xl border-1 shadow border-slate-200 h-screen self-center w-screen px-2 mt-4 md:w-5xl"
+    >
       <div>
-        <div class="flex flex-col w-full gap-4 pt-4">
-          <div class="flex w-full bg-white p-4 border border-gray-100">
+        <div class="flex flex-col w-full gap-4">
+          <div class="flex w-full bg-white border border-gray-100">
             <div class="flex flex-col w-full">
               <div class="flex w-full relative justify-start items-center">
                 <img
@@ -29,7 +31,7 @@ const activeTab = ref("information");
                   alt="Profile Picture"
                   class="w-16 h-16 rounded-full border-2 border-gray-300"
                 />
-                <div class="flex flex-col p-2">
+                <div class="flex flex-col">
                   <h1 class="text-2xl font-bold text-gray-800">
                     {{ student.name }}
                   </h1>
@@ -78,9 +80,11 @@ const activeTab = ref("information");
             </div>
           </div>
 
-          <div class="flex w-full bg-white p-4 border border-gray-100">
+          <div
+            class="flex flex-col md:flex-row w-full bg-white p-4 border border-gray-100"
+          >
             <div class="flex flex-col w-full">
-              <div class="flex w-full gap-2">
+              <div class="flex flex-col md:flex-row gap-2">
                 <button
                   :class="
                     activeTab === 'information'
@@ -138,7 +142,7 @@ const activeTab = ref("information");
                 </button>
               </div>
               <hr class="w-full border-gray-300 my-2" />
-              <div class="flex justify-start items-center">
+              <div class="flex flex-col w-full justify-start items-center">
                 <div class="flex flex-col p-2 w-full">
                   <template v-if="activeTab === 'information'">
                     <h1 class="text-2xl font-bold text-gray-800 mb-2">

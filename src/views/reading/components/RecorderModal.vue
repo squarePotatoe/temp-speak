@@ -451,7 +451,7 @@ onMounted(() => {
         <span class="material-icons-outlined">close</span>
       </button>
     </div>
-    <div class="h-2/5">
+    <div class="h-2/5 flex flex-col items-center justify-center">
       <div v-if="isFinished" class="mt-4 p-4 bg-gray-100 rounded-lg w-full">
         <div class="grid grid-cols-2 w-full gap-2">
           <div>

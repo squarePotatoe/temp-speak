@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="sidebarClasses"
-    class="sidebar absolute md:bg-auto lg:static w-[280px] h-[calc(100vh-4rem)] lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-45 overflow-y-auto p-4 lg:z-60"
+    class="sidebar absolute md:bg-auto bg-black/45 md:bg-white/0 lg:static w-[280px] h-[calc(100vh-4rem)] lg:h-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-45 overflow-y-auto p-4 lg:z-60"
   >
     <div
       class="bg-white rounded-xl shadow-lg mb-6 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
