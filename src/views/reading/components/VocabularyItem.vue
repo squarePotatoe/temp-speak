@@ -1,31 +1,49 @@
 <template>
-    <div>
-        <div class="group flex flex-col text-lg relative rounded bg-white p-2 mr-2 ">
-        <div class="flex flex-col">
-          <div class="text-sm">{{ props.word }}</div>
-        <div
-          class="w-96 group-hover:opacity-100 text-sm transition-opacity bg-white text-black border-2 border-gray-600 rounded-xl absolute translate-y-10 -translate-x-10 opacity-0 z-10 pointer-events-none"
-          >
-          <div class="flex gap-2">
-            <div v-if="props.image != null" class="flex w-1/2">
-                <img :src="props.image" alt="Vocabulary image" class="w-36 object-cover rounded-l-xl">
+  <div>
+    <div
+      class="group flex flex-col text-lg relative rounded-2xl bg-gradient-to-r from-blue-100 to-orange-sky p-2 mb-3 shadow-md transition hover:scale-105 hover:z-10"
+    >
+      <div class="flex items-center gap-2 mb-1">
+        <span class="material-icons text-pink-400 text-2xl">translate</span>
+        <span
+          class="text-xl font-bold text-indigo-700 bg-white rounded-full px-4 py-1 shadow"
+        >
+          {{ props.word }}
+        </span>
+      </div>
+      <!-- Popup card on hover -->
+      <div
+        class="w-[340px] group-hover:opacity-100 text-base transition-opacity bg-white text-slate-800 border-4 border-pink-200 rounded-2xl absolute left-0 top-14 opacity-0 z-[9999] pointer-events-none shadow-xl p-4"
+      >
+        <div class="flex gap-4 items-center">
+          <div v-if="props.image" class="flex-shrink-0">
+            <!-- <img
+              :src="props.image"
+              alt="Vocabulary image"
+              class="w-24 h-24 object-cover rounded-xl border-2 border-indigo-200 bg-white"
+            /> -->
+          </div>
+          <div class="flex flex-col gap-2">
+            <div>
+              <span class="font-semibold text-pink-700">Definition:</span>
+              <span class="ml-1">{{ props.definition }}</span>
             </div>
-            <div class="flex flex-col  p-2">
-                <p class="font-semibold">Definition: </p><span>{{ props.definition}}</span>
-                <p class="font-semibold">Example: </p><span>{{ props.example }}</span>
+            <div>
+              <span class="font-semibold text-indigo-700">Example:</span>
+              <span class="ml-1 italic">"{{ props.example }}"</span>
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script setup>
 const props = defineProps({
-    word: String,
-    definition: String,
-    example: String,
-    image: String
-})
+  word: String,
+  definition: String,
+  example: String,
+  image: String,
+});
 </script>

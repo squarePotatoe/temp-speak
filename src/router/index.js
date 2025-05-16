@@ -25,7 +25,7 @@ const router = createRouter({
       component: () => import('../views/classes/ClassesView.vue'),
     },
     {
-      path: '/reading',
+      path: '/reading/:id',
       name: 'reading',
       meta: { layout: ClassLayout },
       component: () => import('../views/reading/ReadingView.vue'),
