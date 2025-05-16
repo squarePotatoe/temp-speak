@@ -96,7 +96,7 @@ onMounted(() => {
 
       <!-- Main text section -->
 
-      <div class="grid lg:grid-cols-3">
+      <div class="flex flex-col md:grid md:grid-cols-3">
         <!-- First column -->
         <div class="flex flex-col pb-2">
           <div

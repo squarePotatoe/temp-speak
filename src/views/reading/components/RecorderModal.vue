@@ -441,7 +441,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col overflow-auto">
+  <div class="flex flex-col overflow-auto max-h-[calc(100vh-2rem)]">
     <div class="flex w-full justify-end text-white">
       <button
         class="flex justify-end items-center gap-2 p-2 bg-amber-600 text-white font-semibold rounded-tr-lg rounded-bl-lg"
@@ -501,29 +501,50 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div v-else class="flex flex-col py-2">
-      <video class="h-32 md:h-fit" ref="videoRef" controls>
-        <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
-        <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
-      </video>
-      <div class="flex gap-2 items-center justify-center pt-2">
+    <div v-else class="flex py-2 items-center justify-evenly">
+      <div v-if="isRecordingNow && mediaType === 'video'">
+        <video
+          v-if="mediaType === 'video'"
+          id="preview"
+          class="max-h-48 rounded"
+          autoplay
+          muted
+        ></video>
+      </div>
+
+      <div v-else class="justify-center w-full flex">
+        <video class="w-full md:h-fit" ref="videoRef" controls>
+          <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
+          <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
+        </video>
+      </div>
+      <div class="flex w-1/3 flex-col gap-2 items-center justify-center pt-2">
+        <video
+          v-if="isRecordingNow && mediaType === 'video'"
+          class="w-full md:h-fit"
+          ref="videoRef"
+          controls
+        >
+          <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
+          <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
+        </video>
         <button
           @click="rewindTutorial"
-          class="flex justify-center p-2 bg-blue-600 text-white font-semibold rounded-lg"
+          class="flex justify-evenly w-full p-2 bg-blue-600 text-white font-semibold rounded-lg"
         >
           <span class="material-icons-outlined">replay_5</span>
-          Rewind 5s
+          -5s
         </button>
         <button
           @click="puaseTutorial"
-          class="flex justify-center p-2 bg-yellow-600 text-white font-semibold rounded-lg"
+          class="flex justify-center w-full p-2 bg-yellow-600 text-white font-semibold rounded-lg"
         >
           <span class="material-icons-outlined">pause</span>
           Pause
         </button>
         <button
           @click="playTutorial"
-          class="flex justify-center p-2 bg-green-600 text-white font-semibold rounded-lg"
+          class="flex justify-center w-full p-2 bg-green-600 text-white font-semibold rounded-lg"
         >
           <span class="material-icons-outlined">play_arrow</span>
           Play
@@ -532,18 +553,11 @@ onMounted(() => {
     </div>
 
     <div
-      class="flex flex-col p-4 bg-white w-full border-2 border-cyan-300 rounded-xl"
+      class="flex flex-col p-1 md:p-4 bg-white w-full border-2 border-cyan-300 rounded-xl"
     >
       <div class="flex flex-col gap-2">
         <div class="flex flex-col items-center gap-2">
           <div class="flex flex-col items-center" v-if="isRecordingNow">
-            <video
-              v-if="mediaType === 'video'"
-              id="preview"
-              class="max-h-48 rounded"
-              autoplay
-              muted
-            ></video>
             <div class="col-span-1 flex gap-2">
               <span class="text-red-700 font-medium text-sm md:text-xl"
                 >Recording Time: {{ Math.floor(time / 60) }}:{{
@@ -579,20 +593,23 @@ onMounted(() => {
             </div>
           </div>
           <div
-            class="flex flex-col relative border-2 rounded-xl border-cyan-100 p-2"
+            class="flex flex-col relative border-2 rounded-xl border-cyan-100 md:p-2"
           >
             <div
-              class="absolute top-0 left-0 px-2 border rounded-br-2xl bg-sky-500 text-white"
+              class="absolute top-0 left-0 px-2 border rounded-br-2xl rounded-tl-xl bg-sky-500 text-white"
             >
-              {{ currentId + 1 }}
+              <p class="text-sm md:text-md" v-html="currentId + 1"></p>
             </div>
-            <p class="p-4" v-html="selectedText.content[currentId].content"></p>
+            <p
+              class="p-4 text-sm"
+              v-html="selectedText.content[currentId].content"
+            ></p>
           </div>
         </div>
         <div class="flex gap-2 order-2 md:order-1">
           <div
             v-if="!isRecordingNow && !isFinished"
-            class="flex flex-col gap-2 pt-2 items-center justify-center w-full"
+            class="flex flex-col gap-2 items-center justify-center w-full"
           >
             <button
               @click="startRecording('audio')"
@@ -610,20 +627,22 @@ onMounted(() => {
             </button>
           </div>
 
-          <div class="flex w-full items-center justify-center gap-2">
+          <div
+            class="flex flex-col md:flex-row w-full items-center justify-center gap-2"
+          >
             <button
               v-if="currentId != 0"
               @click="viewPreviousText"
-              class="flex items-center gap-2 p-2 bg-yellow-400 text-white font-semibold rounded-lg"
+              class="flex items-center justify-center w-full gap-2 p-2 bg-yellow-400 text-white font-semibold rounded-lg order-2 md:order-1"
             >
               <span class="material-icons-outlined">arrow_left</span>
-              <span class="text-sm">Previous Paragraph</span></button
+              <span class="text-sm">Previous</span></button
             ><button
               v-if="currentId != props.currentTask.content.length - 1"
               @click="viewNextText"
-              class="flex items-center gap-2 p-2 bg-green-400 text-white font-semibold rounded-lg"
+              class="flex items-center justify-center w-full gap-2 p-2 bg-green-400 text-white font-semibold rounded-lg order-1 md:order-2"
             >
-              <span class="text-sm">Next Paragraph</span>
+              <span class="text-sm">Next</span>
               <span class="material-icons-outlined">arrow_right</span>
             </button>
           </div>

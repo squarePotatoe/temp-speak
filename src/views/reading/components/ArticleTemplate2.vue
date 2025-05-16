@@ -117,7 +117,7 @@ onMounted(() => {
 
       <!-- Main text section -->
 
-      <div class="grid lg:grid-cols-3">
+      <div class="flex flex-col md:grid md:grid-cols-3">
         <!-- First column -->
         <div class="flex flex-col pb-2">
           <div
@@ -251,7 +251,9 @@ onMounted(() => {
               </div>
             </div>
             <!-- Images area, more prominent for kids -->
-            <div class="flex flex-col gap-4 justify-center items-center w-48">
+            <div
+              class="flex md:flex-col gap-4 justify-center items-center md:w-48"
+            >
               <img
                 :src="currentTask.content[0].img"
                 alt="Related visual 1"
