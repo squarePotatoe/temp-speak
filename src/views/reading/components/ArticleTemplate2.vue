@@ -14,41 +14,30 @@ const props = defineProps({
   },
 });
 
-const currentTask = readingDemo.find((item) => item.id === 1);
+const chatBoxRef = ref(null);
+const isLoading = ref(false);
+
+const currentTask = readingDemo.find((item) => item.id === 2);
 const hasManyContent = currentTask.content.length > 2;
 
 const currentVocab = readingVocab.find((item) => item.id === currentTask.id);
 
 const isTutorialVisible = ref(false);
 
-const isRecordingNow = ref(false);
-
 function toggleTutorial() {
   isTutorialVisible.value = !isTutorialVisible.value;
 }
 
 const isReadingVisible = ref(false);
-const isRecorderVisible = ref(false);
 
 function toggleReading() {
   isReadingVisible.value = !isReadingVisible.value;
 }
 
-const selectedText = ref("");
-
 function toggleRecorder() {
   isRecorderVisible.value = !isRecorderVisible.value;
   console.log("Recorder toggled" + isRecorderVisible.value);
 }
-
-const isSidebarOpen = ref(false);
-const isLoading = ref(false);
-
-function toggleSidebar() {
-  isSidebarOpen.value = !isSidebarOpen.value;
-}
-
-const chatBoxRef = ref(null);
 
 function handleSubmitRecording({ blob, type }) {
   // Create a URL for the blob
@@ -62,6 +51,43 @@ function handleSubmitRecording({ blob, type }) {
   } else {
     console.error("ChatBox ref is not set or method does not exist");
   }
+}
+
+const isRecorderVisible = ref(false);
+const isAudioRecorded = ref(false);
+
+const selectedText = ref("");
+
+function recordAudio() {
+  // Simulate audio recording
+  setTimeout(() => {
+    isAudioRecorded.value = true;
+  }, 1000);
+}
+
+function replayAudio() {
+  alert("Replaying audio");
+}
+
+function reRecordAudio() {
+  isAudioRecorded.value = false;
+  recordAudio();
+}
+
+function submitAudio() {
+  alert("Audio submitted");
+  isAudioRecorded.value = false;
+  isRecorderVisible.value = false;
+}
+
+function recordVideo() {
+  alert("Recording video");
+}
+
+const isSidebarOpen = ref(false);
+
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value;
 }
 
 onMounted(() => {
@@ -81,16 +107,11 @@ onMounted(() => {
   <div>
     <div class="text-lg text-slate-800 w-full">
       <!-- Header section -->
-      <div class="flex flex-col max-w-4xl p-2 rounded-lg">
+      <div class="flex md:flex-col max-w-4xl p-2 rounded-lg">
         <div
           class="text-6xl font-sans text-slate-700 w-full text-center my-4 p-2 rounded-xl"
         >
           {{ currentTask.title }}
-        </div>
-        <div
-          class="flex flex-col gap-2 p-4 bg-gradient-to-br from-sky-100 via-blue-50 to-white border-2 border-sky-300 rounded-2xl shadow-md"
-        >
-          {{ currentTask.description }}
         </div>
       </div>
 
@@ -162,6 +183,7 @@ onMounted(() => {
         </div>
 
         <!-- Recorder modal -->
+        <!-- Recorder modal -->
         <div
           v-if="isRecorderVisible"
           class="fixed inset-0 z-50 flex items-center justify-center"
@@ -198,141 +220,123 @@ onMounted(() => {
             </button>
           </div>
           <div class="bg-blue-900 rounded-b-xl h-full">
-            <ChatBox ref="chatBoxRef" :courseId="1" />
+            <ChatBox ref="chatBoxRef" :courseId="2" />
           </div>
         </div>
 
         <!-- Second column -->
 
-        <div class="flex flex-col col-span-2 gap-6">
-          <div class="flex flex-col">
-            <h2
-              class="flex items-center gap-2 text-3xl font-bold text-sky-800 p-3 bg-gradient-to-r from-sky-200 to-blue-100 w-fit rounded-t-2xl shadow-md mx-2"
-            >
-              <span class="material-icons text-sky-400 text-3xl"
-                >menu_book</span
-              >
-              {{ currentTask.content[0].header }}
-            </h2>
+        <div class="flex flex-col col-span-2 gap-8">
+          <!-- Section 1: Main Reading Card -->
+          <div class="flex flex-col md:flex-row gap-6 items-stretch">
             <div
-              class="relative flex flex-col p-6 bg-white border-2 border-sky-300 rounded-b-2xl rounded-tr-2xl mx-2 shadow-lg"
+              class="flex-1 flex flex-col justify-between bg-white/90 rounded-3xl shadow-xl border-4 border-pink-200 p-8 min-h-[220px] relative"
             >
-              <div
-                class="absolute top-0 left-0 px-2 border rounded-br-2xl bg-sky-500 text-white"
-              >
-                1
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-pink-400 text-4xl"
+                  >menu_book</span
+                >
+                <div
+                  class="text-2xl font-extrabold text-pink-700 drop-shadow-sm"
+                >
+                  {{ currentTask.content[0].header }}
+                </div>
               </div>
-
-              <span class="text-xl text-slate-700 font-medium leading-relaxed">
-                {{ currentTask.content[0].content }}
-              </span>
-              <button
-                @click="toggleRecorder(0)"
-                class="absolute flex bottom-4 right-4 p-2 items-center gap-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full text-white font-semibold shadow hover:scale-105 transition"
+              <div
+                class="text-xl text-slate-700 leading-relaxed font-medium mb-4"
               >
-                <span class="material-icons-outlined text-lg">mic</span>
-                Record
-              </button>
+                {{ currentTask.content[0].content }}
+              </div>
+            </div>
+            <!-- Images area, more prominent for kids -->
+            <div class="flex flex-col gap-4 justify-center items-center w-48">
+              <img
+                :src="currentTask.content[0].img"
+                alt="Related visual 1"
+                class="w-40 h-40 object-cover rounded-2xl border-4 border-indigo-300 shadow-lg bg-white"
+              />
+              <img
+                :src="currentTask.content[1].img"
+                alt="Related visual 2"
+                class="w-40 h-40 object-cover rounded-2xl border-4 border-pink-300 shadow-lg bg-white"
+              />
             </div>
           </div>
 
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="flex flex-col">
-              <h2
-                class="flex items-center gap-2 text-2xl font-bold text-sky-800 p-3 bg-gradient-to-r from-sky-200 to-blue-100 w-fit rounded-t-2xl shadow-md mx-2"
-              >
-                <span class="material-icons text-sky-400 text-2xl"
+          <!-- Section 2 and Idiom: Two cards side by side -->
+          <div class="grid md:grid-cols-2 gap-8">
+            <div
+              class="flex flex-col bg-white/90 rounded-3xl shadow-xl border-4 border-indigo-200 p-8 relative min-h-[180px]"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-icons text-indigo-400 text-3xl"
                   >auto_stories</span
                 >
-                {{ currentTask.content[1].header }}
-              </h2>
-              <div
-                class="relative flex flex-col p-6 bg-white border-2 border-sky-300 rounded-b-2xl rounded-tr-2xl mx-2 shadow-lg"
-              >
-                <div
-                  class="absolute top-0 left-0 px-2 border rounded-br-2xl bg-sky-500 text-white"
-                >
-                  2
-                </div>
-                <span
-                  class="text-xl text-slate-700 font-medium leading-relaxed"
-                >
-                  {{ currentTask.content[1].content }}
-                </span>
-                <button
-                  @click="toggleRecorder(1)"
-                  class="absolute flex bottom-4 right-4 p-2 items-center gap-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full text-white font-semibold shadow hover:scale-105 transition"
-                >
-                  <span class="material-icons-outlined text-lg">mic</span>
-                  Record
-                </button>
+                <h2 class="text-3xl font-bold text-indigo-700">
+                  {{ currentTask.content[1].header }}
+                </h2>
+              </div>
+              <div class="text-xl text-slate-700 font-medium mb-4">
+                {{ currentTask.content[1].content }}
               </div>
             </div>
-            <div class="flex px-2">
-              <div class="flex flex-col py-2 animate-slide-up w-full">
-                <div
-                  class="flex items-center gap-2 text-xl font-bold text-white p-3 bg-gradient-to-r from-emerald-600 to-emerald-400 w-fit rounded-t-2xl shadow-md"
+            <div
+              class="flex flex-col bg-gradient-to-br from-emerald-200 via-emerald-100 to-white rounded-3xl shadow-xl border-4 border-emerald-300 p-8"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="material-icons text-emerald-500 text-3xl"
+                  >emoji_objects</span
                 >
-                  <span class="material-icons text-yellow-200 text-2xl"
-                    >emoji_objects</span
-                  >
-                  <h2>An idiom to remember</h2>
-                </div>
+                <h2 class="text-2xl font-extrabold text-emerald-800">
+                  An idiom to remember
+                </h2>
+              </div>
+              <div class="flex flex-col items-center">
                 <div
-                  class="col-span-1 flex flex-col text-left h-full justify-center rounded-b-2xl rounded-tr-2xl p-6 bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-400 text-white shadow-lg"
+                  class="border-4 rounded-2xl border-white p-6 bg-emerald-700 bg-opacity-80 w-full text-center"
                 >
-                  <div class="border-2 rounded-xl border-white p-4">
-                    <div class="text-lg font-semibold italic">
-                      "{{ currentTask.idiom.expression }}"
-                    </div>
-                    <div class="text-base mt-2">
-                      {{ currentTask.idiom.meaning }}
-                    </div>
+                  <div class="text-2xl font-bold italic text-white mb-2">
+                    "{{ currentTask.idiom.expression }}"
+                  </div>
+                  <div class="text-lg text-white">
+                    {{ currentTask.idiom.meaning }}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Spacer -->
-          <div class="flex flex-col mx-2"></div>
-          <div class="flex flex-col gap-4 md:flex-row">
+
+          <!-- Section 3: More Reading Cards -->
+          <div class="flex flex-col md:flex-row gap-8">
             <div
-              class="relative flex flex-col p-6 bg-white border-2 border-cyan-300 rounded-2xl mx-2 shadow-lg flex-1"
+              class="relative flex flex-col bg-white/90 border-4 border-cyan-300 rounded-3xl shadow-xl p-8 min-h-[140px] flex-1"
             >
-              <div
-                class="absolute top-0 left-0 px-2 border rounded-br-2xl rounded-tl-2xl bg-sky-500 text-white"
-              >
-                3
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-icons text-cyan-400 text-2xl"
+                  >record_voice_over</span
+                >
+                <span class="text-xl font-bold text-cyan-700"
+                  >Try reading this!</span
+                >
               </div>
-              <span class="text-xl text-slate-700 font-medium leading-relaxed">
+              <div class="text-xl text-slate-700 font-medium mb-4">
                 {{ currentTask.content[3].content }}
-              </span>
-              <button
-                @click="toggleRecorder(3)"
-                class="absolute flex bottom-4 right-4 p-2 items-center gap-1 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full text-white font-semibold shadow hover:scale-105 transition"
-              >
-                <span class="material-icons-outlined text-lg">mic</span>
-                Record
-              </button>
+              </div>
             </div>
             <div
-              class="relative flex flex-col p-6 bg-white border-2 border-cyan-300 rounded-2xl mx-2 shadow-lg flex-1"
+              class="relative flex flex-col bg-white/90 border-4 border-cyan-300 rounded-3xl shadow-xl p-8 min-h-[140px] flex-1"
             >
-              <div
-                class="absolute top-0 left-0 px-2 border rounded-br-2xl rounded-tl-2xl bg-sky-500 text-white"
-              >
-                4
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-icons text-cyan-400 text-2xl"
+                  >record_voice_over</span
+                >
+                <span class="text-xl font-bold text-cyan-700"
+                  >Try reading this!</span
+                >
               </div>
-              <span class="text-xl text-slate-700 font-medium leading-relaxed">
+              <div class="text-xl text-slate-700 font-medium mb-4">
                 {{ currentTask.content[4].content }}
-              </span>
-              <button
-                @click="toggleRecorder(4)"
-                class="absolute flex bottom-4 right-4 p-2 items-center gap-1 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full text-white font-semibold shadow hover:scale-105 transition"
-              >
-                <span class="material-icons-outlined text-lg">mic</span>
-                Record
-              </button>
+              </div>
             </div>
           </div>
         </div>

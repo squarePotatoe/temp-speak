@@ -1,6 +1,9 @@
 import food from './assets/foods.png'
 import space from './assets/space.png'
 import skysurfing from './assets/skysurfing.png'
+import tongue1 from './assets/tongue1.jpeg'
+import tongue2 from './assets/tongue2.jpeg'
+import tongue3 from './assets/tongue3.jpeg'
 
 export const links = [
   {
@@ -344,7 +347,7 @@ export const textFormatDemo = [
     activity: 'Writing',
     title: 'Formal Email Writing',
     description: 'Learn how to write a formal email with the correct format and tone.',
-    course: 'DSE paper 2',
+    course: 'iSpeakPerfect - 360',
     purpose: 'Write an email to the sales manager',
     targetAudience: 'Sales manager',
     tone: 'Professional',
@@ -494,8 +497,8 @@ export const readingDemo = [
     id: 1,
     textType: 'Article',
     activity: 'Reading',
-    title: 'The Art of Skysurfing',
-    description: 'An exciting sport that combines skydiving and surfing',
+    title: 'The Art and Adventure of Skysurfing',
+    description: 'Defying Gravity: The Art and Adventure of Skysurfing',
     course: 'iSpeakPerfect - 360',
     purpose: 'Learn about the sport of skysurfing and practice reading comprehension skills',
     targetAudience: 'Writing club members',
@@ -509,33 +512,78 @@ export const readingDemo = [
     content: [
       {
         header: 'What is Skysurfing?',
-        content: 'Skysurfing is a high-adrenaline sport that combines the excitement of skydiving with the thrill of surfing. In this article, we will explore the history of skysurfing, the equipment needed, and the safety measures required to enjoy this extreme sport.',
+        content: ` Skysurfing, an electrifying blend of skydiving and surfing, catapults daredevils into the boundless blue, where gravity is both adversary and ally. As the winds rush past and the earth below shrinks to a patchwork of colours, skysurfers dance with the clouds, defying conventional notions of human limitations.`,
         img: skysurfing,
       },
       {
         header: 'History of Skysurfing',
-        content: 'Skysurfing originated in the 1980s when skydivers began experimenting with attaching surfboards to their feet during freefall. The sport gained popularity in the 1990s and has since become a staple of extreme sports competitions.',
+        content: `Dating back to the late 1980s, skysurfing emerged as an audacious offshoot of skydiving. Visionaries like Patrick de Gayardon and Jerry Loftis pioneered this extreme sport, strapping customised surfboards to their feet and taking to the skies. With practice and innovation, skysurfing evolved into a symphony of skill and spectacle, captivating audiences worldwide.`,
         img: skysurfing,
       },
       {
         header: 'Equipment Needed',
-        content: 'To skysurf, you will need a specially designed board that is attached to your feet. This board allows you to perform surfing maneuvers while freefalling through the air. Additionally, you will need a jumpsuit, helmet, and goggles for safety.',
+        content: `The allure of skysurfing lies not only in its adrenaline-fueled thrills but also in its technical mastery. From the moment the skysurfer leaps from the aircraft, they navigate a precarious ballet of spins, flips, and dives, harnessing the air currents to execute gravity-defying manoeuvres. Every twist and turn demands precision and finesse, as the slightest miscalculation could spell disaster.`,
         img: skysurfing,
       },
       {
         header: 'Safety Measures',
-        content: 'Skysurfing can be dangerous, so it is essential to follow safety measures to prevent accidents. Proper training, equipment maintenance, and adherence to safety guidelines are crucial for a safe and enjoyable skysurfing experience.',
+        content: ` In the quest for glory, skysurfers have shattered records and defied expectations. Among them, Keith Edward Snyder stands out for his extraordinary achievements. On November 1, 2021, over the iconic backdrop of the Pyramids of Giza, Snyder mesmerised the world by completing an astounding 160 helicopter spins from a jump height of 13,500 feet, all in less than 60 seconds of freefall. In August 2022, he surpassed his own record by an astonishing 15 spins, totalling an incredible 175 spins!`,
         img: skysurfing,
       },
       {
         header: 'Conclusion',
-        content: 'In conclusion, skysurfing is a thrilling and unique sport that offers an adrenaline rush like no other. With the right equipment, training, and safety measures, anyone can experience the joy of surfing the sky.',
+        content: `Despite its awe-inspiring feats, skysurfing is not without its risks. Each ascent into the heavens carries the weight of uncertainty, and every descent demands unwavering focus and composure. Yet, for those who dare to defy gravity, the rewards are immeasurable—a fleeting moment of euphoria suspended between earth and sky, where the boundaries of human potential dissolve into the vastness of the horizon, leaving one feeling on top of the world.`,
         img: skysurfing,
       }
 
     ]
 
-  }
+  },
+    {
+    id: 2,
+    textType: 'Article',
+    activity: 'Reading',
+    title: 'The Mighty Tongue',
+    description: 'An informative article about the human tongue and its functions',
+    course: 'iSpeakPerfect - 360',
+    purpose: 'Learn about the sport of skysurfing and practice reading comprehension skills',
+    targetAudience: 'Writing club members',
+    tone: 'Informative',
+    idiom: {
+      expression: 'Bite your tongue',
+      meaning: 'To "bite your tongue" means to stop yourself from saying something, usually to avoid causing offense or trouble. For example, if you want to say something rude but decide not to, you are biting your tongue.',
+  },
+    factoid: 'A fascinating fact about skysurfing',
+    image: tongue3,
+    content: [
+      {
+        header: 'What does it do?',
+        content: 'Our tongue helps us taste food and swallow it. Our tongue is a muscle that can move in different directions. We use our tongue to make different sounds when we talk.',
+        img: tongue1,
+      },
+      {
+        header: 'Something interesting',
+        content: 'Our tongue has tiny bumps called taste buds that help us taste different flavours - like sweet, sour, salty, and bitter. Did you know that some animals, like snakes, use their tongue to smell things?',
+        img: tongue2,
+      },
+      {
+        header: '',
+        content: 'Our tongue can get burned by hot food or drinks. We can keep our tongue healthy by drinking plenty of water and brushing our teeth regularly. Our tongue can even tell us some things about our health! For example, a white coating on our tongue might mean we have a cold or a virus.',
+        img: skysurfing,
+      },
+      {
+        header: '',
+        content: 'Some people have a condition called "tongue-tie" where a small piece of skin under their tongue is too short and makes it hard to move their tongue.',
+        img: skysurfing,
+      },
+      {
+        header: 'Conclusion',
+        content: `In summary, our tongue helps us taste and swallow food, and it's a muscle that can move in different directions. Finally, did you know that our tongue is the strongest muscle in our body for its size?`,
+        img: skysurfing,
+      }
+    ]
+  },
+
 ]
 
 export const readingVocab = [
@@ -584,6 +632,55 @@ export const readingVocab = [
         word: 'Adherence',
         definition: 'The act of following or obeying a rule or guideline',
         example: 'Adherence to safety measures is crucial for a safe and enjoyable skysurfing experience.',
+        img: skysurfing,
+      }
+    ]
+  },
+  {
+    id: 2,
+    parentTitle: 'The Mighty Tongue',
+    parentId: 2,
+    vocab: [
+      {
+        id: 1,
+        word: 'Tongue',
+        definition: 'A muscle in the mouth that helps us taste, swallow, and speak',
+        example: 'Our tongue helps us taste food and swallow it.',
+        img: skysurfing,
+      },
+      {
+        id: 2,
+        word: 'Taste buds',
+        definition: 'Tiny bumps on the tongue that help us taste different flavours',
+        example: 'Taste buds help us taste sweet, sour, salty, and bitter foods.',
+        img: skysurfing,
+      },
+      {
+        id: 3,
+        word: 'Muscle',
+        definition: 'A tissue in the body that can contract and move parts of the body',
+        example: 'The tongue is a muscle that can move in different directions.',
+        img: skysurfing,
+      },
+      {
+        id: 4,
+        word: 'Tongue-tie',
+        definition: 'A condition where a small piece of skin under the tongue is too short, making it hard to move the tongue',
+        example: 'Some people have tongue-tie and find it hard to move their tongue.',
+        img: skysurfing,
+      },
+      {
+        id: 5,
+        word: 'Flavour',
+        definition: 'The taste of something, such as sweet, sour, salty, or bitter',
+        example: 'Our tongue helps us taste different flavours in food.',
+        img: skysurfing,
+      },
+      {
+        id: 6,
+        word: 'Healthy',
+        definition: 'Being in good health or condition',
+        example: 'We can keep our tongue healthy by drinking water and brushing our teeth.',
         img: skysurfing,
       }
     ]

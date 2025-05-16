@@ -40,7 +40,7 @@
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >
         <RouterLink
-          to="/history"
+          to="/"
           class="text-gray-600 hover:text-indigo-800 flex w-full"
           @click="isOpen = !isOpen"
         >
@@ -59,61 +59,59 @@
       <div
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >
-      <RouterLink
-          to="/profile"
+        <RouterLink
+          to="/"
           class="text-gray-600 hover:text-indigo-800 flex w-full"
           @click="isOpen = !isOpen"
         >
-        <span class="material-icons-outlined mr-2">face</span>
-        Profile
-        <span class="material-icons-outlined ml-auto"
-          >keyboard_arrow_right</span
-        >
-      </RouterLink>
-
+          <span class="material-icons-outlined mr-2">face</span>
+          Profile
+          <span class="material-icons-outlined ml-auto"
+            >keyboard_arrow_right</span
+          >
+        </RouterLink>
       </div>
 
       <div
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >
-      <RouterLink
+        <RouterLink
           to="/"
           class="text-gray-600 hover:text-indigo-800 flex w-full"
           @click="isOpen = !isOpen"
         >
-        <span class="material-icons-outlined mr-2">power_settings_new</span>
-        Log out
-        <span class="material-icons-outlined ml-auto"
-          >keyboard_arrow_right</span
-        >
-      </RouterLink>
-
+          <span class="material-icons-outlined mr-2">power_settings_new</span>
+          Log out
+          <span class="material-icons-outlined ml-auto"
+            >keyboard_arrow_right</span
+          >
+        </RouterLink>
       </div>
     </div>
   </aside>
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
-import { links } from '@/data.js'
+import { computed, ref, watch } from "vue";
+import { links } from "@/data.js";
 
 const props = defineProps({
   open: Boolean,
-})
+});
 
-const isOpen = ref(false)
+const isOpen = ref(false);
 
 watch(
   () => props.open,
   (value) => {
-    isOpen.value = value
+    isOpen.value = value;
   }
-)
+);
 
 const sidebarClasses = computed(() => {
   return {
-    'tranlate-x-full': !isOpen.value,
-    'translate-x-0': isOpen.value,
-  }
-})
+    "tranlate-x-full": !isOpen.value,
+    "translate-x-0": isOpen.value,
+  };
+});
 </script>

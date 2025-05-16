@@ -1,58 +1,59 @@
 <template>
   <div>
     <div
-      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-6xl"
+      class="max-w-md md:max-w-6xl mx-auto bg-gradient-to-br from-white via-indigo-50 to-blue-100 rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl"
     >
-      <div class="md:flex w-full">
+      <div class="flex flex-col md:flex-row w-full">
         <div class="md:shrink-0">
           <img
-            class="h-48 w-full md:h-full md:w-48"
+            class="h-48 w-full md:h-full md:w-72"
             :src="img"
             alt="Class Image"
           />
         </div>
-        <div class="p-8 md:flex-1">
-          <div
-            class="uppercase tracking-wide underline animate-pulse text-indigo-500 font-semibold"
-          >
-            {{ activity }}
+        <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+          <div>
+            <div
+              class="uppercase tracking-wide underline animate-pulse text-indigo-500 font-semibold text-sm md:text-base"
+            >
+              {{ activity }}
+            </div>
+            <RouterLink
+              :to="classLink"
+              class="block mt-2 text-2xl md:text-3xl leading-tight font-bold text-indigo-900 hover:underline"
+            >
+              {{ title }}
+            </RouterLink>
+            <p class="mt-2 text-slate-600 text-base md:text-lg">
+              {{ description }}
+            </p>
           </div>
-          <RouterLink
-            to="/writing"
-            class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
-          >
-            {{ title }}
-          </RouterLink>
-          <p class="mt-2 text-slate-500">
-            {{ description }}
-          </p>
-          <p class="mt-4">
-            Teacher: <span class="text-indigo-500">{{ teacher }}</span>
-          </p>
-          <p>
-            Date: <span class="text-indigo-500">{{ date }}</span>
-          </p>
-          <p>
-            Time: <span class="text-indigo-500">{{ time }}</span>
-          </p>
+          <div class="mt-4 flex flex-wrap gap-4 text-sm md:text-base">
+            <span>
+              <span class="font-semibold text-slate-700">Teacher:</span>
+              <span class="text-indigo-500">{{ teacher }}</span>
+            </span>
+            <span>
+              <span class="font-semibold text-slate-700">Date:</span>
+              <span class="text-indigo-500">{{ date }}</span>
+            </span>
+          </div>
         </div>
-        
-        <div class="flex md:flex-col items-center justify-between p-4 md:p-2">
-          <p class="tag">
+        <div
+          class="flex flex-row md:flex-col items-center justify-between p-4 md:p-2 gap-2 md:gap-4 bg-white/70"
+        >
+          <p
+            class="tag bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-semibold text-xs md:text-sm"
+          >
             {{ course }}
           </p>
-          <div class="flex items-end p-4">
           <RouterLink
             :to="classLink"
-            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full shadow transition text-base md:text-lg"
           >
             View
           </RouterLink>
         </div>
-
-        </div>
-
-
       </div>
     </div>
   </div>
@@ -68,6 +69,6 @@ const props = defineProps({
   time: String,
   img: String,
   course: String,
-  classLink: String
-})
+  classLink: String,
+});
 </script>
