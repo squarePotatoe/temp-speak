@@ -86,7 +86,7 @@ const todayIndex = computed(() => {
             class="w-4 mx-auto rounded-full"
             :class="{
               'bg-amber-500 h-32': loginsByDay[index] > 0, // Login exists
-              'bg-red-400 h-16': loginsByDay[index] === 0 && index < todayIndex, // Day has passed with no login
+              'bg-red-200 h-16': loginsByDay[index] === 0 && index < todayIndex, // Day has passed with no login
               'bg-gray-200 h-16': index > todayIndex, // Upcoming days
             }"
           ></div>
@@ -109,7 +109,7 @@ const todayIndex = computed(() => {
         </div>
       </div>
       <RouterLink
-        to="/profile"
+        :to="{ path: '/profile', query: { activeTab: 'history' } }"
         class="text-sm text-amber-500 font-semibold border rounded-xl border-amber-500 p-2 hover:bg-amber-500 hover:text-white transition duration-300 ease-in-out"
       >
         View Login History

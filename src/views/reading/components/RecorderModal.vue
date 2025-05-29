@@ -503,7 +503,7 @@ onMounted(() => {
 
       <!-- Recorder Area -->
       <div
-        class="flex flex-col flex-1 items-center justify-center bg-white rounded-xl shadow-lg p-3 md:p-6 min-h-[220px]"
+        class="flex flex-col flex-1 bg-white rounded-xl shadow-lg p-3 md:p-6 min-h-[220px]"
       >
         <!-- Review Area -->
         <div

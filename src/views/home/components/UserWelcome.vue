@@ -72,6 +72,8 @@ onMounted(() => {
     });
   }
 });
+
+const goals = ref("goals");
 </script>
 
 <template>
@@ -81,11 +83,11 @@ onMounted(() => {
         class="grid grid-cols-2 bg-white border-slate-100 shadow rounded-xl animate-fade-in border-2 p-2 h-full"
       >
         <div
-          class="flex flex-col justify-center items-center text-xl text-teal-900"
+          class="flex flex-col justify-center items-center text-xl text-amber-500"
         >
           Welcome back, <br /><strong class="text-3xl"> Patrick </strong>
           <span
-            class="inline-block w-fit mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-teal-500"
+            class="inline-block w-fit mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-amber-600"
           >
             {{ formattedTime }}
           </span>
@@ -97,7 +99,7 @@ onMounted(() => {
                 class="material-icons-outlined animate-pulse text-orange-600 p-2"
                 >rocket_launch</span
               >
-              Login streak: 8 days
+              Login streak: 2 days
             </div>
           </div>
         </div>
@@ -106,8 +108,8 @@ onMounted(() => {
             <canvas ref="donutChartRef" class="h-42 w-42"> </canvas>
           </div>
           <RouterLink
-            to="/profile#goals"
-            class="text-xl font-semibold text-gray-700 mt-4 hover:text-teal-500"
+            :to="{ path: '/profile', query: { activeTab: 'goals' } }"
+            class="text-xl font-semibold text-gray-700 mt-4 hover:text-gray-500"
           >
             My goal
           </RouterLink>

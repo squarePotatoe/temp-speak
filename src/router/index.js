@@ -45,6 +45,12 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       redirect: '/',
+    },
+    {
+      path: '/report',
+      name: 'report',
+      meta: { layout: MainLayout },
+      component: () => import('../views/report/ReportView.vue'),
     }
 
   ],

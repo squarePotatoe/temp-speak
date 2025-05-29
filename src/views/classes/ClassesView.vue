@@ -10,6 +10,7 @@ import {
 import skysurfing from "@/assets/skysurfing.png";
 import tongue3 from "@/assets/tongue3.jpeg";
 import space from "@/assets/space.png";
+import fastFashion from "@/assets/fastFashion.jpg";
 
 const redingLesson = readingDemo.find((item) => item.id === 1);
 
@@ -23,20 +24,6 @@ const redingLesson2 = readingDemo.find((item) => item.id === 2);
     >
       <div class="flex flex-col">
         <h1 class="font-semibold text-gray-800 my-4">Next class</h1>
-
-        <!-- <div class="p-2">
-        <ClassCard
-          :title="nextLesson.title"
-          :activity="nextLesson.activity"
-          :img="space"
-          :description="nextLesson.description"
-          teacher="John Doe"
-          date="15 October 2025, Wednesday"
-          time="Start 18:00 End 19:00"
-          :course="nextLesson.course"
-          class-link="/writing"
-        />
-      </div> -->
 
         <div class="p-2">
           <ClassCard
@@ -61,11 +48,24 @@ const redingLesson2 = readingDemo.find((item) => item.id === 2);
           teacher=" Mike"
           date=" 17 May 2025, Saturday"
           time=" Start 18:00 End 19:00"
-          course="iSpeakPerfect 360"
+          course="Vocabulary Building"
           :class-link="`/reading/${2}`"
         />
       </div>
 
+      <div class="p-2">
+        <ClassCard
+          title="Email Writing"
+          activity="Writing"
+          :img="fastFashion"
+          description="You work in the sales deparment at Fast Fashion, an online company that sells clothes..."
+          teacher="John Doe"
+          date="15 October 2025, Wednesday"
+          time="Start 18:00 End 19:00"
+          course="Writing Brilliance"
+          class-link="/writing"
+        />
+      </div>
       <h1 class="font-semibold text-gray-800 my-4">My courses</h1>
       <div class="grid md:grid-cols-3 gap-4 p-4">
         <div v-for="entries in courses" :key="entries.id">

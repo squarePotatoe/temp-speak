@@ -686,3 +686,27 @@ export const readingVocab = [
     ]
   }
 ]
+
+export const readingFeedback = [
+  {
+    message: "Great reading! You kept a steady pace and answered the previous question well. If a word feels tricky—like 'curious'—try reading it twice to build confidence.",
+    question: "Have you ever been really curious about something? What did you do to learn more?",
+    vocabulary: ["Curious [kyoo-ree-uhs]", "Discover [dis-kuhv-er]", "Knowledge [nol-ij]", "Investigate [in-ves-ti-geyt]", "Explore [ik-splor]"],
+    date: "2025-05-27",
+    time: "10:00 AM",
+  },
+  {
+    message: "Fantastic job today! Your pronunciation was clear, and you gave great attention to the details in the story. Keep practicing those difficult words, and try emphasizing important moments in the text.",
+    question: "Can you think of a time when you had to explain something clearly to someone? How did you do it?",
+    vocabulary: ["Explain [ik-spleyn]", "Detail [dee-teyl]", "Emphasis [em-fuh-sis]", "Pronounce [pruh-nouns]", "Expression [ik-spresh-uhn]"],
+        date: "2025-05-29",
+    time: "10:00 AM",
+  },
+  {
+    message: "Well done! Your reading flow was natural, and you’re improving every week. Try reading different types of stories to challenge yourself even more.",
+    question: "What type of stories do you enjoy the most? Why?",
+    vocabulary: ["Story [stohr-ee]", "Genre [zhahn-ruh]", "Imagination [ih-maj-uh-ney-shuhn]", "Characters [kar-ik-ters]", "Plot [plot]"],
+        date: "2025-05-28",
+    time: "10:00 AM",
+  }
+];

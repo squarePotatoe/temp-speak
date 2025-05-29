@@ -1,117 +1,3 @@
-<template>
-  <div>
-    <main
-      class="container relative justify-between h-[calc(100vh-74px)] max-w-6xl mx-auto mt-5"
-    >
-      <UserWelcome :formattedTime="formattedTime" />
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <RouterLink :to="`/reading/${1}`" class="home-card animate-slide-up">
-          <div>
-            <span
-              class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
-            ></span>
-            <div class="text-2xl font-bold text-teal-700">Next lesson</div>
-          </div>
-          <hr class="text-gray-300 my-2" />
-          <div>
-            <div class="flex flex-col justify-between gap-2 mt-2">
-              <div class="flex flex-col gap-2">
-                <div class="text-xl font-semibold text-purple-700">
-                  The Art of Skysurfing
-                </div>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  An exciting sport that combines skydiving and surfing
-                </p>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  Skysurfing is a high-adrenaline sport that combines the
-                  excitement of skydiving with the thrill of surfing...
-                </p>
-              </div>
-              <div class="flex items-center justify-between relative">
-                <p class="text-gray-500 border border-gray-300 rounded p-2">
-                  Patricia
-                </p>
-                <p class="tag max-w-fit">Reading</p>
-              </div>
-            </div>
-          </div>
-        </RouterLink>
-        <RouterLink :to="`/reading/${2}`" class="home-card animate-slide-up">
-          <div>
-            <span
-              class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
-            ></span>
-            <div class="text-2xl font-bold text-teal-700">Next lesson</div>
-          </div>
-          <hr class="text-gray-300 my-2" />
-          <div>
-            <div class="flex flex-col justify-between gap-2 mt-2">
-              <div class="flex flex-col gap-2">
-                <div class="text-xl font-semibold text-purple-700">
-                  The Mighty Tongue
-                </div>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  An exciting sport that combines skydiving and surfing
-                </p>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  Skysurfing is a high-adrenaline sport that combines the
-                  excitement of skydiving with the thrill of surfing...
-                </p>
-              </div>
-              <div class="flex items-center justify-between relative">
-                <p class="text-gray-500 border border-gray-300 rounded p-2">
-                  Abby
-                </p>
-                <p class="tag max-w-fit">Reading</p>
-              </div>
-            </div>
-          </div>
-        </RouterLink>
-      </div>
-
-      <div class="flex flex-col mt-6 lg:flex-row gap-4 mb-6">
-        <div
-          class="flex-1 bg-orange-100 border border-indigo-200 rounded-xl p-6 animate-fade-in"
-        >
-          <div class="text-2xl font-bold text-teal-700">My Summary</div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div class="bg-white rounded-xl p-4 shadow">
-              <div class="text-lg font-semibold mb-2">Attendance Calendar</div>
-              <ul class="text-sm">
-                <li>
-                  <span
-                    class="inline-block w-3 h-3 rounded-full bg-green-400 mr-2"
-                  ></span>
-                  Logged in / Submitted
-                </li>
-                <li>
-                  <span
-                    class="inline-block w-3 h-3 rounded-full bg-pink-400 mr-2"
-                  ></span>
-                  Missed Assignment / No Login
-                </li>
-              </ul>
-              <div class="flex items-center justify-center mt-4">
-                <VCalendar :attributes="calendarAttributes" is-expanded />
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow">
-              <Doughnut :data="performanceData" :options="performanceOptions" />
-            </div>
-          </div>
-          <span
-            class="inline-block mt-8 px-8 py-2 rounded-full text-xl font-bold text-white bg-indigo-800"
-          >
-            Read more
-          </span>
-        </div>
-      </div>
-    </main>
-    <!-- <Features /> -->
-  </div>
-</template>
-
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import { textFormatDemo } from "@/data";
@@ -130,6 +16,8 @@ import {
   LinearScale,
   ArcElement,
 } from "chart.js";
+import QuizBarChart from "@/components/QuizBarChart.vue";
+import WeeklyReportCard from "./components/WeeklyReportCard.vue";
 
 ChartJS.register(
   Title,
@@ -233,10 +121,10 @@ function makeDate(day) {
   return new Date(year, month, day);
 }
 
-const missedDays = [5, 12, 18];
-const loggedDays = [
-  1, 2, 6, 7, 9, 10, 13, 14, 16, 17, 19, 20, 21, 22, 24, 26, 28, 29, 30,
-];
+const missedDays = [5, 9, 12, 15, 27];
+const loggedDays = [6, 7, 8, 13, 14, 16, 19, 20, 21, 22, 23, 26, 28];
+const upcommingDays = [30];
+const todayDate = [29];
 
 const calendarAttributes = [
   {
@@ -263,6 +151,30 @@ const calendarAttributes = [
       label: "Missed Assignment / No Login",
     },
   },
+  {
+    key: "upcoming",
+    dates: upcommingDays.map(makeDate),
+    highlight: {
+      color: "purple",
+      fillMode: "solid",
+      class: "bg-purple-400 text-white",
+    },
+    popover: {
+      label: "Upcoming Assignment",
+    },
+  },
+  {
+    key: "today",
+    dates: todayDate.map(makeDate),
+    highlight: {
+      color: "purple",
+      fillMode: "outline",
+      class: "bg-purple-400 text-white",
+    },
+    popover: {
+      label: "Today / Not submitted",
+    },
+  },
 ];
 
 onMounted(() => {
@@ -272,3 +184,139 @@ onMounted(() => {
   });
 });
 </script>
+
+<template>
+  <div>
+    <main
+      class="container relative justify-between min-h-[calc(100vh-74px)] max-w-6xl mx-auto mt-5 p-2 md:p-0"
+    >
+      <UserWelcome :formattedTime="formattedTime" />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <RouterLink :to="`/reading/${1}`" class="home-card animate-slide-up">
+          <div>
+            <span
+              class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
+            ></span>
+            <div class="text-2xl font-bold text-amber-500">Next lesson</div>
+          </div>
+          <hr class="text-gray-300 my-2" />
+          <div>
+            <div class="flex flex-col justify-between gap-2 mt-2">
+              <div class="flex flex-col gap-2">
+                <div class="text-xl font-semibold text-purple-700">
+                  The Art of Skysurfing
+                </div>
+                <p class="text-sm leading-tight font-semibold text-gray-600">
+                  An exciting sport that combines skydiving and surfing
+                </p>
+                <p class="text-sm leading-tight font-semibold text-gray-600">
+                  Skysurfing is a high-adrenaline sport that combines the
+                  excitement of skydiving with the thrill of surfing...
+                </p>
+              </div>
+              <div class="flex items-center justify-between relative">
+                <p class="text-gray-500 border border-gray-300 rounded p-2">
+                  Patricia
+                </p>
+                <p class="tag max-w-fit">iSpeakPerfect 360</p>
+              </div>
+            </div>
+          </div>
+        </RouterLink>
+        <RouterLink :to="`/reading/${2}`" class="home-card animate-slide-up">
+          <div>
+            <span
+              class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
+            ></span>
+            <div class="text-2xl font-bold text-amber-500">Next lesson</div>
+          </div>
+          <hr class="text-gray-300 my-2" />
+          <div>
+            <div class="flex flex-col justify-between gap-2 mt-2">
+              <div class="flex flex-col gap-2">
+                <div class="text-xl font-semibold text-purple-700">
+                  The Mighty Tongue
+                </div>
+                <p class="text-sm leading-tight font-semibold text-gray-600">
+                  Our tongue helps us taste food and swallow it.
+                </p>
+                <p class="text-sm leading-tight font-semibold text-gray-600">
+                  Our tongue is a muscle that can move in different directions
+                  We use our tongue to make different sounds ...
+                </p>
+              </div>
+              <div class="flex items-center justify-between relative">
+                <p class="text-gray-500 border border-gray-300 rounded p-2">
+                  Abby
+                </p>
+                <p class="tag max-w-fit">Vocabulary Building</p>
+              </div>
+            </div>
+          </div>
+        </RouterLink>
+      </div>
+
+      <div class="flex flex-col mt-6 lg:flex-row gap-4 mb-6">
+        <div class="flex-1 animate-fade-in">
+          <div class="text-2xl font-bold text-amber-500">My Summary</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="bg-white rounded-xl p-4 shadow">
+              <div class="text-lg font-semibold mb-2">Attendance Calendar</div>
+              <div class="flex items-center justify-center mt-4">
+                <VCalendar
+                  :attributes="calendarAttributes"
+                  is-expanded
+                  borderless
+                />
+              </div>
+              <ul class="text-sm">
+                <li>
+                  <span
+                    class="inline-block w-3 h-3 rounded-full bg-green-400 mr-2"
+                  ></span>
+                  Logged in / Submitted
+                </li>
+                <li>
+                  <span
+                    class="inline-block w-3 h-3 rounded-full bg-pink-400 mr-2"
+                  ></span>
+                  No Login / Missed Assignment
+                </li>
+                <li>
+                  <span
+                    class="inline-block w-3 h-3 rounded-full bg-white border-2 border-purple-400 mr-2"
+                  ></span>
+                  Today / Not Submitted
+                </li>
+                <li>
+                  <span
+                    class="inline-block w-3 h-3 rounded-full bg-purple-400 mr-2"
+                  ></span>
+                  Upcoming Assignment
+                </li>
+              </ul>
+            </div>
+            <div class="flex flex-col gap-2">
+              <WeeklyReportCard />
+              <div
+                class="flex flex-col h-full py-6 px-4 rounded-lg shadow border bg-white border-slate-100"
+              >
+                <div class="text-2xl text-amber-500 font-semibold">
+                  Course Report Summary
+                </div>
+                <hr class="text-gray-300 my-2" />
+                <div class="flex flex-col gap-3 mt-2">
+                  <div class="text-gray-700 text-base">
+                    See your progress and feedback for this course.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <Features /> -->
+  </div>
+</template>
