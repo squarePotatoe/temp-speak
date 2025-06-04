@@ -36,6 +36,21 @@
           >
         </RouterLink>
       </div>
+      <div
+        class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
+      >
+        <RouterLink
+          to="/report"
+          class="text-gray-600 hover:text-indigo-800 flex w-full"
+          @click="isOpen = !isOpen"
+        >
+          <span class="material-icons-outlined mr-2">tune</span>
+          My Summary
+          <span class="material-icons-outlined ml-auto"
+            >keyboard_arrow_right</span
+          >
+        </RouterLink>
+      </div>
       <!-- <div
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >

@@ -186,10 +186,13 @@ onMounted(() => {
         <!-- Recorder modal -->
         <!-- Recorder modal -->
         <div
-          v-if="isRecorderVisible"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+          class="bg-slate-100 border-slate-400 fixed z-90 flex flex-col justify-end items-end left-0 bottom-0 h-fit rounded-tr-xl rounded-br-xl transition-transform transform duration-300"
+          :class="{
+            '-translate-x-full': !isRecorderVisible,
+            'translate-x-0': isRecorderVisible,
+          }"
         >
-          <div class="bg-cyan-200">
+          <div class="bg-cyan-200 relative">
             <RecorderModal
               v-if="!isLoading"
               :isRecorderVisible="isRecorderVisible"

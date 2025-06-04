@@ -121,10 +121,10 @@ function makeDate(day) {
   return new Date(year, month, day);
 }
 
-const missedDays = [5, 9, 12, 15, 27];
-const loggedDays = [6, 7, 8, 13, 14, 16, 19, 20, 21, 22, 23, 26, 28];
-const upcommingDays = [30];
-const todayDate = [29];
+const missedDays = [3, 5, 12, 18];
+const loggedDays = [2, 4, 6, 9, 10, 11, 13, 16, 17, 19];
+const upcommingDays = [20, 23, 24, 25, 26, 27, 30];
+const todayDate = [19];
 
 const calendarAttributes = [
   {
@@ -262,7 +262,9 @@ onMounted(() => {
           <div class="text-2xl font-bold text-amber-500">My Summary</div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div class="bg-white rounded-xl p-4 shadow">
-              <div class="text-lg font-semibold mb-2">Attendance Calendar</div>
+              <div class="text-lg font-semibold mb-2">
+                Course Assignment Calendar
+              </div>
               <div class="flex items-center justify-center mt-4">
                 <VCalendar
                   :attributes="calendarAttributes"

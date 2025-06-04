@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="max-w-md md:max-w-6xl mx-auto bg-gradient-to-br from-white via-indigo-50 to-blue-100 rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl"
+      class="max-w-md md:max-w-6xl mx-auto max-h-fill md:max-h-70 bg-gradient-to-br from-white via-slate-50 to-gray-100 rounded-2xl shadow-lg overflow-hidden transition hover:shadow-2xl"
     >
       <div class="flex flex-col md:flex-row w-full">
         <div class="md:shrink-0">
@@ -14,7 +14,7 @@
         <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
           <div>
             <div
-              class="uppercase tracking-wide underline animate-pulse text-indigo-500 font-semibold text-sm md:text-base"
+              class="uppercase tracking-wide underline animate-pulse text-amber-500 font-semibold text-sm md:text-base"
             >
               {{ activity }}
             </div>
@@ -26,6 +26,11 @@
             </RouterLink>
             <p class="mt-2 text-slate-600 text-base md:text-lg">
               {{ description }}
+            </p>
+            <p
+              class="mt-2 text-slate-600 font-semibold underline text-base md:text-lg"
+            >
+              Text type: {{ textType }}
             </p>
           </div>
           <div class="mt-4 flex flex-wrap gap-4 text-sm md:text-base">
@@ -49,7 +54,7 @@
           </p>
           <RouterLink
             :to="classLink"
-            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full shadow transition text-base md:text-lg"
+            class="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-6 rounded-full shadow transition text-base md:text-lg"
           >
             View
           </RouterLink>
@@ -64,6 +69,7 @@ const props = defineProps({
   title: String,
   description: String,
   activity: String,
+  textType: String,
   teacher: String,
   date: String,
   time: String,

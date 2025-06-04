@@ -104,14 +104,14 @@ const goals = ref("goals");
           </div>
         </div>
         <div class="w-full flex flex-col items-center justify-center">
-          <div class="">
-            <canvas ref="donutChartRef" class="h-42 w-42"> </canvas>
-          </div>
           <RouterLink
             :to="{ path: '/profile', query: { activeTab: 'goals' } }"
             class="text-xl font-semibold text-gray-700 mt-4 hover:text-gray-500"
           >
-            My goal
+            <div class="">
+              <canvas ref="donutChartRef" class="h-42 w-42"> </canvas>
+            </div>
+            <div class="text-center">My goals</div>
           </RouterLink>
         </div>
       </div>

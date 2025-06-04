@@ -402,6 +402,12 @@ function cancelRecordingConfirmed() {
   console.log("Recording cancelled and resources released.");
 }
 
+const isLargerViewEnabled = ref(true);
+
+function enableLargerView() {
+  isLargerViewEnabled.value = !isLargerViewEnabled.value;
+}
+
 function listenBeforeSend() {
   if (mediaType === "audio" && playbackAudioURL.value) {
     const audioElement = audioPlayer.value;
@@ -435,13 +441,15 @@ function countdownSendTimer() {
   }, 1000);
 }
 
+const isLoading = ref(false);
+
 onMounted(() => {
   console.log("Recorder modal mounted" + props.currentTask.content.length);
 });
 </script>
 
 <template>
-  <div class="flex flex-col h-[calc(100vh-2rem)] overflow-auto bg-gray-50">
+  <div class="flex flex-col overflow-auto bg-gray-50">
     <!-- Header -->
     <div
       class="flex w-full justify-between items-center p-3 bg-amber-600 rounded-t-xl shadow text-white"
@@ -460,21 +468,28 @@ onMounted(() => {
     </div>
 
     <!-- Main Content -->
-    <div class="flex flex-col md:flex-row gap-3 md:gap-6 p-2 md:p-4 flex-1">
+    <div
+      class="flex flex-col gap-3 md:gap-6 p-2 md:p-4 flex-1"
+      :class="{
+        'max-w-3xl mx-auto': !isLargerViewEnabled,
+        'max-w-6xl md:flex-row mx-auto': isLargerViewEnabled,
+      }"
+    >
       <!-- Paragraph Card -->
       <div
-        class="flex flex-col items-center justify-between bg-white rounded-xl shadow-lg p-3 md:p-6 w-full md:w-2/5 min-h-[220px] md:order-2"
+        class="flex flex-col items-center justify-between bg-white rounded-xl shadow-lg p-3 md:p-6 w-full min-h-[220px]"
       >
         <div class="flex flex-col w-full items-center">
           <div class="flex items-center gap-2 mb-2">
             <span class="material-icons-outlined text-cyan-600">menu_book</span>
             <span class="text-cyan-700 font-semibold text-base md:text-lg"
               >Paragraph {{ currentId + 1 }} of
-              {{ selectedText.content.length }}</span
-            >
+              {{ selectedText?.content?.length || 0 }}
+            </span>
           </div>
           <div
-            class="w-full bg-cyan-50 border border-cyan-200 rounded-lg p-3 md:p-4 text-base md:text-lg text-gray-800 min-h-[80px] max-h-40 md:max-h-full overflow-auto"
+            class="w-full bg-cyan-50 border border-cyan-200 rounded-lg p-3 md:p-4 text-base text-gray-800 min-h-[80px] max-h-40 md:max-h-full overflow-auto"
+            :class="fontSize ? 'text-lg' : 'text-base'"
           >
             <span v-html="selectedText.content[currentId].content"></span>
           </div>
@@ -503,7 +518,7 @@ onMounted(() => {
 
       <!-- Recorder Area -->
       <div
-        class="flex flex-col flex-1 bg-white rounded-xl shadow-lg p-3 md:p-6 min-h-[220px]"
+        class="flex flex-col bg-white rounded-xl shadow-lg p-3 min-h-[220px]"
       >
         <!-- Review Area -->
         <div
@@ -577,7 +592,10 @@ onMounted(() => {
               ></video>
             </div>
             <!-- Teacher Tutorial Video -->
-            <div class="flex-1 flex flex-col items-center">
+            <div
+              v-if="!isRecordingNow"
+              class="flex-1 flex flex-col items-center"
+            >
               <span
                 class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
                 >Teacher's Tutorial</span
@@ -631,7 +649,10 @@ onMounted(() => {
                 }}
               </span>
             </div>
-            <div class="flex-1 flex flex-col items-center mt-4 md:mt-0">
+            <div
+              v-if="!isRecordingNow"
+              class="flex-1 flex flex-col items-center mt-4 md:mt-0"
+            >
               <span
                 class="text-gray-700 font-semibold mb-1 text-sm md:text-base"
                 >Teacher's Tutorial</span

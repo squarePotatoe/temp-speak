@@ -3,7 +3,7 @@
     <div
       class="font-bold bg-indigo-50 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl mb-4"
     >
-      Article
+      Email Writing
     </div>
 
     <div class="grid grid-cols-3">
@@ -42,7 +42,7 @@
     <div class="bg-indigo-50 p-4 rounded flex text-center justify-evenly gap-4">
       <div class="group flex flex-col relative items-center">
         <div class="flex">
-          <h3 class="">Purpose of writing</h3>
+          <div class="text-xl font-semibold text-slate-600">Purpose of writing</div>
           <!-- <span class="material-icons-outlined">info</span> -->
         </div>
         <p>{{ currentTask.purpose }}</p>
@@ -54,15 +54,19 @@
           engaging and informative.
         </p> -->
       </div>
-
       <div class="">
-        <h3>Style</h3>
+        <div class="text-xl font-semibold text-slate-600">Text type</div>
+        <p>Email</p>
+      </div>
+      <div class="">
+        <div class="text-xl font-semibold text-slate-600">Tone</div>
         <p>{{ tone }}</p>
       </div>
       <div class="">
-        <h3>Target audience</h3>
+        <div class="text-xl font-semibold text-slate-600">Target audience</div>
         <p>{{ targetAudience }}</p>
       </div>
+
     </div>
 
     <div class="md:col-span-1">
