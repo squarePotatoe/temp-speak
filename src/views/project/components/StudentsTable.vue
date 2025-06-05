@@ -278,14 +278,13 @@ const formattedStudents = computed(() => {
       >
         <div class="flex-1">
           <div class="flex justify-between pb-2">
-            <div class="flex">
+            <div class="flex flex-col md:flex-row">
               <div class="font-bold text-lg mr-2">{{ student.name }}</div>
               <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
                 {{ student.class }}
               </span>
             </div>
-
-            <div>
+            <div class="flex flex-col md:flex-row items-center">
               <span class="font-semibold text-gray-700">Engagement</span>
               <span :class="`px-2 py-1 rounded ${student.engagementColor}`">
                 {{ student.engagement }}
@@ -293,7 +292,7 @@ const formattedStudents = computed(() => {
             </div>
           </div>
           <div
-            class="flex flex-col sm:flex-row gap-4 text-sm justify-between items-center w-full"
+            class="flex sm:flex-row gap-4 text-sm justify-between items-center w-full"
           >
             <!-- Attendance Section -->
             <div
