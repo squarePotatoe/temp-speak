@@ -154,6 +154,30 @@ const overallAttendance = computed(() => {
   return count ? Math.round((total / count) * 100) : 0;
 });
 
+const totalAvailableQuizzes = computed(() => {
+  return 5;
+});
+
+const overallQuizCompletion = computed(() => {
+  let total = 0;
+  students.value.forEach((student) => {
+    total += student.quizzes.length;
+  });
+  return total;
+});
+
+const overallAvgScore = computed(() => {
+  let totalScore = 0;
+  let quizCount = 0;
+  students.value.forEach((student) => {
+    student.quizzes.forEach((q) => {
+      totalScore += q.score;
+      quizCount++;
+    });
+  });
+  return quizCount ? Math.round(totalScore / quizCount) : 0;
+});
+
 const formattedStudents = computed(() => {
   return students.value.map((student) => {
     const attended = student.attendance.reduce((a, b) => a + b, 0);
@@ -189,8 +213,12 @@ const formattedStudents = computed(() => {
   <div>
     <div class="mb-4">
       <label class="font-semibold mr-2">Project:</label>
-      <select v-model="selectedProjectId" class="border rounded px-2 py-1">
+      <select
+        v-model="selectedProjectId"
+        class="border rounded px-2 py-1 bg-indigo-500 text-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
+      >
         <option
+          class="text-black bg-slate-200 hover:bg-slate-500"
           v-for="project in projects"
           :key="project.id"
           :value="project.id"
@@ -210,11 +238,36 @@ const formattedStudents = computed(() => {
         rating (color-coded). Use the project selector above to switch between
         different student groups.
       </p>
+      <p class="mt-2">
+        <strong>How is Engagement calculated?</strong><br />
+        <span>
+          <span class="font-semibold text-green-700">High</span> engagement:
+          Attendance 4 or more AND average quiz score 85% or above.<br />
+          <span class="font-semibold text-yellow-700">Medium</span> engagement:
+          Attendance 3 or more AND average quiz score 70% or above.<br />
+          <span class="font-semibold text-red-700">Low</span> engagement: Below
+          the above thresholds.
+        </span>
+      </p>
     </div>
     <div class="mb-6">
-      <div class="text-lg font-semibold">
-        Overall Attendance:
-        <span class="text-blue-600">{{ overallAttendance }}%</span>
+      <div class="text-lg font-semibold flex flex-wrap gap-4 items-center">
+        <span>
+          Overall Attendance:
+          <span class="text-blue-600">{{ overallAttendance }}%</span>
+        </span>
+        <span>
+          Overall Quizzes:
+          <span class="text-green-600">
+            {{ overallQuizCompletion }}/{{
+              totalAvailableQuizzes * students.length
+            }}
+          </span>
+        </span>
+        <span>
+          Avg. Score:
+          <span class="text-purple-600">{{ overallAvgScore }}%</span>
+        </span>
       </div>
     </div>
     <div class="grid gap-4 md:grid-cols-2">
@@ -224,40 +277,62 @@ const formattedStudents = computed(() => {
         class="bg-white border border-gray-200 rounded shadow p-4 flex flex-col sm:flex-row sm:items-center justify-between"
       >
         <div class="flex-1">
-          <div class="flex items-center mb-2">
-            <div class="font-bold text-lg mr-2">{{ student.name }}</div>
-            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">{{
-              student.class
-            }}</span>
-          </div>
-          <div class="flex flex-wrap gap-4 text-sm">
-            <div>
-              <span class="font-semibold">Attendance:</span>
-              <span>{{ student.attendanceDisplay }}</span>
-            </div>
-            <div>
-              <span class="font-semibold">Quizzes:</span>
-              <span>{{ student.quizzesCompleted }}</span>
-            </div>
-            <div>
-              <span class="font-semibold">Avg. Score:</span>
-              <span>
-                {{ student.avgScore }}
-                <span v-if="student.quizzesCompleted">%</span>
+          <div class="flex justify-between pb-2">
+            <div class="flex">
+              <div class="font-bold text-lg mr-2">{{ student.name }}</div>
+              <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                {{ student.class }}
               </span>
             </div>
+
             <div>
-              <span class="font-semibold">Engagement:</span>
-              <span :class="`px-2 py-1 rounded ${student.engagementColor}`">{{
-                student.engagement
-              }}</span>
+              <span class="font-semibold text-gray-700">Engagement</span>
+              <span :class="`px-2 py-1 rounded ${student.engagementColor}`">
+                {{ student.engagement }}
+              </span>
             </div>
           </div>
-        </div>
-        <div class="mt-4 sm:mt-0 sm:ml-4 flex-shrink-0">
-          <RouterLink to="/report" class="p-2 bg-blue-400 text-white rounded">
-            View Details
-          </RouterLink>
+          <div
+            class="flex flex-col sm:flex-row gap-4 text-sm justify-between items-center w-full"
+          >
+            <!-- Attendance Section -->
+            <div
+              class="flex flex-col items-center px-3 py-2 rounded bg-blue-50 border border-blue-200"
+            >
+              <span class="font-semibold text-blue-700">Attendance</span>
+              <span class="text-lg font-bold text-blue-900">
+                {{ student.attendanceDisplay }}
+              </span>
+            </div>
+            <!-- Quiz Section -->
+            <div
+              class="flex flex-col items-center px-3 py-2 rounded min-w-[110px]"
+              :class="
+                student.quizzesCompleted <
+                student.attendanceDisplay.split('/')[1]
+                  ? 'bg-amber-50 border border-amber-200'
+                  : 'bg-green-50 border border-green-200'
+              "
+            >
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-green-700">Quizzes</span>
+                <span class="text-lg font-bold text-green-900">
+                  {{ student.quizzesCompleted }}
+                </span>
+              </div>
+
+              <span class="text-xs text-gray-500"
+                >Avg:
+                <span class="font-semibold text-purple-700 text-base">
+                  {{ student.avgScore }}
+                  <span v-if="student.quizzesCompleted">%</span>
+                </span>
+              </span>
+            </div>
+            <RouterLink to="/report" class="p-2 bg-blue-400 text-white rounded">
+              View Details
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>
