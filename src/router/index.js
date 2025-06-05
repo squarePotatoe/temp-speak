@@ -1,5 +1,6 @@
 import ClassLayout from '@/layouts/ClassLayout.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
+import ProjectLayout from '@/layouts/ProjectLayout.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -51,6 +52,12 @@ const router = createRouter({
       name: 'report',
       meta: { layout: MainLayout },
       component: () => import('../views/report/ReportView.vue'),
+    },
+    {
+      path: '/teacherDash',
+      name: 'teacherDash',
+      meta: { layout: ProjectLayout },
+      component: () => import('../views/project/TeacherDash.vue'),
     }
 
   ],
