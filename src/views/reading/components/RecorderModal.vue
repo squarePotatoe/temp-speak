@@ -477,7 +477,7 @@ onMounted(() => {
     >
       <!-- Paragraph Card -->
       <div
-        class="flex flex-col items-center justify-between bg-white rounded-xl shadow-lg p-3 md:p-6 w-full min-h-[220px]"
+        class="flex flex-1 flex-col items-center justify-between bg-white rounded-xl shadow-lg p-3 md:p-6 w-full min-h-[220px]"
       >
         <div class="flex flex-col w-full items-center">
           <div class="flex items-center gap-2 mb-2">
@@ -518,7 +518,7 @@ onMounted(() => {
 
       <!-- Recorder Area -->
       <div
-        class="flex flex-col bg-white rounded-xl shadow-lg p-3 min-h-[220px]"
+        class="flex flex-col flex-1 bg-white rounded-xl shadow-lg p-3 min-h-[220px]"
       >
         <!-- Review Area -->
         <div

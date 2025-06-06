@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Message from "./Message.vue";
-import skysurfing from "@/assets/skysurfing.png";
+import feedback from "@/assets/feedback_trish.png";
+import pronunciation from "@/assets/pronunciation.png";
 
 const props = defineProps({
   courseId: {
@@ -56,6 +57,7 @@ Trish
       `,
     sender: "teacher",
     name: "Trish",
+    img: feedback,
     audio:
       "https://edu.speak3.com/storage/homework_feedback/sxxCukvF8cCjrGcVmVYIX4nKqrZEigJmSLbUAU7S.mp3",
   },
@@ -112,6 +114,7 @@ Can you think of another word for small?
       `,
     sender: "teacher",
     name: "Abi Ali",
+    img: pronunciation,
     audio:
       "https://edu.speak3.com/storage/homework_feedback/icX4Hl2lbqT7vJRb0Or309Ijpw02JJx3NZv4aCeH.mp3",
   },

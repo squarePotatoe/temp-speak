@@ -17,8 +17,8 @@ const projects = ref([
         id: 2,
         name: "Bob Smith",
         class: "Form 1A",
-        attendance: [1, 0, 1, 1, 1],
-        quizzes: [{ score: 70 }, { score: 85 }],
+        attendance: [1, 0, 1, 0, 0],
+        quizzes: [{ score: 40 }, { score: 55 }],
       },
       {
         id: 3,
@@ -58,7 +58,7 @@ const projects = ref([
         id: 7,
         name: "Lee Ka Man",
         class: "Form 1B",
-        attendance: [0, 1, 1, 1, 1],
+        attendance: [0, 1, 1, 1, 0],
         quizzes: [{ score: 90 }, { score: 93 }],
       },
       {
@@ -79,8 +79,8 @@ const projects = ref([
         id: 10,
         name: "Lam Hoi Ching",
         class: "Form 1B",
-        attendance: [1, 1, 0, 1, 1],
-        quizzes: [{ score: 85 }, { score: 88 }],
+        attendance: [1, 0, 0, 1, 0],
+        quizzes: [{ score: 55 }, { score: 88 }],
       },
     ],
   },
@@ -197,6 +197,15 @@ const formattedStudents = computed(() => {
       engagement = "Medium";
       engagementColor = "bg-yellow-100 text-yellow-700";
     }
+
+    // Attendance color logic
+    let attendanceColor = "bg-red-50 text-red-900";
+    if (attended === 5) {
+      attendanceColor = "bg-green-50 text-green-900";
+    } else if (attended >= 3) {
+      attendanceColor = "bg-blue-50 text-blue-900";
+    }
+
     return {
       ...student,
       attendanceDisplay: `${attended}/5`,
@@ -204,6 +213,7 @@ const formattedStudents = computed(() => {
       avgScore,
       engagement,
       engagementColor,
+      attendanceColor, // <-- add this
     };
   });
 });
@@ -211,21 +221,31 @@ const formattedStudents = computed(() => {
 
 <template>
   <div>
-    <div class="mb-4">
-      <label class="font-semibold mr-2">Project:</label>
-      <select
-        v-model="selectedProjectId"
-        class="border rounded px-2 py-1 bg-indigo-500 text-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
-      >
-        <option
-          class="text-black bg-slate-200 hover:bg-slate-500"
-          v-for="project in projects"
-          :key="project.id"
-          :value="project.id"
+    <div class="mb-4 flex items-center justify-between">
+      <div>
+        <label class="font-semibold mr-2">Project:</label>
+        <select
+          v-model="selectedProjectId"
+          class="border rounded px-2 py-1 bg-indigo-500 text-white focus:outline-none focus:ring-2 focus:ring-indigo-300"
         >
-          {{ project.name }}
-        </option>
-      </select>
+          <option
+            class="text-black bg-slate-200 hover:bg-slate-500"
+            v-for="project in projects"
+            :key="project.id"
+            :value="project.id"
+          >
+            {{ project.name }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <RouterLink
+          to="/teacherdash"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+        >
+          Report Spreadsheet
+        </RouterLink>
+      </div>
     </div>
     <div
       class="mb-4 text-gray-700 text-sm bg-blue-50 border border-blue-100 rounded p-3"
@@ -278,9 +298,11 @@ const formattedStudents = computed(() => {
       >
         <div class="flex-1">
           <div class="flex justify-between pb-2">
-            <div class="flex flex-col md:flex-row">
+            <div class="flex flex-col md:flex-row items-center">
               <div class="font-bold text-lg mr-2">{{ student.name }}</div>
-              <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+              <span
+                class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded flex items-center"
+              >
                 {{ student.class }}
               </span>
             </div>
@@ -296,10 +318,13 @@ const formattedStudents = computed(() => {
           >
             <!-- Attendance Section -->
             <div
-              class="flex flex-col items-center px-3 py-2 rounded bg-blue-50 border border-blue-200"
+              class="flex flex-col items-center px-3 py-2 rounded"
+              :class="student.attendanceColor"
             >
-              <span class="font-semibold text-blue-700">Attendance</span>
-              <span class="text-lg font-bold text-blue-900">
+              <span class="font-semibold" :class="student.attendanceColor">
+                Attendance
+              </span>
+              <span class="text-lg font-bold" :class="student.attendanceColor">
                 {{ student.attendanceDisplay }}
               </span>
             </div>

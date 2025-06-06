@@ -178,7 +178,13 @@ const quizTimeChartOptions = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h3 class="text-lg font-semibold text-blue-500 mb-2">Quiz Scores</h3>
-          <Bar :data="quizScoreChart" :options="quizScoreChartOptions" />
+          <a
+            href="https://edu.speak3.com/paper/7a4f37af883bb7a11f913bff54de645f/result"
+            target="_blank"
+            class="w-full"
+          >
+            <Bar :data="quizScoreChart" :options="quizScoreChartOptions" />
+          </a>
           <p class="text-xs mt-1">
             Each attempt shows how many questions you answered correctly (out of
             8).

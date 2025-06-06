@@ -6,6 +6,9 @@ import VocabularyItem from "./VocabularyItem.vue";
 import VocabularyCard from "./VocabularyCard.vue";
 import TutorialModal from "./TutorialModule.vue";
 import RecorderModal from "./RecorderModal.vue";
+import giza from "@/assets/giza.jpeg";
+import freefall from "@/assets/freefall.jpeg";
+import { start } from "@popperjs/core";
 
 const props = defineProps({
   currentTaskId: {
@@ -138,18 +141,34 @@ onMounted(() => {
               :image="item.img"
             />
           </VocabularyCard>
-          <div class="px-2">
-            <img
-              :src="currentTask.image"
-              alt="Article image"
-              class="w-full h-full object-cover rounded-2xl border-4 border-sky-300 shadow-lg"
-            />
+          <div class="flex flex-col gap-1">
+            <div class="px-2">
+              <img
+                :src="currentTask.image"
+                alt="Article image"
+                class="w-full h-full object-cover rounded-2xl border-4 border-sky-300 shadow-lg"
+              />
+            </div>
+            <div class="px-2">
+              <img
+                :src="giza"
+                alt="Article image"
+                class="w-full h-full object-cover rounded-2xl border-4 border-sky-300 shadow-lg"
+              />
+            </div>
+            <div class="px-2">
+              <img
+                :src="freefall"
+                alt="Article image"
+                class="w-full h-full object-cover rounded-2xl border-4 border-sky-300 shadow-lg"
+              />
+            </div>
           </div>
         </div>
 
         <!-- Tutorial modal -->
         <div
-          class="bg-slate-100 border-slate-400 md:w-2/3 lg:w-1/3 fixed z-90 flex flex-col justify-end items-end left-0 bottom-0 top-20 h-fit rounded-tr-xl rounded-br-xl transition-transform transform duration-300"
+          class="bg-slate-100 border-slate-400 rounded md:w-2/3 lg:w-1/3 fixed z-90 flex flex-col justify-end items-end left-0 bottom-0 top-20 h-fit rounded-tr-xl rounded-br-xl transition-transform transform duration-300"
           :class="{
             '-translate-x-full': !isTutorialVisible,
             'translate-x-0': isTutorialVisible,

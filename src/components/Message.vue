@@ -13,7 +13,7 @@
       </div>
     </div>
     <div v-if="props.img != null" class="flex">
-      <img :src="props.img" alt="" class="h-36 rounded" />
+      <img :src="props.img" alt="" class="h-48 rounded" />
     </div>
     <div
       v-if="props.audio"

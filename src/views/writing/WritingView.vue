@@ -24,6 +24,8 @@
             </p>
 
           </div>
+          <button @click="toggleViews" class="bg-amber-500 rounded hover:bg-amber-400 text-white font-medium p-2">View Feedback</button>
+
         </nav>
 
         <div class="flex gap-2">
@@ -79,6 +81,10 @@
           <Tips />
         </div>
 
+        <div class="col-span-3 ml-4" v-if="isViewArticle">
+          <Email :articleHeight="articleHeight" />
+        </div>
+
       </div>
 
     </main>
@@ -107,6 +113,8 @@ const isViewArticle = ref(true)
 const isViewEditor = ref(false)
 
 const isSideBySide = ref(false)
+
+const isViewReview = ref(false)
 
 const articleHeight = ref('40rem')
 
@@ -161,6 +169,10 @@ const toggleSidebar = () => {
 const toggleHeader = () => {
   isHeaderOpen.value = !isHeaderOpen.value
   headerButton.value = isHeaderOpen.value ? 'Exit focus mode' : 'Focus mode'
+}
+
+const toggleReview = () => {
+  isViewReview.value = !isViewReview.value
 }
 
 const isHintsOpen = ref(false)

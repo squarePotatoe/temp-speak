@@ -14,6 +14,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  startTime: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const src1 =
@@ -51,6 +55,12 @@ function playVideo() {
   }
 }
 
+function onLoadedMetadata() {
+  if (videoRef.value && props.startTime > 0) {
+    videoRef.value.currentTime = props.startTime;
+  }
+}
+
 onMounted(() => {});
 </script>
 
@@ -75,7 +85,7 @@ onMounted(() => {});
             </div> -->
     <div class="flex flex-col p-4 bg-white w-full rounded-b-xl">
       <div class="flex flex-col gap-2">
-        <video ref="videoRef" controls>
+        <video ref="videoRef" @loadedmetadata="onLoadedMetadata" controls>
           <source :src="courseId === 1 ? src1 : src2" type="video/mp4" />
           <!-- <source :src="lessonStore.todaysMaterial.videoTutorial" type="video/mp4"> -->
         </video>
