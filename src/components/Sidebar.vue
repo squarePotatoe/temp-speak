@@ -91,6 +91,18 @@
         class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
       >
         <RouterLink
+          to="/teacherdash"
+          class="text-gray-600 hover:text-indigo-800 flex w-full"
+          @click="isOpen = !isOpen"
+        >
+          Teacher
+          <span class="material-icons-outlined ml-auto">keyboard_arrow_</span>
+        </RouterLink>
+      </div>
+      <div
+        class="flex items-center text-gray-600 hover:text-indigo-800 py-4 transition-all duration-300 hover:translate-x-1"
+      >
+        <RouterLink
           to="/"
           class="text-gray-600 hover:text-indigo-800 flex w-full"
           @click="isOpen = !isOpen"

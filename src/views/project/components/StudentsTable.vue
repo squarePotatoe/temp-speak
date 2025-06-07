@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import scan from "@/assets/scan.png";
 
 const projects = ref([
   {
@@ -178,6 +179,8 @@ const overallAvgScore = computed(() => {
   return quizCount ? Math.round(totalScore / quizCount) : 0;
 });
 
+const showScanModal = ref(false);
+
 const formattedStudents = computed(() => {
   return students.value.map((student) => {
     const attended = student.attendance.reduce((a, b) => a + b, 0);
@@ -238,13 +241,33 @@ const formattedStudents = computed(() => {
           </option>
         </select>
       </div>
+
       <div>
-        <RouterLink
-          to="/teacherdash"
+        <div
+          @click="showScanModal = true"
           class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
         >
           Report Spreadsheet
-        </RouterLink>
+        </div>
+      </div>
+    </div>
+    <!-- filepath: c:\xampp\htdocs\temp-speak\src\views\project\components\StudentsTable.vue -->
+    <div
+      v-if="showScanModal"
+      class="fixed inset-0 z-9999 flex items-center justify-center bg-black bg-opacity-80"
+    >
+      <div class="relative w-full h-full flex items-center justify-center">
+        <img
+          :src="scan"
+          alt="Report Spreadsheet"
+          class="max-w-full max-h-full rounded-lg shadow-2xl"
+        />
+        <button
+          @click="showScanModal = false"
+          class="absolute top-4 right-4 bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full p-2 shadow-lg"
+        >
+          <span class="material-icons text-2xl">close</span>
+        </button>
       </div>
     </div>
     <div
