@@ -710,3 +710,36 @@ export const readingFeedback = [
     time: "10:00 AM",
   }
 ];
+
+export const writingEmailTips = [
+  {
+    id: 1,
+    content: 'Use a clear and concise subject line that summarizes the email content.',
+    example: 'Subject: Request for Meeting',
+  },
+  {
+    id: 2,
+    content: 'Start with a polite greeting, addressing the recipient by name if possible.',
+    example: 'Dear Mr. Smith,',
+  },
+  {
+    id: 3,
+    content: 'State the purpose of the email in the opening paragraph.',
+    example: 'I am writing to follow up on our previous conversation regarding...',
+  },
+  {
+    id: 4,
+    content: 'Use short paragraphs and bullet points for clarity.',
+    example: 'Here are the key points we discussed:\n- Point 1\n- Point 2\n- Point 3',
+  },
+  {
+    id: 5,
+    content: 'Be polite and professional in your tone throughout the email.',
+    example: 'I appreciate your assistance in this matter and look forward to your response.',
+  },
+  {
+    id: 6,
+    content: 'End with a courteous closing statement and your name.',
+    example: 'Thank you for your time and understanding.\nSincerely,\nNick',
+  },
+];

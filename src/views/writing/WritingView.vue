@@ -9,9 +9,8 @@
       <!-- View toggle navbar -->
       <div class="flex m-4">
         <nav class="w-full flex gap-2">
-          <button @click="toggleViews" class="bg-indigo-500 rounded hover:bg-indigo-400 text-white font-medium p-2">View {{ enabledView }}</button>
-          <button @click="toggleSideBySide" class="bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">{{ sideBySide }}</button>
-          <button @click="toggleHeader" class="bg-amber-400 rounded p-2 hover:bg-amber-300 font-medium">{{ headerButton }}</button>
+          <button @click="toggleModelAnswer" class="bg-indigo-500 rounded hover:bg-indigo-400 text-white font-medium p-2">Model Answer</button>
+          <button @click="toggleWritingView" class="bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">Write here</button>
           <div :class="{ hidden : !isHeaderOpen }"  class="group flex flex-col relative items-center">
             <button class=" bg-indigo-500 hover:bg-indigo-400 rounded text-white font-medium p-2">Task</button>
             <p
@@ -24,17 +23,21 @@
             </p>
 
           </div>
-          <button @click="toggleViews" class="bg-amber-500 rounded hover:bg-amber-400 text-white font-medium p-2">View Feedback</button>
+          <button class="bg-amber-500 rounded hover:bg-amber-400 text-white font-medium p-2">View Feedback</button>
 
         </nav>
 
-        <div class="flex gap-2">
+        <div class="flex w-full justify-end items-center gap-2">
+          <button @click="toggleHeader" class="bg-amber-400 rounded p-2 hover:bg-amber-300 font-medium">{{ headerButton }}</button>
+        <div class="flex gap-1">
           <span class="relative flex size-3 mr-1"> 
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-800 opacity-75"></span>
             <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
           </span>
           <button @click="toggleSidebar" class="bg-green-500 rounded text-white font-medium p-2">Checklist</button>
         </div>
+        </div>
+
       </div>
 
       <!-- Main content -->
@@ -55,20 +58,76 @@
 
         <!-- Editor only -->
         <div class="col-span-3 ml-4" v-else-if="isViewEditor">
+          <div class="flex flex-col">
+          <div class="flex flex-col rounded-t-xl">
+
+            <div class="flex flex-col rounded-t-xl">
+
+<div class="flex items-center gap-4 my-2">
+
+  <div class="flex-1">
+    
+    <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl shadow-lg p-6 flex flex-col items-center min-h-[180px]">
+      <div class="text-xl font-bold text-indigo-800 flex items-center gap-2 mb-2">
+        <span class="material-icons text-indigo-400">lightbulb</span>
+        Writing Tips
+      </div>
+      <div class="flex items-center gap-2 mb-2">
+        <button
+          @click="prevTip"
+          :disabled="currentTipIndex === 0"
+          class="p-2 rounded-full bg-amber-100 hover:bg-amber-200 disabled:opacity-50 shadow transition flex items-center justify-center"
+          aria-label="Previous tip"
+        >
+          <span class="material-icons text-indigo-500">chevron_left</span>
+        </button>
+              <span class="material-icons text-yellow-400">star</span>
+              <span class="text-base font-semibold text-indigo-700">
+                Tip {{ currentTipIndex + 1 }} of {{ writingEmailTips.length }}
+              </span>
+                <button
+                  @click="nextTip"
+                  :disabled="currentTipIndex === writingEmailTips.length - 1"
+                  class="p-2 rounded-full bg-green-100 hover:bg-green-200 disabled:opacity-50 shadow transition flex items-center justify-center"
+                  aria-label="Next tip"
+                >
+                  <span class="material-icons text-indigo-500">chevron_right</span>
+                </button>
+      </div>
+      <div class="text-lg text-gray-900 text-center font-medium mb-3">
+        {{ writingEmailTips[currentTipIndex].content }}
+      </div>
+      <div class="w-full flex flex-col items-center">
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 px-4 py-2 rounded text-yellow-900 text-center italic flex items-center gap-2">
+          <span class="material-icons text-yellow-500">emoji_objects</span>
+          <span class="font-semibold">Example:</span>
+          <span class="ml-2">{{ writingEmailTips[currentTipIndex].example }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+            </div>
+          </div>
+
           <form @submit.prevent="submitForm">
             <TextEditor v-model="form.content" />
           </form>
+          </div>
+
         </div>
 
         <!-- Side by side -->
-        <div class="col-span-3 ml-4" v-else-if="isSideBySide">
+        <!-- <div class="col-span-3 ml-4" v-else-if="isSideBySide">
           <div class="flex flex-col">
-            <Email :articleHeight="'10rem'" />
             <form @submit.prevent="submitForm">
               <TextEditor v-model="form.content" />
             </form>
           </div>
-        </div>
+        </div> -->
         <!-- Right side notes -->
 
         <div class="bg-orange-100 w-1/2 lg:w-1/3 fixed right-0 bottom-0 p-2 top-4 h-fit rounded-tl-xl rounded-bl-xl transition-transform transform duration-300" :class="{ 'translate-x-full': !isSidebarOpen, 'translate-x-0': isSidebarOpen }">
@@ -80,11 +139,6 @@
           </div>
           <Tips />
         </div>
-
-        <div class="col-span-3 ml-4" v-if="isViewArticle">
-          <Email :articleHeight="articleHeight" />
-        </div>
-
       </div>
 
     </main>
@@ -97,14 +151,17 @@
 import { ref } from 'vue'
 import TextEditor from '@/views/writing/components/TextEditor.vue';
 import Email from './components/Email.vue';
-import { demoTask, textFormatDemo } from '@/data';
+import { demoTask, textFormatDemo, writingEmailTips } from '@/data';
 import SidebarLeft from './components/SidebarLeft.vue';
 import Tips from './components/Tips.vue';
 import Header from './components/Header.vue';
 
+
 const editor = ref(null)
 const enabledView = ref('Editor')
-const sideBySide = ref('Example / Editor')
+const sideBySide = ref('Write here')
+
+const emailTips = writingEmailTips
 
 const currentTask = textFormatDemo.find(item => item.id === 1)
 const { task, instructions} = currentTask
@@ -118,6 +175,15 @@ const isViewReview = ref(false)
 
 const articleHeight = ref('40rem')
 
+const currentTipIndex = ref(0);
+
+function prevTip() {
+  if (currentTipIndex.value > 0) currentTipIndex.value--;
+}
+function nextTip() {
+  if (currentTipIndex.value < writingEmailTips.length - 1) currentTipIndex.value++;
+}
+
 const toggleSideBySide = () => {
   isSideBySide.value = !isSideBySide.value
   if (isSideBySide.value) {
@@ -127,20 +193,21 @@ const toggleSideBySide = () => {
   } else {
     isViewArticle.value = true
     isViewEditor.value = false
-    sideBySide.value = 'Example / Editor'
+    sideBySide.value = 'Write here'
   }
 }
 
 const toggleViews = () => {
-  if (isSideBySide.value) {
-    isSideBySide.value = false
-    isViewArticle.value = false
-    isViewEditor.value = true
-  }
-  isViewArticle.value = !isViewArticle.value 
-  isViewEditor.value = !isViewEditor.value
-  enabledView.value = isViewArticle.value ? 'Editor' : 'Example'
-  sideBySide.value = 'Example / Editor'
+  isViewArticle.value = true
+  // if (isSideBySide.value) {
+  //   isSideBySide.value = false
+  //   isViewArticle.value = false
+  //   isViewEditor.value = true
+  // }
+  // isViewArticle.value = !isViewArticle.value 
+  // isViewEditor.value = !isViewEditor.value
+  // enabledView.value = isViewArticle.value ? 'Editor' : 'Example'
+  // sideBySide.value = 'Write here'
 }
 
 
@@ -155,11 +222,28 @@ const submitForm = () => {
   // Perform any necessary actions with the content, such as sending it to a server
 }
 
+const toggleModelAnswer = () => {
+  if (isViewReview.value) {
+    isViewArticle.value = false
+    isViewEditor.value = false
+  } else {
+    isViewArticle.value = true
+    isViewEditor.value = false
+  }
+}
+
+const toggleWritingView = () => {
+  if (!isViewEditor.value) {
+    isViewEditor.value = true
+    isViewArticle.value = false
+  } 
+}
+
 const isSidebarOpen = ref(false)
 const isHelpViewed = ref(false)
 
 const isHeaderOpen = ref(false)
-const headerButton = ref('Focus mode')
+const headerButton = ref('Hide task details')
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
@@ -168,7 +252,7 @@ const toggleSidebar = () => {
 
 const toggleHeader = () => {
   isHeaderOpen.value = !isHeaderOpen.value
-  headerButton.value = isHeaderOpen.value ? 'Exit focus mode' : 'Focus mode'
+  headerButton.value = isHeaderOpen.value ? 'Show task details' : 'Hide task details'
 }
 
 const toggleReview = () => {
