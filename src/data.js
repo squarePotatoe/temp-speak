@@ -343,19 +343,51 @@ export const checklistItems = [
 export const textFormatDemo = [
   {
     id: 1,
-    textType: 'Email',
+    textType: 'Magazine Article',
     activity: 'Writing',
-    title: 'Formal Email Writing',
+    title: 'Discovering the Magic of the Internet',
     description: 'Learn how to write a formal email with the correct format and tone.',
     course: 'iSpeakPerfect - 360',
-    purpose: 'Write an email to the sales manager',
-    targetAudience: 'Sales manager',
-    tone: 'Professional',
-    task: 'You work in the sales deparment at Fast Fashion, an online company that sells clothes. Recently, you have received a number of complaiunts from customers about the company\'s delivery no-exchange/no-refund policy',
+    purpose: 'Sharing your experience with others',
+    targetAudience: 'General Public',
+    tone: 'Informal',
+    task: 'A local magazine has asked readers to write an article about their favourite things about the Internet. Write an article talking about the things you do with the Internet and recommend a website to other readers.',
     instructions: [
-      'Explain why you think this policy should be changed',
-      'Suggest what changes could be made',
-      'Discuss ways to prevent customers from taking advantage of the new policy',
+
+    ],
+    engagingPhrases: [
+      {
+        id: 1,
+        content: 'Are you one of those people who...?',
+      },
+      {
+        id: 2,
+        content: 'Have you ever...?',
+      },
+      {
+        id: 3,
+        content: 'What do you think about...?',
+      },
+      {
+        id: 4,
+        content: 'Picture this...',
+      },
+      {
+        id: 5,
+        content: 'What would life be like if...?',
+      },
+      {
+        id: 6,
+        content: 'What if I told you that...',
+      },
+      {
+        id: 7,
+        content: 'You may be surprised to learn...',
+      },
+      {
+        id: 8,
+        content: 'Have you ever wondered why...?',
+      }
     ],
     usefulExpressions: [
       {
@@ -476,17 +508,49 @@ export const guidesForTextTypes = [
 export const textTypesExamples = [
   {
     id: 1,
-    textType: 'Email',
+    textType: 'Magazine Article',
     tone: 'Formal',
     structure: [
-      'Subject: Inquiry Regarding Store Return Policy',
-      'Dear Phillip,',
-      'I hope this email finds you well. My name is Nick, and I am a regular customer at your store located at [Store Address]. I am writing to you to seek clarification regarding your store\'s return policy.',
-      'Recently, I purchased an item from your store, and unfortunately, it turned out to be defective. While I understand that such situations are rare, I would like to know the steps and conditions under which I can return or exchange the item. Specifically, I am interested in understanding the timeframe for returns, the condition of the item required for a return, and any documentation that may be necessary.',
-      'I appreciate your assistance in this matter and look forward to your response. Your prompt attention to this inquiry will be greatly appreciated as it will help me resolve this issue at the earliest convenience.',
-      'Thank you for your time and understanding.',
-      'Sincerely,',
-      'Nick'
+      {
+        id: 1,
+        header: 'Title',
+        content: 'Discovering the Magic of the Internet',
+      },
+      {
+        id: 2,
+        header: 'Engaging the Reader',
+        content: 'Are you one of those people who can’t go a day without checking your phone for internet access?',
+      },
+      {
+        id: 3,
+        header: 'Introduction',
+        content: ' Let me take you back to when this incredible tool was just emerging. It has transformed our lives in ways we never imagined.  The World Wide Web truly is magical, making it easy to find information and connect with people.  Once limited to computers, now it has woven itself into every aspect of our daily lives, and I love it!',
+      },
+      {
+        id: 4,
+        header: 'Linking Opening to Title',
+        content: 'The World Wide Web truly is magical, making it easy to find information and connect with people',
+      },
+      {
+        id: 5,
+        header: 'Body',
+        content: 'This month, we explore one of the cool things about the World Wide Web: you can look up anything you want and get the answer straight away. Isn’t that fantastic? Here’s what you need to know: for example, imagine you are arguing with your friends about how to do something. Easy solution! Go online and find the answer.'
+      },
+      {
+        id: 6,
+        header: 'Body',
+        content: 'Apart from that, one of the best aspects of the internet is the ability to learn a wide range of subjects at little to no cost! If you ask me, my go-to website is www.udemy.com, where individuals can sign up to both teach and learn about diverse topics such as music, web design, app development, history, and much more.',
+      },
+      {
+        id: 7,
+        header: 'Body',
+        content: 'For instance, I recently had the experience of taking a web design course on Udemy last year, and it completely transformed my skills! I went from knowing nothing about coding to creating my own website for a personal project. I highly recommend it to everyone!',
+      },
+      {
+        id: 8,
+        header: 'Conclusion',
+        content: 'As we look ahead, experts agree that the internet offers countless advantages. Personally, I believe the most valuable things are the ease of finding information and the opportunity for online learning. What about you? What do you enjoy most about it?',
+      }
     ],
   },
 ];
@@ -714,32 +778,52 @@ export const readingFeedback = [
 export const writingEmailTips = [
   {
     id: 1,
-    content: 'Use a clear and concise subject line that summarizes the email content.',
-    example: 'Subject: Request for Meeting',
+    content: 'Choose a Title',
+    example: `Craft a catchy title that reflects your article's main idea.`,
   },
   {
     id: 2,
-    content: 'Start with a polite greeting, addressing the recipient by name if possible.',
-    example: 'Dear Mr. Smith,',
+    content: 'Identify Your Audience',
+    example: 'Who are you writing for? Tailor your language to engage with them.',
   },
   {
     id: 3,
-    content: 'State the purpose of the email in the opening paragraph.',
-    example: 'I am writing to follow up on our previous conversation regarding...',
+    content: 'Decide on Tone',
+    example: 'Choose a tone that fits your purpose and target audience - casual for lifestyle topics, formal for academic ones.',
   },
   {
     id: 4,
-    content: 'Use short paragraphs and bullet points for clarity.',
-    example: 'Here are the key points we discussed:\n- Point 1\n- Point 2\n- Point 3',
+    content: 'Engage the Reader',
+    example: 'Start with questions or statements to capture attention, such as, Are you one of those people who …….?',
   },
   {
     id: 5,
-    content: 'Be polite and professional in your tone throughout the email.',
-    example: 'I appreciate your assistance in this matter and look forward to your response.',
+    content: 'Link Opening to Title',
+    example: 'Ensure your opening sentence connects clearly to the title for relevance.',
   },
   {
     id: 6,
-    content: 'End with a courteous closing statement and your name.',
-    example: 'Thank you for your time and understanding.\nSincerely,\nNick',
+    content: 'Consider Your Purpose',
+    example: 'Ask yourself: What is the goal of your article? To inform, entertain, or persuade?',
   },
+  {
+    id: 7,
+    content: 'Personalise Your Content',
+    example: 'Use true stories or personal experiences to make your article relatable.',
+  },
+  {
+    id: 8,
+    content: 'Include Examples',
+    example: 'Support your points with relevant examples to illustrate your ideas.',
+  },
+  {
+    id: 9,
+    content: 'Maintain Consistency',
+    example: 'Keep the chosen tone consistent throughout.',
+  },
+  {
+    id: 10,
+    content: 'Proofread Your Work',
+    example: 'Check for accuracy, punctuation, and spelling to ensure professionalism.',
+  }
 ];

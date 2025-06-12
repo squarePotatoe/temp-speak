@@ -3,7 +3,7 @@
     <div
       class="font-bold bg-indigo-50 pl-4 striped-bg rounded-l-sm rounded-r-3xl text-4xl mb-4"
     >
-      Email Writing
+      Article Writing
     </div>
 
     <div class="grid grid-cols-3">
@@ -56,7 +56,7 @@
       </div>
       <div class="">
         <div class="text-xl font-semibold text-slate-600">Text type</div>
-        <p>Email</p>
+        <p>Article</p>
       </div>
       <div class="">
         <div class="text-xl font-semibold text-slate-600">Tone</div>

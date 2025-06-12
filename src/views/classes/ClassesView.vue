@@ -57,11 +57,11 @@ const redingLesson2 = readingDemo.find((item) => item.id === 2);
 
       <div class="p-2">
         <ClassCard
-          title="Email Writing"
+          title="Article Writing"
           activity="Writing"
           :img="fastFashion"
-          textType="Email"
-          description="You work in the sales deparment at Fast Fashion, an online company that sells clothes..."
+          textType="Magazine Article"
+          description="Discus the wonders of the internet..."
           teacher="John Doe"
           date="15 October 2025, Wednesday"
           time="Start 18:00 End 19:00"
