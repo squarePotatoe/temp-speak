@@ -389,6 +389,35 @@ export const textFormatDemo = [
         content: 'Have you ever wondered why...?',
       }
     ],
+introdyctionFirst: [
+  { content: "This month, we explore…" },
+  { content: "Let’s dive into…" },
+  { content: "Have you ever thought about…" },
+  { content: "The first thing to consider is" },
+  { content: "One thing to consider is" },
+  { content: "To begin with" }
+],
+intoductionAdditional: [
+  { content: "Apart from that…" },
+  { content: "Another consideration…" },
+  { content: "What’s more…" },
+  { content: "In a similar vein…" },
+  { content: "Now, let’s shift our focus to…" }
+],
+presentingInformation: [
+  { content: "Experts agree that…" },
+  { content: "A recent study revealed…" },
+  { content: "Here’s what you need to know…" }
+],
+intoducingOpinions: [
+  { content: "If you ask me" },
+  { content: "I recently had an experience that…" },
+  { content: "Let me take you back when…" },
+  { content: "Personally, I believe that" },
+  { content: "This reminds me of a time when…" },
+  { content: "In my opinion" }
+],
+
     usefulExpressions: [
       {
         id: 1,

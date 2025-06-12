@@ -21,16 +21,16 @@
         </div>
         <!-- Body Section  -->
         <div class="flex flex-col gap-2">
-          <p>
+          <p :class="activeTip === 99 ? 'bg-amber-100' : ''">
             {{ textType.structure[4].content }}
           </p>
-          <p>
+          <p :class="activeTip === 5 ? 'bg-amber-100' : ''">
             {{ textType.structure[5].content }}
           </p>
-          <p>
+          <p :class="activeTip === 6 ? 'bg-amber-100' : ''">
             {{ textType.structure[6].content }}
           </p>
-          <p>
+          <p :class="activeTip === 99 ? 'bg-amber-100' : ''">
             {{ textType.structure[7].content }}
           </p>
         </div>
