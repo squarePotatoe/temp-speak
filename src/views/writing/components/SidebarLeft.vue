@@ -36,6 +36,8 @@ function handleSectionChange(section) {
     <div class="flex flex-col gap-4">
       <!-- filepath: c:\xampp\htdocs\temp-speak\src\views\writing\components\SidebarLeft.vue -->
       <div class="flex flex-col gap-2 mb-4">
+        <h2 class="mb-2">Useful Expressions</h2>
+
         <button
           :class="[
             'p-2 rounded font-semibold transition',
@@ -90,17 +92,6 @@ function handleSectionChange(section) {
           @click="handleSectionChange('opinions')"
         >
           Introducing Your Opinion
-        </button>
-        <button
-          :class="[
-            'p-2 rounded font-semibold transition',
-            activeSection === 'expressions'
-              ? 'bg-indigo-500 text-white shadow'
-              : 'bg-indigo-200 text-indigo-800 hover:bg-indigo-300',
-          ]"
-          @click="handleSectionChange('expressions')"
-        >
-          Useful Expressions
         </button>
       </div>
 
@@ -164,7 +155,6 @@ function handleSectionChange(section) {
       </div>
 
       <div v-else>
-        <h2 class="mb-2">Useful Expressions</h2>
         <p class="text-sm">
           Use these expressions to start your {{ textType }}.
         </p>
