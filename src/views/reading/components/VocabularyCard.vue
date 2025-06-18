@@ -48,9 +48,10 @@ function startQuiz(id) {
 
     <div
       v-if="showQuizModal"
+      @click.self="showQuizModal = false"
       class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 bg-opacity-60"
     >
-      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl relative">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-4xl relative">
         <button
           class="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
           @click="showQuizModal = false"
@@ -76,7 +77,7 @@ function startQuiz(id) {
                 <a
                   class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
                   target="_blank"
-                  href="https://edu.speak3.com/paper/a76b0e633d61bb15c51d35ecf226533e"
+                  href="https://edu.speak3.com/paper/0f62199444a78ef7660098967451c9f2"
                 >
                   Start
                 </a>
