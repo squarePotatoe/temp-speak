@@ -1,5 +1,11 @@
 <script setup>
 import { ref } from "vue";
+
+const props = defineProps({
+  currentTaskId: {
+    type: Number,
+  },
+});
 const showQuizModal = ref(false);
 const availableQuizzes = ref([
   {
@@ -30,6 +36,7 @@ function startQuiz(id) {
         Vocabulary
       </div>
       <button
+        v-if="currentTaskId === 1"
         @click="showQuizModal = true"
         class="text-xl flex items-center gap-2 font-extrabold text-white p-3 bg-gradient-to-r from-green-500 to-green-700 w-fit rounded-tr-2xl shadow-lg"
       >

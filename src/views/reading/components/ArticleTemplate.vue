@@ -131,7 +131,7 @@ onMounted(() => {
               </button>
             </div>
           </div>
-          <VocabularyCard>
+          <VocabularyCard :currentTaskId="currentTaskId">
             <VocabularyItem
               v-for="item in currentVocab.vocab"
               :key="item.id"
