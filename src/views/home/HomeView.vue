@@ -177,6 +177,8 @@ const calendarAttributes = [
   },
 ];
 
+const assignmentStatus = ref("Not Submitted");
+
 onMounted(() => {
   const interval = setInterval(updateTime, 1000);
   onUnmounted(() => {
@@ -198,22 +200,39 @@ onMounted(() => {
             <span
               class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
             ></span>
-            <div class="text-2xl font-bold text-amber-500">Next lesson</div>
+            <div class="text-2xl font-bold text-amber-500">
+              Upcoming class <span class="text-amber-400">: 19 June Thu</span>
+            </div>
           </div>
           <hr class="text-gray-300 my-2" />
           <div>
             <div class="flex flex-col justify-between gap-2 mt-2">
-              <div class="flex flex-col gap-2">
-                <div class="text-xl font-semibold text-purple-700">
-                  The Art of Skysurfing
+              <div class="grid grid-cols-3 gap-2">
+                <div class="col-span-2">
+                  <div class="text-xl font-semibold text-purple-700">
+                    The Art of Skysurfing
+                  </div>
+                  <p class="text-sm leading-tight font-semibold text-gray-600">
+                    An exciting sport that combines skydiving and surfing
+                  </p>
+                  <p class="text-sm leading-tight font-semibold text-gray-600">
+                    Skysurfing is a high-adrenaline sport that combines the
+                    excitement of skydiving with the thrill of surfing...
+                  </p>
                 </div>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  An exciting sport that combines skydiving and surfing
-                </p>
-                <p class="text-sm leading-tight font-semibold text-gray-600">
-                  Skysurfing is a high-adrenaline sport that combines the
-                  excitement of skydiving with the thrill of surfing...
-                </p>
+                <div
+                  class="mb-4 text-sm rounded-lg bg-yellow-50 border-r-4 border-yellow-400 flex flex-col items-center gap-2"
+                >
+                  <span class="material-icons text-yellow-500"
+                    >assignment_late</span
+                  >
+                  <span class="font-semibold text-yellow-900"
+                    >Assignment Status:</span
+                  >
+                  <span class="ml-2 text-yellow-800">{{
+                    assignmentStatus
+                  }}</span>
+                </div>
               </div>
               <div class="flex items-center justify-between relative">
                 <p class="text-gray-500 border border-gray-300 rounded p-2">
@@ -229,7 +248,9 @@ onMounted(() => {
             <span
               class="h-3 w-3 absolute bg-cyan-500 rounded-full right-4 animate-ping duration-300 p-1"
             ></span>
-            <div class="text-2xl font-bold text-amber-500">Next lesson</div>
+            <div class="text-2xl font-bold text-amber-500">
+              Upcoming class <span class="text-amber-400">: 19 June Thu</span>
+            </div>
           </div>
           <hr class="text-gray-300 my-2" />
           <div>

@@ -10,28 +10,75 @@
       <div class="flex flex-col gap-4 text-xl">
         <!-- Title section  -->
         <div :class="activeTip === 0 ? 'bg-amber-100' : ''">
-          {{ textType.structure[0].content }}
+          Discovering the Magic of the Internet
         </div>
         <!-- Introduction section  -->
         <div>
-          <span :class="activeTip === 3 ? 'bg-amber-100' : ''">{{
-            textType.structure[1].content
-          }}</span>
-          {{ textType.structure[2].content }}
+          <span
+            :class="activeTip === 3 || activeTip === 1 ? 'bg-amber-100' : ''"
+          >
+            <span :class="expressionsTab === 1 ? 'underline' : ''"
+              >Are you one of those people who</span
+            >
+            can’t go a day without checking your phone for internet
+            access?</span
+          >
+          Let me take you back to when this incredible tool was just emerging.
+          It has transformed our lives in ways we never imagined.
+          <span :class="activeTip === 4 ? 'bg-amber-100' : ''"
+            >The World Wide Web truly is magical, making it easy to find
+            information and connect with people.</span
+          >
+          Once limited to computers, now it has woven itself into every aspect
+          of our daily lives, and
+          <span :class="activeTip === 2 ? 'bg-amber-100' : ''">
+            I love it!
+          </span>
         </div>
         <!-- Body Section  -->
         <div class="flex flex-col gap-2">
-          <p :class="activeTip === 99 ? 'bg-amber-100' : ''">
-            {{ textType.structure[4].content }}
+          <p>
+            <span :class="activeTip === 2 ? 'bg-amber-100' : ''"
+              ><span :class="expressionsTab === 2 ? 'underline' : ''"
+                >This month, we explore</span
+              ></span
+            >
+            one of the cool things about the World Wide Web: you can look up
+            anything you want and get the answer straight away.
+            <span :class="activeTip === 7 ? 'bg-amber-100' : ''"
+              >Isn’t that fantastic?
+            </span>
+            <span :class="expressionsTab === 4 ? 'underline' : ''"
+              >Here's what you need to know</span
+            >: for example, imagine you are arguing with your friends about how
+            to do something. Easy solution! Go online and find the answer.
           </p>
-          <p :class="activeTip === 5 ? 'bg-amber-100' : ''">
-            {{ textType.structure[5].content }}
+          <p>
+            <span :class="activeTip === 4 ? 'bg-amber-100' : ''">
+              <span :class="expressionsTab === 3 ? 'underline' : ''"
+                >Apart from that</span
+              ></span
+            >,
+            <span :class="activeTip === 5 ? 'bg-amber-100' : ''">
+              one of the best aspects of the internet is the ability to learn a
+              wide range of subjects at little to no cost!
+              <span :class="expressionsTab === 5 ? 'underline' : ''"
+                >If you ask me</span
+              >, my go-to website is
+              <span class="text-blue-600">www.udemy.com</span>, where
+              individuals can sign up to both teach and learn about diverse
+              topics
+            </span>
+            such as music, web design, app development, history, and much more.
           </p>
           <p :class="activeTip === 6 ? 'bg-amber-100' : ''">
             {{ textType.structure[6].content }}
           </p>
-          <p :class="activeTip === 99 ? 'bg-amber-100' : ''">
-            {{ textType.structure[7].content }}
+          <p>
+            As we look ahead, experts agree that the internet offers countless
+            advantages. Personally, I believe the most valuable things are the
+            ease of finding information and the opportunity for online learning.
+            What about you? What do you enjoy most about it?
           </p>
         </div>
         <!-- Closing section  -->
@@ -53,6 +100,9 @@ const props = defineProps({
     default: "40rem",
   },
   activeTip: {
+    type: String,
+  },
+  expressionsTab: {
     type: String,
   },
 });

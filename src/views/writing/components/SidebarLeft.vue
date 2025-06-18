@@ -27,6 +27,9 @@ const activeSection = ref("phrases");
 
 function handleSectionChange(section) {
   activeSection.value = section;
+  if (section === "introFirst") {
+    emit("sectionChange", "introFirst");
+  }
   emit("sectionChange", section);
 }
 </script>
@@ -102,22 +105,32 @@ function handleSectionChange(section) {
           Use these expressions to start your {{ textType }}.
         </p>
         <div
-          v-for="(expression, idx) in engagingPhrases"
-          :key="idx"
+          v-for="(expression, id) in engagingPhrases"
+          :key="id"
           class="group flex flex-col relative rounded bg-white p-2 mb-2"
         >
-          <div class="text-sm">{{ expression.content }}</div>
+          <div
+            :class="expression.id === 1 ? 'bg-amber-100' : ''"
+            class="text-sm"
+          >
+            {{ expression.content }}
+          </div>
         </div>
       </div>
 
       <div v-else-if="activeSection === 'introFirst'">
         <h2 class="mb-2">Introducing Your First Point</h2>
         <div
-          v-for="(expression, idx) in introdyctionFirst"
-          :key="idx"
+          v-for="(expression, id) in introdyctionFirst"
+          :key="id"
           class="group flex flex-col relative rounded bg-white p-2 mb-2"
         >
-          <div class="text-sm">{{ expression.content }}</div>
+          <div
+            :class="expression.id === 1 ? 'bg-amber-100' : ''"
+            class="text-sm"
+          >
+            {{ expression.content }}
+          </div>
         </div>
       </div>
 

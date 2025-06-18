@@ -2,7 +2,7 @@
 
   <div >
 
-    <main class="flex flex-col mb-6 ">
+    <main class="flex flex-col mb-6">
 
     <Header class="w-full p-4 h-full rounded-tl-xl transition-transform transform duration-100 " :class="{ 'translate-y-0': !isHeaderOpen, '-translate-y-full fixed -z-10': isHeaderOpen }" />
 
@@ -44,6 +44,44 @@
       <div class="grid grid-cols-4">
         <!-- Left side notes -->
         <div class="col-span-1 bg-indigo-50 rounded p-4 overflow-y-auto max-h-[40rem] shadow-md">
+              
+              <div class="flex flex-col items-center min-h-[180px]">
+                <div class="text-xl font-bold text-indigo-800 flex items-center gap-2 mb-2">
+                  <span class="material-icons text-indigo-400">lightbulb</span>
+                  Writing Tips
+                </div>
+                <div class="flex items-center gap-2 mb-2">
+                  <button
+                    @click="prevTip"
+                    :disabled="currentTipIndex === 0"
+                    class="p-2 rounded-full bg-amber-100 hover:bg-amber-200 disabled:opacity-50 shadow transition flex items-center justify-center"
+                    aria-label="Previous tip"
+                  >
+                    <span class="material-icons text-indigo-500">chevron_left</span>
+                  </button>
+                    <span class="material-icons text-yellow-400">star</span>
+                    <span class="text-base font-semibold text-indigo-700">
+                      Tip {{ currentTipIndex + 1 }} of {{ writingEmailTips.length }}
+                    </span>
+                      <button
+                        @click="nextTip"
+                        :disabled="currentTipIndex === writingEmailTips.length - 1"
+                        class="p-2 rounded-full bg-pink-200 hover:bg-pink-300 disabled:opacity-50 shadow transition flex items-center justify-center"
+                        aria-label="Next tip"
+                      >
+                        <span class="material-icons text-indigo-500">chevron_right</span>
+                      </button>
+                </div>
+                <div class="text-lg text-gray-900 text-center font-medium mb-3">
+                  {{ writingEmailTips[currentTipIndex].content }}
+                </div>
+                <div class="w-full flex flex-col items-center">
+                  <div class="bg-yellow-50 border-l-4 border-yellow-400 py-2 rounded text-yellow-900 text-center italic flex items-center gap-2">
+                    <span class="ml-2">{{ writingEmailTips[currentTipIndex].example }}</span>
+                  </div>
+                </div>
+              </div>
+
           <SidebarLeft @sectionChange="onSectionChange" />
         <div>
             
@@ -54,104 +92,15 @@
         <!-- Article only -->
         <div class="col-span-3 ml-4" v-if="isViewArticle">
           <div class="flex flex-col">
-                      <div class="flex flex-col rounded-t-xl">
-
-            <div class="flex flex-col rounded-t-xl">
-              
-              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl shadow-lg p-6 flex flex-col items-center min-h-[180px]">
-                <div class="text-xl font-bold text-indigo-800 flex items-center gap-2 mb-2">
-                  <span class="material-icons text-indigo-400">lightbulb</span>
-                  Writing Tips
-                </div>
-                <div class="flex items-center gap-2 mb-2">
-                  <button
-                    @click="prevTip"
-                    :disabled="currentTipIndex === 0"
-                    class="p-2 rounded-full bg-amber-100 hover:bg-amber-200 disabled:opacity-50 shadow transition flex items-center justify-center"
-                    aria-label="Previous tip"
-                  >
-                    <span class="material-icons text-indigo-500">chevron_left</span>
-                  </button>
-                        <span class="material-icons text-yellow-400">star</span>
-                        <span class="text-base font-semibold text-indigo-700">
-                          Tip {{ currentTipIndex + 1 }} of {{ writingEmailTips.length }}
-                        </span>
-                          <button
-                            @click="nextTip"
-                            :disabled="currentTipIndex === writingEmailTips.length - 1"
-                            class="p-2 rounded-full bg-green-100 hover:bg-green-200 disabled:opacity-50 shadow transition flex items-center justify-center"
-                            aria-label="Next tip"
-                          >
-                            <span class="material-icons text-indigo-500">chevron_right</span>
-                          </button>
-                </div>
-                <div class="text-lg text-gray-900 text-center font-medium mb-3">
-                  {{ writingEmailTips[currentTipIndex].content }}
-                </div>
-                <div class="w-full flex flex-col items-center">
-                  <div class="bg-yellow-50 border-l-4 border-yellow-400 px-4 py-2 rounded text-yellow-900 text-center italic flex items-center gap-2">
-                    <span class="material-icons text-yellow-500">emoji_objects</span>
-                    <span class="font-semibold"></span>
-                    <span class="ml-2">{{ writingEmailTips[currentTipIndex].example }}</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+          <div class="flex flex-col rounded-t-xl">
           </div>
-          <Email :articleHeight="articleHeight" :activeTip="currentTipIndex" />
+          <Email :articleHeight="articleHeight" :activeTip="currentTipIndex" :expressionsTab="expressionsIndex"/>
 
           </div>
         </div>
 
         <div class="col-span-3 ml-4" v-else-if="isViewEditor">
           <div class="flex flex-col">
-
-                      <div class="flex flex-col rounded-t-xl">
-
-            <div class="flex flex-col rounded-t-xl">
-              
-              <div class="bg-gradient-to-br from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl shadow-lg p-6 flex flex-col items-center min-h-[180px]">
-                <div class="text-xl font-bold text-indigo-800 flex items-center gap-2 mb-2">
-                  <span class="material-icons text-indigo-400">lightbulb</span>
-                  Writing Tips
-                </div>
-                <div class="flex items-center gap-2 mb-2">
-                  <button
-                    @click="prevTip"
-                    :disabled="currentTipIndex === 0"
-                    class="p-2 rounded-full bg-amber-100 hover:bg-amber-200 disabled:opacity-50 shadow transition flex items-center justify-center"
-                    aria-label="Previous tip"
-                  >
-                    <span class="material-icons text-indigo-500">chevron_left</span>
-                  </button>
-                        <span class="material-icons text-yellow-400">star</span>
-                        <span class="text-base font-semibold text-indigo-700">
-                          Tip {{ currentTipIndex + 1 }} of {{ writingEmailTips.length }}
-                        </span>
-                          <button
-                            @click="nextTip"
-                            :disabled="currentTipIndex === writingEmailTips.length - 1"
-                            class="p-2 rounded-full bg-green-100 hover:bg-green-200 disabled:opacity-50 shadow transition flex items-center justify-center"
-                            aria-label="Next tip"
-                          >
-                            <span class="material-icons text-indigo-500">chevron_right</span>
-                          </button>
-                </div>
-                <div class="text-lg text-gray-900 text-center font-medium mb-3">
-                  {{ writingEmailTips[currentTipIndex].content }}
-                </div>
-                <div class="w-full flex flex-col items-center">
-                  <div class="bg-yellow-50 border-l-4 border-yellow-400 px-4 py-2 rounded text-yellow-900 text-center italic flex items-center gap-2">
-                    <span class="material-icons text-yellow-500">emoji_objects</span>
-                    <span class="font-semibold"></span>
-                    <span class="ml-2">{{ writingEmailTips[currentTipIndex].example }}</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
           <form @submit.prevent="submitForm">
             <TextEditor v-model="form.content" />
           </form>
@@ -215,6 +164,7 @@ const isViewReview = ref(false)
 const articleHeight = ref('40rem')
 
 const currentTipIndex = ref(0);
+const expressionsIndex = ref(0);
 
 function prevTip() {
   if (currentTipIndex.value > 0) currentTipIndex.value--;
@@ -225,38 +175,19 @@ function nextTip() {
 
 function onSectionChange(section) {
   if (section === "phrases") {
-    currentTipIndex.value = 3; // or whatever index you want for phrases
-  } else if (section === "expressions") {
-    currentTipIndex.value = 9; // or whatever index you want for expressions
-  }
+    expressionsIndex.value = 1;
+  } else if (section === "introFirst") {
+    expressionsIndex.value = 2;
+  } else if (section === "introAdditional") {
+    expressionsIndex.value = 3; 
+  } else if (section === "presentingInfo") {
+    expressionsIndex.value = 4;
+  } else if (section === "opinions") {
+    expressionsIndex.value = 5;
+  } else if (section === "introductionSentences") {
+    expressionsIndex.value = 6;
+  } 
 }
-
-const toggleSideBySide = () => {
-  isSideBySide.value = !isSideBySide.value
-  if (isSideBySide.value) {
-    isViewArticle.value = false
-    isViewEditor.value = false
-    sideBySide.value = 'Example'
-  } else {
-    isViewArticle.value = true
-    isViewEditor.value = false
-    sideBySide.value = 'Write here'
-  }
-}
-
-const toggleViews = () => {
-  isViewArticle.value = true
-  // if (isSideBySide.value) {
-  //   isSideBySide.value = false
-  //   isViewArticle.value = false
-  //   isViewEditor.value = true
-  // }
-  // isViewArticle.value = !isViewArticle.value 
-  // isViewEditor.value = !isViewEditor.value
-  // enabledView.value = isViewArticle.value ? 'Editor' : 'Example'
-  // sideBySide.value = 'Write here'
-}
-
 
 const form = ref({
   title: '',
